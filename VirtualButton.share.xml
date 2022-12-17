@@ -7,9 +7,7 @@
         <ApplicationProgram>
           <Static>
             <ParameterTypes>
-            </ParameterTypes>
-            <ParameterTypes>
-              <ParameterType Id="%AID%_PT-BTNMode" Name="BMMode">
+              <ParameterType Id="%AID%_PT-BTNMode" Name="BTNMode">
                 <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="Deaktviert" Value="0" Id="%AID%_PT-BTNMode_EN-0" />
                   <Enumeration Text="1-Taster, Mehrfach-Klick" Value="2" Id="%AID%_PT-BTNMode_EN-12" />
@@ -19,6 +17,12 @@
                   <Enumeration Text="2-Taster, Dimmen" Value="22" Id="%AID%_PT-BTNMode_EN-23" />
                   <Enumeration Text="1-Taster, Jalousie" Value="13" Id="%AID%_PT-BTNMode_EN-14" />
                   <Enumeration Text="2-Taster, Jalousie" Value="23" Id="%AID%_PT-BTNMode_EN-24" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="%AID%_PT-BTctiveInactive" Name="BTNOnOff">
+                <TypeRestriction Base="Value" SizeInBit="1">
+                  <Enumeration Text="Inaktiv" Value="0" Id="%AID%_PT-BTNOnOff_EN-0" />
+                  <Enumeration Text="Aktiv" Value="1" Id="%AID%_PT-BTNOnOff_EN-12" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-BTNOutputMode1" Name="BMOutputMode1">
@@ -188,8 +192,122 @@
                   <Enumeration Text="Szene 64" Value="64" Id="%AID%_PT-BTNScene_EN-64" />
                 </TypeRestriction>
               </ParameterType>
+              <ParameterType Id="%AID%_PT-BTNReactionTime" Name="BTNReactionTime">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="0,1s" Value="1" Id="%AID%_PT-BTNReactionTime_EN-1" />
+                  <Enumeration Text="0,2s" Value="2" Id="%AID%_PT-BTNReactionTime_EN-2" />
+                  <Enumeration Text="0,3s" Value="3" Id="%AID%_PT-BTNReactionTime_EN-3" />
+                  <Enumeration Text="0,4s" Value="4" Id="%AID%_PT-BTNReactionTime_EN-4" />
+                  <Enumeration Text="0,5s" Value="5" Id="%AID%_PT-BTNReactionTime_EN-5" />
+                  <Enumeration Text="0,6s" Value="6" Id="%AID%_PT-BTNReactionTime_EN-6" />
+                  <Enumeration Text="0,7s" Value="7" Id="%AID%_PT-BTNReactionTime_EN-7" />
+                  <Enumeration Text="0,8s" Value="8" Id="%AID%_PT-BTNReactionTime_EN-8" />
+                  <Enumeration Text="0,9s" Value="9" Id="%AID%_PT-BTNReactionTime_EN-9" />
+                  <Enumeration Text="1,0s" Value="10" Id="%AID%_PT-BTNReactionTime_EN-10" />
+                  <Enumeration Text="1,1s" Value="11" Id="%AID%_PT-BTNReactionTime_EN-11" />
+                  <Enumeration Text="1,2s" Value="12" Id="%AID%_PT-BTNReactionTime_EN-12" />
+                  <Enumeration Text="1,3s" Value="13" Id="%AID%_PT-BTNReactionTime_EN-13" />
+                  <Enumeration Text="1,4s" Value="14" Id="%AID%_PT-BTNReactionTime_EN-14" />
+                  <Enumeration Text="1,5s" Value="15" Id="%AID%_PT-BTNReactionTime_EN-15" />
+                  <Enumeration Text="1,6s" Value="16" Id="%AID%_PT-BTNReactionTime_EN-16" />
+                  <Enumeration Text="1,7s" Value="17" Id="%AID%_PT-BTNReactionTime_EN-17" />
+                  <Enumeration Text="1,8s" Value="18" Id="%AID%_PT-BTNReactionTime_EN-18" />
+                  <Enumeration Text="1,9s" Value="19" Id="%AID%_PT-BTNReactionTime_EN-19" />
+                  <Enumeration Text="2,0s" Value="20" Id="%AID%_PT-BTNReactionTime_EN-20" />
+                  <Enumeration Text="2,1s" Value="21" Id="%AID%_PT-BTNReactionTime_EN-21" />
+                  <Enumeration Text="2,2s" Value="22" Id="%AID%_PT-BTNReactionTime_EN-22" />
+                  <Enumeration Text="2,3s" Value="23" Id="%AID%_PT-BTNReactionTime_EN-23" />
+                  <Enumeration Text="2,4s" Value="24" Id="%AID%_PT-BTNReactionTime_EN-24" />
+                  <Enumeration Text="2,5s" Value="25" Id="%AID%_PT-BTNReactionTime_EN-25" />
+                  <Enumeration Text="2,6s" Value="26" Id="%AID%_PT-BTNReactionTime_EN-26" />
+                  <Enumeration Text="2,7s" Value="27" Id="%AID%_PT-BTNReactionTime_EN-27" />
+                  <Enumeration Text="2,8s" Value="28" Id="%AID%_PT-BTNReactionTime_EN-28" />
+                  <Enumeration Text="2,9s" Value="29" Id="%AID%_PT-BTNReactionTime_EN-29" />
+                  <Enumeration Text="3,0s" Value="30" Id="%AID%_PT-BTNReactionTime_EN-30" />
+                  <Enumeration Text="3,1s" Value="31" Id="%AID%_PT-BTNReactionTime_EN-31" />
+                  <Enumeration Text="3,2s" Value="32" Id="%AID%_PT-BTNReactionTime_EN-32" />
+                  <Enumeration Text="3,3s" Value="33" Id="%AID%_PT-BTNReactionTime_EN-33" />
+                  <Enumeration Text="3,4s" Value="34" Id="%AID%_PT-BTNReactionTime_EN-34" />
+                  <Enumeration Text="3,5s" Value="35" Id="%AID%_PT-BTNReactionTime_EN-35" />
+                  <Enumeration Text="3,6s" Value="36" Id="%AID%_PT-BTNReactionTime_EN-36" />
+                  <Enumeration Text="3,7s" Value="37" Id="%AID%_PT-BTNReactionTime_EN-37" />
+                  <Enumeration Text="3,8s" Value="38" Id="%AID%_PT-BTNReactionTime_EN-38" />
+                  <Enumeration Text="3,9s" Value="39" Id="%AID%_PT-BTNReactionTime_EN-39" />
+                  <Enumeration Text="4,0s" Value="40" Id="%AID%_PT-BTNReactionTime_EN-40" />
+                  <Enumeration Text="4,1s" Value="41" Id="%AID%_PT-BTNReactionTime_EN-41" />
+                  <Enumeration Text="4,2s" Value="42" Id="%AID%_PT-BTNReactionTime_EN-42" />
+                  <Enumeration Text="4,3s" Value="43" Id="%AID%_PT-BTNReactionTime_EN-43" />
+                  <Enumeration Text="4,4s" Value="44" Id="%AID%_PT-BTNReactionTime_EN-44" />
+                  <Enumeration Text="4,5s" Value="45" Id="%AID%_PT-BTNReactionTime_EN-45" />
+                  <Enumeration Text="4,6s" Value="46" Id="%AID%_PT-BTNReactionTime_EN-46" />
+                  <Enumeration Text="4,7s" Value="47" Id="%AID%_PT-BTNReactionTime_EN-47" />
+                  <Enumeration Text="4,8s" Value="48" Id="%AID%_PT-BTNReactionTime_EN-48" />
+                  <Enumeration Text="4,9s" Value="49" Id="%AID%_PT-BTNReactionTime_EN-49" />
+                  <Enumeration Text="5,0s" Value="50" Id="%AID%_PT-BTNReactionTime_EN-50" />
+                  <Enumeration Text="5,1s" Value="51" Id="%AID%_PT-BTNReactionTime_EN-51" />
+                  <Enumeration Text="5,2s" Value="52" Id="%AID%_PT-BTNReactionTime_EN-52" />
+                  <Enumeration Text="5,3s" Value="53" Id="%AID%_PT-BTNReactionTime_EN-53" />
+                  <Enumeration Text="5,4s" Value="54" Id="%AID%_PT-BTNReactionTime_EN-54" />
+                  <Enumeration Text="5,5s" Value="55" Id="%AID%_PT-BTNReactionTime_EN-55" />
+                  <Enumeration Text="5,6s" Value="56" Id="%AID%_PT-BTNReactionTime_EN-56" />
+                  <Enumeration Text="5,7s" Value="57" Id="%AID%_PT-BTNReactionTime_EN-57" />
+                  <Enumeration Text="5,8s" Value="58" Id="%AID%_PT-BTNReactionTime_EN-58" />
+                  <Enumeration Text="5,9s" Value="59" Id="%AID%_PT-BTNReactionTime_EN-59" />
+                  <Enumeration Text="6,0s" Value="60" Id="%AID%_PT-BTNReactionTime_EN-60" />
+                  <Enumeration Text="6,5s" Value="65" Id="%AID%_PT-BTNReactionTime_EN-65" />
+                  <Enumeration Text="7,0s" Value="70" Id="%AID%_PT-BTNReactionTime_EN-70" />
+                  <Enumeration Text="7,5s" Value="75" Id="%AID%_PT-BTNReactionTime_EN-75" />
+                  <Enumeration Text="8,0s" Value="80" Id="%AID%_PT-BTNReactionTime_EN-80" />
+                  <Enumeration Text="8,5s" Value="85" Id="%AID%_PT-BTNReactionTime_EN-85" />
+                  <Enumeration Text="9,0s" Value="90" Id="%AID%_PT-BTNReactionTime_EN-90" />
+                  <Enumeration Text="9,5s" Value="95" Id="%AID%_PT-BTNReactionTime_EN-95" />
+                  <Enumeration Text="10,0s" Value="100" Id="%AID%_PT-BTNReactionTime_EN-100" />
+                  <Enumeration Text="10,5s" Value="105" Id="%AID%_PT-BTNReactionTime_EN-105" />
+                  <Enumeration Text="11,0s" Value="110" Id="%AID%_PT-BTNReactionTime_EN-110" />
+                  <Enumeration Text="11,5s" Value="115" Id="%AID%_PT-BTNReactionTime_EN-115" />
+                  <Enumeration Text="12,0s" Value="120" Id="%AID%_PT-BTNReactionTime_EN-120" />
+                  <Enumeration Text="12,5s" Value="125" Id="%AID%_PT-BTNReactionTime_EN-125" />
+                  <Enumeration Text="13,0s" Value="130" Id="%AID%_PT-BTNReactionTime_EN-130" />
+                  <Enumeration Text="13,5s" Value="135" Id="%AID%_PT-BTNReactionTime_EN-135" />
+                  <Enumeration Text="14,0s" Value="140" Id="%AID%_PT-BTNReactionTime_EN-140" />
+                  <Enumeration Text="14,5s" Value="145" Id="%AID%_PT-BTNReactionTime_EN-145" />
+                  <Enumeration Text="15,0s" Value="150" Id="%AID%_PT-BTNReactionTime_EN-150" />
+                  <Enumeration Text="15,5s" Value="155" Id="%AID%_PT-BTNReactionTime_EN-155" />
+                  <Enumeration Text="16,0s" Value="160" Id="%AID%_PT-BTNReactionTime_EN-160" />
+                  <Enumeration Text="16,5s" Value="165" Id="%AID%_PT-BTNReactionTime_EN-165" />
+                  <Enumeration Text="17,0s" Value="170" Id="%AID%_PT-BTNReactionTime_EN-170" />
+                  <Enumeration Text="17,5s" Value="175" Id="%AID%_PT-BTNReactionTime_EN-175" />
+                  <Enumeration Text="18,0s" Value="180" Id="%AID%_PT-BTNReactionTime_EN-180" />
+                  <Enumeration Text="18,5s" Value="185" Id="%AID%_PT-BTNReactionTime_EN-185" />
+                  <Enumeration Text="19,0s" Value="190" Id="%AID%_PT-BTNReactionTime_EN-190" />
+                  <Enumeration Text="19,5s" Value="195" Id="%AID%_PT-BTNReactionTime_EN-195" />
+                  <Enumeration Text="20,0s" Value="200" Id="%AID%_PT-BTNReactionTime_EN-200" />
+                  <Enumeration Text="20,5s" Value="205" Id="%AID%_PT-BTNReactionTime_EN-205" />
+                  <Enumeration Text="21,0s" Value="210" Id="%AID%_PT-BTNReactionTime_EN-210" />
+                  <Enumeration Text="21,5s" Value="215" Id="%AID%_PT-BTNReactionTime_EN-215" />
+                  <Enumeration Text="22,0s" Value="220" Id="%AID%_PT-BTNReactionTime_EN-220" />
+                  <Enumeration Text="22,5s" Value="225" Id="%AID%_PT-BTNReactionTime_EN-225" />
+                  <Enumeration Text="23,0s" Value="230" Id="%AID%_PT-BTNReactionTime_EN-230" />
+                  <Enumeration Text="23,5s" Value="235" Id="%AID%_PT-BTNReactionTime_EN-235" />
+                  <Enumeration Text="24,0s" Value="240" Id="%AID%_PT-BTNReactionTime_EN-240" />
+                  <Enumeration Text="24,5s" Value="245" Id="%AID%_PT-BTNReactionTime_EN-245" />
+                  <Enumeration Text="25,0s" Value="250" Id="%AID%_PT-BTNReactionTime_EN-250" />
+                  <Enumeration Text="25,5s" Value="255" Id="%AID%_PT-BTNReactionTime_EN-255" />
+                </TypeRestriction>
+              </ParameterType>
             </ParameterTypes>
+            <Parameters>
+              <Union SizeInBit="32">
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%011" Name="ReactionTimeMultiClick" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Mehrfach-Klick" Value="5" />
+                <Parameter Id="%AID%_UP-%T%%CCC%012" Name="ReactionTimeLong"       Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Langer Tasterdruck" Value="10" />
+                <Parameter Id="%AID%_UP-%T%%CCC%013" Name="ReactionTimeExtraLong"  Offset="2" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Extra langer Tastedruck" Value="20" />
+              </Union>
+            </Parameters>
             <ParameterRefs>
+              <ParameterRef Id="%AID%_UP-%T%%CCC%011_R-%T%%CCC%01101" RefId="%AID%_UP-%T%%CCC%011" />
+              <ParameterRef Id="%AID%_UP-%T%%CCC%012_R-%T%%CCC%01201" RefId="%AID%_UP-%T%%CCC%012" />
+              <ParameterRef Id="%AID%_UP-%T%%CCC%013_R-%T%%CCC%01301" RefId="%AID%_UP-%T%%CCC%013" />
             </ParameterRefs>
             <ComObjectTable>
             </ComObjectTable>
@@ -197,6 +315,17 @@
             </ComObjectRefs>
           </Static>
           <Dynamic>
+            <Channel Id="%AID%_CH-BTN1" Name="BTNBasicChannel" Number="1" Text="Taster Grundeinstellung">
+              <ParameterBlock Id="%AID%_PB-5" Name="BTNBasic" Text="Grundeinstellung">
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Reaktionszeiten" UIHint="Headline" />                
+                <!-- MC -->
+                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%011_R-%T%%CCC%01101" />
+                <!-- Long -->
+                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%012_R-%T%%CCC%01201" />
+                <!-- ExtraLong -->
+                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%013_R-%T%%CCC%01301" />
+              </ParameterBlock>
+            </Channel>
           </Dynamic>
         </ApplicationProgram>
       </ApplicationPrograms>

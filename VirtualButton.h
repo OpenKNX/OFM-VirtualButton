@@ -6,9 +6,7 @@
 #include "hardware.h"
 
 #define BTN_MaxMuliClicks 3
-#define BTN_MuliClickTime 500
-#define BTN_LongPressTime 1000
-#define BTN_ExtraLongPressTime 2500
+
 
 struct VirtualButtonParams
 {
@@ -27,6 +25,9 @@ struct VirtualButtonGlobalParams
   bool eventShort = false;
   bool eventLong = false;
   bool eventExtraLong = false;
+  uint16_t reactionTimeMultiClick;
+  uint16_t reactionTimeLong;
+  uint16_t reactionTimeExtraLong;
 };
 
 struct VirtualButtonState
@@ -38,7 +39,6 @@ struct VirtualButtonState
   uint32_t multiClickTimer = 0;
   int8_t multiClicks = 0;
 };
-
 
 class VirtualButton
 {

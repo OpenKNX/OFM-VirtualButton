@@ -36,6 +36,19 @@ void VirtualButton::setup()
   // Global Params
   mParams.mode = knx.paramByte(calcParamIndex(BTN_BTNMode));
   mParams.lock = (knx.paramByte(calcParamIndex(BTN_BTNLock)) & BTN_BTNLockMask) >> BTN_BTNLockShift;
+  bool differenReactionTime = (knx.paramByte(calcParamIndex(BTN_BTNDifferentReactionTime)) & BTN_BTNDifferentReactionTimeMask) >> BTN_BTNDifferentReactionTimeShift;
+  if (differenReactionTime)
+  {
+    mParams.reactionTimeMultiClick = knx.paramByte(calcParamIndex(BTN_BTNReactionTimeMultiClick)) * 100;
+    mParams.reactionTimeLong = knx.paramByte(calcParamIndex(BTN_BTNReactionTimeLong)) * 100;
+    mParams.reactionTimeExtraLong = knx.paramByte(calcParamIndex(BTN_BTNReactionTimeExtraLong)) * 100;
+  }
+  else
+  {
+    mParams.reactionTimeMultiClick = knx.paramByte(BTN_ReactionTimeMultiClick) * 100;
+    mParams.reactionTimeLong = knx.paramByte(BTN_ReactionTimeLong) * 100;
+    mParams.reactionTimeExtraLong = knx.paramByte(BTN_ReactionTimeExtraLong) * 100;
+  }
 
   mParams.outputShort = knx.paramByte(calcParamIndex(BTN_BTNOutputShort));
   mParams.outputLong = knx.paramByte(calcParamIndex(BTN_BTNOutputLong));
@@ -58,11 +71,13 @@ void VirtualButton::setup()
   mMultiClickParams[2] = knx.paramByte(calcParamIndex(BTN_BTNM3Dpt1));
 
   // Debug
-  SERIAL_DEBUG.printf("BTN %i outputShort: %i/%i\n\r", mIndex, mButtonParams[0].outputShort, calcParamIndex(BTN_BTNOutput1ShortDpt1));
-  SERIAL_DEBUG.printf("BTN %i outputLong: %i/%i\n\r", mIndex, mButtonParams[0].outputLong, calcParamIndex(BTN_BTNOutput1LongDpt1));
-  SERIAL_DEBUG.printf("BTN %i outputExtraLong: %i/%i\n\r", mIndex, mButtonParams[0].outputExtraLong, calcParamIndex(BTN_BTNOutput1ExtraLongDpt1));
-
-  SERIAL_DEBUG.printf("BTN %i mParamMode: %i\n\r", mIndex, mParams.mode);
+  // SERIAL_DEBUG.printf("BTN %i outputShort: %i/%i\n\r", mIndex, mButtonParams[0].outputShort, calcParamIndex(BTN_BTNOutput1ShortDpt1));
+  // SERIAL_DEBUG.printf("BTN %i outputLong: %i/%i\n\r", mIndex, mButtonParams[0].outputLong, calcParamIndex(BTN_BTNOutput1LongDpt1));
+  // SERIAL_DEBUG.printf("BTN %i outputExtraLong: %i/%i\n\r", mIndex, mButtonParams[0].outputExtraLong, calcParamIndex(BTN_BTNOutput1ExtraLongDpt1));
+  // SERIAL_DEBUG.printf("BTN %i reactionTimeMultiClick: %i\n\r", mIndex, mParams.reactionTimeMultiClick);
+  // SERIAL_DEBUG.printf("BTN %i reactionTimeLong: %i\n\r", mIndex, mParams.reactionTimeLong);
+  // SERIAL_DEBUG.printf("BTN %i reactionTimeExtraLong: %i/%i\n\r", mIndex,mParams.reactionTimeExtraLong);
+  // SERIAL_DEBUG.printf("BTN %i mParamMode: %i\n\r", mIndex, mParams.mode);
 }
 
 void VirtualButton::loop()
@@ -126,7 +141,7 @@ void VirtualButton::processPressAndHold(bool iButton)
   if (mParams.outputLong == 0)
     return;
 
-  if (!mButtonState[iButton].pressLong && (millis() - mButtonState[iButton].pressStart) > BTN_LongPressTime)
+  if (!mButtonState[iButton].pressLong && (millis() - mButtonState[iButton].pressStart) > mParams.reactionTimeLong)
   {
     eventLongPress(iButton);
     mButtonState[iButton].pressLong = true;
@@ -136,7 +151,7 @@ void VirtualButton::processPressAndHold(bool iButton)
   if (mParams.outputExtraLong == 0)
     return;
 
-  if (!mButtonState[iButton].pressExtraLong && (millis() - mButtonState[iButton].pressStart) > BTN_ExtraLongPressTime)
+  if (!mButtonState[iButton].pressExtraLong && (millis() - mButtonState[iButton].pressStart) > mParams.reactionTimeExtraLong)
   {
     eventExtraLongPress(iButton);
     mButtonState[iButton].pressExtraLong = true;
@@ -209,7 +224,7 @@ void VirtualButton::processMultiClick()
   if (mButtonState[0].multiClickTimer == 0)
     return;
 
-  if (millis() - mButtonState[0].multiClickTimer > BTN_MuliClickTime)
+  if (millis() - mButtonState[0].multiClickTimer > mParams.reactionTimeMultiClick)
   {
     eventMultiClick(mButtonState[0].multiClicks);
     mButtonState[0].multiClickTimer = 0;
@@ -344,7 +359,7 @@ void VirtualButton::writeSwitchOutput(uint8_t iOutput, uint8_t iValue, uint8_t i
     // disabled
     if (iValue == 0)
       return;
-      
+
     // DPT17
     getKo(iKoOutput)->value((uint8_t)(iValue - 1), getDPT(VAL_DPT_17));
     break;

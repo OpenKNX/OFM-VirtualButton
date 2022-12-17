@@ -14,6 +14,7 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%120" Name="BTN%C%OutputDim" Offset="0" BitOffset="2" ParameterType="%AID%_PT-BTNOutputDim" Text="Taste 1 / Taste 2" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%121" Name="BTN%C%OutputDirection" Offset="0" BitOffset="3" ParameterType="%AID%_PT-BTNOutputDirection" Text="Taste 1 / Taste 2" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%122" Name="BTN%C%OutputJalousie" Offset="0" BitOffset="4" ParameterType="%AID%_PT-BTNOutputJalousie" Text="Funktion" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%003" Name="BTN%C%DifferentReactionTime"  Offset="0" BitOffset="5" ParameterType="%AID%_PT-BTctiveInactive" Text="Abweichende Reaktionzeiten" Value="0" />
               </Union>
 
               <Union SizeInBit="8">
@@ -92,6 +93,15 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%435" Name="BTN%C%M3Dpt5001" Offset="2" BitOffset="0" ParameterType="%AID%_PT-ValueDpt5001"   Text="  3. Klick" Value="0" SuffixText="%" />
                 <Parameter Id="%AID%_UP-%T%%CCC%436" Name="BTN%C%M3Dpt17"   Offset="2" BitOffset="0" ParameterType="%AID%_PT-BTNScene"       Text="  3. Klick" Value="0" />
               </Union>
+              
+              <!-- ReactionTime -->
+              <Union SizeInBit="32">
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="19" BitOffset="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%051" Name="BTN%C%ReactionTimeMultiClick" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Mehrfach-Klick" Value="5" />
+                <Parameter Id="%AID%_UP-%T%%CCC%052" Name="BTN%C%ReactionTimeLong"       Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Langer Tasterdruck" Value="10" />
+                <Parameter Id="%AID%_UP-%T%%CCC%053" Name="BTN%C%ReactionTimeExtraLong"  Offset="2" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Extra langer Tasterdruck" Value="20" />
+              </Union>
+              
             </Parameters>
             <ParameterRefs>
               <ParameterRef Id="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" RefId="%AID%_P-%T%%CCC%000" />
@@ -168,6 +178,12 @@
               <ParameterRef Id="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00802" RefId="%AID%_UP-%T%%CCC%008" Text="Taster 1" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00803" RefId="%AID%_UP-%T%%CCC%008" Text="Eingang" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%009_R-%T%%CCC%00901" RefId="%AID%_UP-%T%%CCC%009" Text="Taster 2" />
+
+              <!-- ReacionTime -->
+              <ParameterRef Id="%AID%_UP-%T%%CCC%003_R-%T%%CCC%00301" RefId="%AID%_UP-%T%%CCC%003" />
+              <ParameterRef Id="%AID%_UP-%T%%CCC%051_R-%T%%CCC%05101" RefId="%AID%_UP-%T%%CCC%051" />
+              <ParameterRef Id="%AID%_UP-%T%%CCC%052_R-%T%%CCC%05201" RefId="%AID%_UP-%T%%CCC%052" />
+              <ParameterRef Id="%AID%_UP-%T%%CCC%053_R-%T%%CCC%05301" RefId="%AID%_UP-%T%%CCC%053" />
 
             </ParameterRefs>
             <ComObjectTable>
@@ -246,17 +262,6 @@
                     <ParameterRefRef RefId="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101" />
                     <choose ParamRefId="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101">
                       <when test=">0">
-                        <!-- Sperre -->
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%002_R-%T%%CCC%00201" />
-                        <choose ParamRefId="%AID%_UP-%T%%CCC%002_R-%T%%CCC%00201">
-                          <when test="1">
-                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%000_R-%T%%CCC%00001" />
-                          </when>
-                          <when test="2">
-                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%000_R-%T%%CCC%00002" />
-                          </when>
-                        </choose>
-
                         <!-- Eingabe -->
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Eingabe" UIHint="Headline" />
                         <choose ParamRefId="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101">
@@ -585,6 +590,35 @@
                           </when>
                         </choose>
 
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Erweitertekonfiguration" UIHint="Headline" />
+
+                        <!-- Sperre -->
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%002_R-%T%%CCC%00201" />
+                        <choose ParamRefId="%AID%_UP-%T%%CCC%002_R-%T%%CCC%00201">
+                          <when test="1">
+                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%000_R-%T%%CCC%00001" />
+                          </when>
+                          <when test="2">
+                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%000_R-%T%%CCC%00002" />
+                          </when>
+                        </choose>
+
+                        <!-- ReacionTime -->
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%003_R-%T%%CCC%00301" />
+                        <choose ParamRefId="%AID%_UP-%T%%CCC%003_R-%T%%CCC%00301">
+                          <when test="1">
+                            <!-- MC -->
+                            <choose ParamRefId="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101">
+                              <when test="2">
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%051_R-%T%%CCC%05101" />
+                              </when>
+                            </choose>
+                            <!-- Long -->
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%052_R-%T%%CCC%05201" />
+                            <!-- ExtraLong -->
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%053_R-%T%%CCC%05301" />
+                          </when>
+                        </choose>
                       </when>
                     </choose>
                   </ParameterBlock>
