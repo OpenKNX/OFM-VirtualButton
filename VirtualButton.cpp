@@ -223,21 +223,33 @@ void VirtualButton::eventMultiClick(uint8_t iClicks)
   if (iClicks > BTN_MaxMuliClicks)
     return;
 
-  uint8_t lIndex = iClicks - 1;
-
   // if special - dpt1
-  if (mParams.outputShort == 1) {
+  if (mParams.outputShort == 1)
+  {
+    uint8_t lIndex = iClicks - 1;
 
     // disabled
     if (mMultiClickParams[lIndex] == 0)
       return;
-    
+
     bool lValue = true;
     if (mMultiClickParams[lIndex] == 1)
       lValue = false;
 
-    getKo(BTN_KoBTNOutput1Multi + lIndex)->value(lValue, getDPT(VAL_DPT_1));
-  }  
+    getKo(BTN_KoBTNOutput1Multi + lIndex)->value((bool)lValue, getDPT(VAL_DPT_1));
+  }
+  else if (mParams.outputShort == 4)
+  {
+    getKo(BTN_KoBTNOutput1)->value((uint8_t)mParams.outputShort, getDPT(VAL_DPT_5));
+  }
+  else if (mParams.outputShort == 5)
+  {
+    getKo(BTN_KoBTNOutput1)->value((uint8_t)mParams.outputShort, getDPT(VAL_DPT_5001));
+  }
+  else if (mParams.outputShort == 6)
+  {
+    getKo(BTN_KoBTNOutput1)->value((uint8_t)(mParams.outputShort - 1), getDPT(VAL_DPT_17));
+  }
 }
 void VirtualButton::eventShortPress(bool iButton)
 {
@@ -315,18 +327,26 @@ void VirtualButton::writeSwitchOutput(uint8_t iOutput, uint8_t iValue, uint8_t i
       lValueBool = !(bool)getKo(iKoStatus)->value(getDPT(VAL_DPT_1));
     }
 
-    getKo(iKoOutput)->value(lValueBool, getDPT(VAL_DPT_1));
+    getKo(iKoOutput)->value((bool)lValueBool, getDPT(VAL_DPT_1));
     break;
 
   case 4:
-  case 6:
-    // DPT5 & DPT17
+    // DPT5
     getKo(iKoOutput)->value((uint8_t)iValue, getDPT(VAL_DPT_5));
     break;
 
   case 5:
     // DPT5001
     getKo(iKoOutput)->value((uint8_t)iValue, getDPT(VAL_DPT_5001));
+    break;
+
+  case 6:
+    // disabled
+    if (iValue == 0)
+      return;
+      
+    // DPT17
+    getKo(iKoOutput)->value((uint8_t)(iValue - 1), getDPT(VAL_DPT_17));
     break;
   }
 }
