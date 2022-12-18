@@ -19,6 +19,9 @@ struct VirtualButtonGlobalParams
 {
   uint8_t mode = 0;
   uint8_t lock = 0;
+  bool statusShort = false;
+  bool statusLong = false;
+  bool statusExtraLong = false;
   uint8_t outputShort = 0;
   uint8_t outputLong = 0;
   uint8_t outputExtraLong = 0;
@@ -63,6 +66,12 @@ private:
   void eventLongRelease(bool iButton);
   void eventExtraLongRelease(bool iButton);
   void writeSwitchOutput(uint8_t iOutput, uint8_t iValue, uint8_t iKoOutput, uint8_t iKoStatus);
+  void dimSwitch(bool iButton);
+  void dim(bool iButton, bool iRelease);
+  void jalSwitch(bool iButton);
+  void jal(bool iButton, bool iRelease);
+  bool modeDim();
+  bool modeJal();
 
   uint8_t mIndex = 0;
 

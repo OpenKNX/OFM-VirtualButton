@@ -25,23 +25,7 @@
                   <Enumeration Text="Aktiv" Value="1" Id="%AID%_PT-BTNOnOff_EN-12" />
                 </TypeRestriction>
               </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputMode1" Name="BMOutputMode1">
-                <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="Schalten" Value="0" Id="%AID%_PT-BTNOutputMode1_EN-0" />
-                  <Enumeration Text="Mehrfach-Klick" Value="2" Id="%AID%_PT-BTNOutputMode1_EN-2" />
-                  <Enumeration Text="Dimmen" Value="8" Id="%AID%_PT-BTNOutputMode1_EN-8" />
-                  <Enumeration Text="Jalousie" Value="9" Id="%AID%_PT-BTNOutputMode1_EN-9" />
-                  <Enumeration Text="Kontaktzustand" Value="1" Id="%AID%_PT-BTNOutputMode1_EN-1" />
-                </TypeRestriction>
-              </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputMode2" Name="BMOutputMode2">
-                <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="Schalten" Value="0" Id="%AID%_PT-BTNOutputMode2_EN-0" />
-                  <Enumeration Text="Dimmen" Value="8" Id="%AID%_PT-BTNOutputMode2_EN-8" />
-                  <Enumeration Text="Jalousie" Value="9" Id="%AID%_PT-BTNOutputMode2_EN-9" />
-                </TypeRestriction>
-              </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNDebouncing" Name="BMDebouncing">
+              <ParameterType Id="%AID%_PT-BTNDebouncing" Name="BTNDebouncing">
                 <TypeRestriction Base="Value" SizeInBit="3">
                   <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNDebouncing_EN-0" />
                   <Enumeration Text="10ms" Value="1" Id="%AID%_PT-BTNDebouncing_EN-1" />
@@ -50,16 +34,12 @@
                   <Enumeration Text="100ms" Value="4" Id="%AID%_PT-BTNDebouncing_EN-4" />
                 </TypeRestriction>
               </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNInput" Name="BMInput">
+              <ParameterType Id="%AID%_PT-BTNInput" Name="BTNInput">
                 <TypeRestriction Base="Value" SizeInBit="16">
                   <Enumeration Text="Extern " Value="0" Id="%AID%_PT-BTNInput_EN-0" />
-                  <Enumeration Text="Eingang A" Value="11" Id="%AID%_PT-BTNInput_EN-11" />
-                  <Enumeration Text="Eingang B" Value="12" Id="%AID%_PT-BTNInput_EN-12" />
-                  <Enumeration Text="Eingang C" Value="13" Id="%AID%_PT-BTNInput_EN-13" />
-                  <Enumeration Text="Eingang D" Value="14" Id="%AID%_PT-BTNInput_EN-14" />
                 </TypeRestriction>
               </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutput" Name="BMOutput">
+              <ParameterType Id="%AID%_PT-BTNOutput" Name="BTNOutput">
                 <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNOutput_EN-0" />
                   <Enumeration Text="DPT 1.xxx EIN/AUS" Value="1" Id="%AID%_PT-BTNOutput_EN-1" />
@@ -68,7 +48,7 @@
                   <Enumeration Text="DPT 17.001 Szene" Value="6" Id="%AID%_PT-BTNOutput_EN-6" />
                 </TypeRestriction>
               </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputMultiple" Name="BMOutputMultiple">
+              <ParameterType Id="%AID%_PT-BTNOutputMultiple" Name="BTNOutputMultiple">
                 <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="DPT 1.xxx EIN/AUS" Value="1" Id="%AID%_PT-BTNOutputMultiple_EN-1" />
                   <Enumeration Text="DPT 5.xxx Ganzzahl" Value="4" Id="%AID%_PT-BTNOutputMultiple_EN-4" />
@@ -76,14 +56,14 @@
                   <Enumeration Text="DPT 17.001 Szene" Value="6" Id="%AID%_PT-BTNOutputMultiple_EN-6" />
                 </TypeRestriction>
               </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputBool1" Name="BMOutputBool1">
+              <ParameterType Id="%AID%_PT-BTNOutputBool1" Name="BTNOutputBool1">
                 <TypeRestriction Base="Value" SizeInBit="2">
                   <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNOutputBool1_EN-0" />
                   <Enumeration Text="Aus" Value="1" Id="%AID%_PT-BTNOutputBool1_EN-1" />
                   <Enumeration Text="Ein" Value="2" Id="%AID%_PT-BTNOutputBool1_EN-2" />
                 </TypeRestriction>
               </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputBool2" Name="BMOutputBool2">
+              <ParameterType Id="%AID%_PT-BTNOutputBool2" Name="BTNOutputBool2">
                 <TypeRestriction Base="Value" SizeInBit="2">
                   <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNOutputBool2_EN-0" />
                   <Enumeration Text="Aus" Value="1" Id="%AID%_PT-BTNOutputBool2_EN-1" />
@@ -91,7 +71,7 @@
                   <Enumeration Text="Umschalten" Value="3" Id="%AID%_PT-BTNOutputBool2_EN-3" />
                 </TypeRestriction>
               </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputChanger" Name="BMOutputChanger">
+              <ParameterType Id="%AID%_PT-BTNOutputChanger" Name="BTNOutputChanger">
                 <TypeRestriction Base="Value" SizeInBit="2">
                   <Enumeration Text="Anfang" Value="0" Id="%AID%_PT-BTNOutputChanger_EN-0" />
                   <Enumeration Text="Hoch" Value="1" Id="%AID%_PT-BTNOutputChanger_EN-1" />
@@ -99,19 +79,19 @@
                   <Enumeration Text="Ende" Value="3" Id="%AID%_PT-BTNOutputChanger_EN-3" />
                 </TypeRestriction>
               </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputDirection" Name="BMOutputDirection">
+              <ParameterType Id="%AID%_PT-BTNOutputDirection" Name="BTNOutputDirection">
                 <TypeRestriction Base="Value" SizeInBit="1">
                   <Enumeration Text="Auf/Ab" Value="0" Id="%AID%_PT-BTNOutputDirection_EN-0" />
                   <Enumeration Text="Ab/Auf" Value="1" Id="%AID%_PT-BTNOutputDirection_EN-1" />
                 </TypeRestriction>
               </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputJalousie" Name="BMOutputJalousie">
+              <ParameterType Id="%AID%_PT-BTNOutputJalousie" Name="BTNOutputJalousie">
                 <TypeRestriction Base="Value" SizeInBit="1">
                   <Enumeration Text="Kurz=Stopp/Lamellen / Lang=Fahren" Value="0" Id="%AID%_PT-BTNOutputJalousie_EN-0" />
                   <Enumeration Text="Kurz=Fahren / Lang=Stopp/Lamellen" Value="1" Id="%AID%_PT-BTNOutputJalousie_EN-1" />
                 </TypeRestriction>
               </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputDim" Name="BMOutputDim">
+              <ParameterType Id="%AID%_PT-BTNOutputDim" Name="BTNOutputDim">
                 <TypeRestriction Base="Value" SizeInBit="1">
                   <Enumeration Text="Heller/Dunkler" Value="0" Id="%AID%_PT-BTNOutputDim_EN-0" />
                   <Enumeration Text="Dunkler/Heller" Value="1" Id="%AID%_PT-BTNOutputDim_EN-1" />
@@ -123,7 +103,7 @@
                   <Enumeration Text="Drücken" Value="1" Id="%AID%_PT-BTNEvent_EN-1" />
                 </TypeRestriction>
               </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNScene" Name="BMScene">
+              <ParameterType Id="%AID%_PT-BTNScene" Name="BTNScene">
                 <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNScene_EN-0" />
                   <Enumeration Text="Szene 1" Value="1" Id="%AID%_PT-BTNScene_EN-1" />

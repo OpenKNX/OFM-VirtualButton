@@ -137,8 +137,8 @@ void VirtualButton::processPressAndHold(bool iButton)
   if (!mButtonState[iButton].press)
     return;
 
-  // no long press configured
-  if (mParams.outputLong == 0)
+  // no long press configured or not dim or jal
+  if (mParams.outputLong == 0 && !modeDim() && !modeJal())
     return;
 
   if (!mButtonState[iButton].pressLong && (millis() - mButtonState[iButton].pressStart) > mParams.reactionTimeLong)
@@ -210,6 +210,15 @@ void VirtualButton::processRelease(bool iButton)
   mButtonState[iButton].pressStart = 0;
 }
 
+bool VirtualButton::modeDim()
+{
+  return mParams.mode == 12 || mParams.mode == 22;
+}
+bool VirtualButton::modeJal()
+{
+  return mParams.mode == 13 || mParams.mode == 23;
+}
+
 void VirtualButton::processMultiClick()
 {
   // no multiclick mode
@@ -268,57 +277,98 @@ void VirtualButton::eventMultiClick(uint8_t iClicks)
 }
 void VirtualButton::eventShortPress(bool iButton)
 {
+  if (modeDim() || modeJal())
+    return;
+
   if (mParams.eventShort != 1)
     return;
 
   SERIAL_DEBUG.printf("  BTN%i/%i: short press\n\r", mIndex, iButton);
+
   writeSwitchOutput(mParams.outputShort, mButtonParams[iButton].outputShort, BTN_KoBTNOutput1, BTN_KoBTNOutput1Status);
 }
 
 void VirtualButton::eventLongPress(bool iButton)
 {
-  if (mParams.eventLong != 1)
+  if (mParams.eventLong != 1 && !modeDim() && !modeJal())
     return;
 
   SERIAL_DEBUG.printf("  BTN%i/%i: long press\n\r", mIndex, iButton);
-  writeSwitchOutput(mParams.outputLong, mButtonParams[iButton].outputLong, BTN_KoBTNOutput2, BTN_KoBTNOutput2Status);
+  if (modeDim())
+  {
+    dim(iButton, false);
+  }
+  else if (modeJal())
+  {
+  }
+  else
+  {
+    writeSwitchOutput(mParams.outputLong, mButtonParams[iButton].outputLong, BTN_KoBTNOutput2, BTN_KoBTNOutput2Status);
+  }
 }
 void VirtualButton::eventExtraLongPress(bool iButton)
 {
+  if (modeDim() || modeJal())
+    return;
+
   if (mParams.eventExtraLong != 1)
     return;
 
   SERIAL_DEBUG.printf("  BTN%i/%i: extra long press\n\r", mIndex, iButton);
+
   writeSwitchOutput(mParams.outputExtraLong, mButtonParams[iButton].outputExtraLong, BTN_KoBTNOutput3, BTN_KoBTNOutput3Status);
 }
 void VirtualButton::eventShortRelease(bool iButton)
 {
-  if (mParams.eventShort != 0)
+  if (mParams.eventShort != 0 && !modeDim() && !modeJal())
     return;
 
   SERIAL_DEBUG.printf("  BTN%i/%i: short release\n\r", mIndex, iButton);
-  writeSwitchOutput(mParams.outputShort, mButtonParams[iButton].outputShort, BTN_KoBTNOutput1, BTN_KoBTNOutput1Status);
+  if (modeDim())
+  {
+    dimSwitch(iButton);
+  }
+  else if (modeJal())
+  {
+  }
+  else
+  {
+    writeSwitchOutput(mParams.outputShort, mButtonParams[iButton].outputShort, BTN_KoBTNOutput1, BTN_KoBTNOutput1Status);
+  }
 }
 void VirtualButton::eventLongRelease(bool iButton)
 {
-  if (mParams.eventLong != 0)
+  if (mParams.eventLong != 0 && !modeDim() && !modeJal())
     return;
 
   SERIAL_DEBUG.printf("  BTN%i/%i: long release\n\r", mIndex, iButton);
-  writeSwitchOutput(mParams.outputLong, mButtonParams[iButton].outputLong, BTN_KoBTNOutput2, BTN_KoBTNOutput2Status);
+  if (modeDim())
+  {
+    dim(iButton, true);
+  }
+  else if (modeJal())
+  {
+  }
+  else
+  {
+    writeSwitchOutput(mParams.outputLong, mButtonParams[iButton].outputLong, BTN_KoBTNOutput2, BTN_KoBTNOutput2Status);
+  }
 }
 void VirtualButton::eventExtraLongRelease(bool iButton)
 {
-  if (mParams.eventExtraLong != 0)
+  if (modeDim() || modeJal())
     return;
 
   SERIAL_DEBUG.printf("  BTN%i/%i: extra long release\n\r", mIndex, iButton);
+  if (mParams.eventExtraLong != 0)
+    return;
+
   writeSwitchOutput(mParams.outputExtraLong, mButtonParams[iButton].outputExtraLong, BTN_KoBTNOutput3, BTN_KoBTNOutput3Status);
 }
 
 void VirtualButton::writeSwitchOutput(uint8_t iOutput, uint8_t iValue, uint8_t iKoOutput, uint8_t iKoStatus)
 {
-  SERIAL_DEBUG.printf("  BTN WRITE %i/%i/%i/%i\n\r", iOutput, iValue, iKoOutput, iKoStatus);
+  SERIAL_DEBUG.printf("  BTN%i WRITE %i/%i/%i/%i\n\r", mIndex, iOutput, iValue, iKoOutput, iKoStatus);
   bool lValueBool = true;
 
   switch (iOutput)
@@ -364,4 +414,54 @@ void VirtualButton::writeSwitchOutput(uint8_t iOutput, uint8_t iValue, uint8_t i
     getKo(iKoOutput)->value((uint8_t)(iValue - 1), getDPT(VAL_DPT_17));
     break;
   }
+}
+
+void VirtualButton::dimSwitch(bool iButton)
+{
+  if (mParams.mode == 22)
+  {
+    // 2 Taster
+    mParams.statusShort = !iButton; // Todo check Param
+  }
+  else
+  {
+    // 1 Taster
+    mParams.statusShort = !mParams.statusShort;
+  }
+  SERIAL_DEBUG.printf("DIM SW %i\n", mParams.statusShort);
+  getKo(BTN_KoBTNOutput1)->value((bool)mParams.statusShort, getDPT(VAL_DPT_1));
+}
+void VirtualButton::dim(bool iButton, bool iRelease)
+{
+  if (mParams.mode == 22)
+  {
+    // 2 Taster
+    mParams.statusShort = !iButton; // Todo check Param
+  }
+  else
+  {
+    // 1 Taster
+    if (!iRelease)
+      mParams.statusShort = !mParams.statusShort;
+  }
+
+  uint8_t lControl = 0x0;
+  if (mParams.statusShort)
+    lControl |= 0x8;
+
+  if (!iRelease)
+    lControl |= 1;
+
+  // 1. Press   9  1001 Up
+  // 2. Release 8  1000 Stop
+  // 3. Press   1  0001 Down
+  // 4. Release 0  0000 Stop
+  getKo(BTN_KoBTNOutput2)->value(lControl, getDPT(VAL_DPT_5));
+}
+
+void VirtualButton::jalSwitch(bool iButton)
+{
+}
+void VirtualButton::jal(bool iButton, bool iRelease)
+{
 }

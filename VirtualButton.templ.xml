@@ -604,19 +604,24 @@
                         </choose>
 
                         <!-- ReacionTime -->
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%003_R-%T%%CCC%00301" />
                         <choose ParamRefId="%AID%_UP-%T%%CCC%003_R-%T%%CCC%00301">
-                          <when test="1">
-                            <!-- MC -->
-                            <choose ParamRefId="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101">
-                              <when test="2">
-                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%051_R-%T%%CCC%05101" />
+                          <when test="2 11 21">
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%003_R-%T%%CCC%00301" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%003_R-%T%%CCC%00301" />
+                            <choose ParamRefId="%AID%_UP-%T%%CCC%003_R-%T%%CCC%00301">
+                              <when test="1">
+                                <!-- MC -->
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101">
+                                  <when test="2">
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%051_R-%T%%CCC%05101" />
+                                  </when>
+                                </choose>
+                                <!-- Long -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%052_R-%T%%CCC%05201" />
+                                <!-- ExtraLong -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%053_R-%T%%CCC%05301" />
                               </when>
                             </choose>
-                            <!-- Long -->
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%052_R-%T%%CCC%05201" />
-                            <!-- ExtraLong -->
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%053_R-%T%%CCC%05301" />
                           </when>
                         </choose>
                       </when>
