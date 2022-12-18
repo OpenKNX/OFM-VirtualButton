@@ -66,7 +66,7 @@ private:
   void eventLongRelease(bool iButton);
   void eventExtraLongRelease(bool iButton);
   void dim(bool iButton, bool iRelease);
-  void writeSwitchOutput(uint8_t iOutput, uint8_t iValue, uint8_t iKoOutput, uint8_t iKoStatus);
+  void writeSwitchOutput(uint8_t iOutput, uint8_t iValue, bool &oStatus, uint8_t iKoOutput);
 
   uint8_t mIndex = 0;
 
