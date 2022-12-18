@@ -65,13 +65,8 @@ private:
   void eventShortRelease(bool iButton);
   void eventLongRelease(bool iButton);
   void eventExtraLongRelease(bool iButton);
-  void writeSwitchOutput(uint8_t iOutput, uint8_t iValue, uint8_t iKoOutput, uint8_t iKoStatus);
-  void dimSwitch(bool iButton);
   void dim(bool iButton, bool iRelease);
-  void jalSwitch(bool iButton);
-  void jal(bool iButton, bool iRelease);
-  bool modeDim();
-  bool modeJal();
+  void writeSwitchOutput(uint8_t iOutput, uint8_t iValue, uint8_t iKoOutput, uint8_t iKoStatus);
 
   uint8_t mIndex = 0;
 

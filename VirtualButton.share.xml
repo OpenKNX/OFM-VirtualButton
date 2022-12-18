@@ -10,13 +10,9 @@
               <ParameterType Id="%AID%_PT-BTNMode" Name="BTNMode">
                 <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="Deaktviert" Value="0" Id="%AID%_PT-BTNMode_EN-0" />
-                  <Enumeration Text="1-Taster, Mehrfach-Klick" Value="2" Id="%AID%_PT-BTNMode_EN-12" />
-                  <Enumeration Text="1-Taster, Schalten" Value="11" Id="%AID%_PT-BTNMode_EN-11" />
-                  <Enumeration Text="2-Taster, Schalten" Value="21" Id="%AID%_PT-BTNMode_EN-21" />
-                  <Enumeration Text="1-Taster, Dimmen" Value="12" Id="%AID%_PT-BTNMode_EN-13" />
-                  <Enumeration Text="2-Taster, Dimmen" Value="22" Id="%AID%_PT-BTNMode_EN-23" />
-                  <Enumeration Text="1-Taster, Jalousie" Value="13" Id="%AID%_PT-BTNMode_EN-14" />
-                  <Enumeration Text="2-Taster, Jalousie" Value="23" Id="%AID%_PT-BTNMode_EN-24" />
+                  <Enumeration Text="1-Taster" Value="1" Id="%AID%_PT-BTNMode_EN-1" />
+                  <Enumeration Text="2-Taster" Value="2" Id="%AID%_PT-BTNMode_EN-2" />
+                  <Enumeration Text="Mehrfach-Klick" Value="3" Id="%AID%_PT-BTNMode_EN-3" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-BTctiveInactive" Name="BTNOnOff">
@@ -46,6 +42,17 @@
                   <Enumeration Text="DPT 5.xxx Ganzzahl" Value="4" Id="%AID%_PT-BTNOutput_EN-4" />
                   <Enumeration Text="DPT 5.001 Prozent" Value="5" Id="%AID%_PT-BTNOutput_EN-5" />
                   <Enumeration Text="DPT 17.001 Szene" Value="6" Id="%AID%_PT-BTNOutput_EN-6" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="%AID%_PT-BTNOutputLong" Name="BTNOutputLong">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNOutputLong_EN-0" />
+                  <Enumeration Text="DPT 1.xxx EIN/AUS" Value="1" Id="%AID%_PT-BTNOutputLong_EN-1" />
+                  <Enumeration Text="DPT 3.007 Dimmen" Value="7" Id="%AID%_PT-BTNOutputLong_EN-7" />
+                  <Enumeration Text="DPT 3.008 Jalousie" Value="8" Id="%AID%_PT-BTNOutputLong_EN-8" />
+                  <Enumeration Text="DPT 5.xxx Ganzzahl" Value="4" Id="%AID%_PT-BTNOutputLong_EN-4" />
+                  <Enumeration Text="DPT 5.001 Prozent" Value="5" Id="%AID%_PT-BTNOutputLong_EN-5" />
+                  <Enumeration Text="DPT 17.001 Szene" Value="6" Id="%AID%_PT-BTNOutputLong_EN-6" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-BTNOutputMultiple" Name="BTNOutputMultiple">
@@ -92,9 +99,11 @@
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-BTNOutputDim" Name="BTNOutputDim">
-                <TypeRestriction Base="Value" SizeInBit="1">
-                  <Enumeration Text="Heller/Dunkler" Value="0" Id="%AID%_PT-BTNOutputDim_EN-0" />
-                  <Enumeration Text="Dunkler/Heller" Value="1" Id="%AID%_PT-BTNOutputDim_EN-1" />
+                <TypeRestriction Base="Value" SizeInBit="2">
+                  <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNOutputDim_EN-0" />
+                  <Enumeration Text="Heller" Value="1" Id="%AID%_PT-BTNOutputDim_EN-1" />
+                  <Enumeration Text="Dunkler" Value="2" Id="%AID%_PT-BTNOutputDim_EN-2" />
+                  <Enumeration Text="1-Taster Dimmen" Value="3" Id="%AID%_PT-BTNOutputDim_EN-3" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-BTNEvent" Name="BTNEvent">
