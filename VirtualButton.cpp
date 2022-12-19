@@ -402,17 +402,17 @@ void VirtualButton::dim(bool iButton, bool iRelease)
   if (!iRelease)
   {
     if (mButtonParams[iButton].outputLong == 1)
-      mParams.statusLong = true;
+      mParams.statusShort = true;
 
     if (mButtonParams[iButton].outputLong == 2)
-      mParams.statusLong = false;
+      mParams.statusShort = false;
 
     if (mButtonParams[iButton].outputLong == 3)
-      mParams.statusLong = !mParams.statusLong;
+      mParams.statusShort = !mParams.statusShort;
   }
 
   uint8_t lControl = 0x0;
-  if (!mParams.statusLong)
+  if (mParams.statusShort)
     lControl |= 0x8;
 
   if (!iRelease)
@@ -422,5 +422,6 @@ void VirtualButton::dim(bool iButton, bool iRelease)
   // 2. Release 8  1000 Stop
   // 3. Press   1  0001 Down
   // 4. Release 0  0000 Stop
+  SERIAL_DEBUG.printf("    BTN%i DIMSTATUS %i/%i/%i\n\r", mIndex, lControl, mParams.statusShort);
   getKo(BTN_KoBTNOutput2)->value(lControl, getDPT(VAL_DPT_5));
 }
