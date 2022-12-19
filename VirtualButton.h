@@ -67,7 +67,8 @@ private:
   void eventExtraLongRelease(bool iButton);
   void dim(bool iButton, bool iRelease);
   void writeSwitchOutput(uint8_t iOutput, uint8_t iValue, bool &oStatus, uint8_t iKoOutput);
-
+  void processInputKoStatus(GroupObject &iKom, uint8_t iStatusNumber, bool &oStatus);
+  
   uint8_t mIndex = 0;
 
   VirtualButtonState mButtonState[2] = {

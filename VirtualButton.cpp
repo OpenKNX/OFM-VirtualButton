@@ -106,6 +106,32 @@ void VirtualButton::processInputKo(GroupObject &iKo)
   case BTN_KoBTNLock:
     processInputKoLock(iKo);
     break;
+  case BTN_KoBTNOutput1Status:
+    processInputKoStatus(iKo, 1, mParams.statusShort);
+    break;
+  case BTN_KoBTNOutput2Status:
+    processInputKoStatus(iKo, 2, mParams.statusLong);
+    break;
+  case BTN_KoBTNOutput3Status:
+    processInputKoStatus(iKo, 3, mParams.statusExtraLong);
+    break;
+  }
+}
+
+void VirtualButton::processInputKoStatus(GroupObject &iKo, uint8_t iStatusNumber, bool &oStatus) {
+  SERIAL_DEBUG.printf("BTN::processInputKoStatus %i: %i/%i\n\r", mIndex, iStatusNumber, oStatus);
+
+  // Special for Long DPT3007
+  if (iStatusNumber == 2 && mParams.outputLong == 7) {
+    uint8_t lValue = iKo.value(getDPT(VAL_DPT_5001));
+    if (lValue == 0 && oStatus)
+      oStatus = false;
+    if (lValue == 100 && !oStatus)
+      oStatus = true;
+
+  } else {
+    bool lValue = iKo.value(getDPT(VAL_DPT_1));
+    oStatus = lValue;
   }
 }
 
@@ -359,12 +385,13 @@ void VirtualButton::writeSwitchOutput(uint8_t iOutput, uint8_t iValue, bool &oSt
     if (iValue == 0)
       return;
 
+    // aus
     if (iValue == 1)
       oStatus = false;
 
-    // aus
+    // an
     if (iValue == 2)
-      oStatus = false;
+      oStatus = true;
 
     // toggle
     if (iValue == 3)
@@ -402,17 +429,17 @@ void VirtualButton::dim(bool iButton, bool iRelease)
   if (!iRelease)
   {
     if (mButtonParams[iButton].outputLong == 1)
-      mParams.statusShort = true;
+      mParams.statusLong = true;
 
     if (mButtonParams[iButton].outputLong == 2)
-      mParams.statusShort = false;
+      mParams.statusLong = false;
 
     if (mButtonParams[iButton].outputLong == 3)
-      mParams.statusShort = !mParams.statusShort;
+      mParams.statusLong = !mParams.statusLong;
   }
 
   uint8_t lControl = 0x0;
-  if (mParams.statusShort)
+  if (mParams.statusLong)
     lControl |= 0x8;
 
   if (!iRelease)
@@ -422,6 +449,6 @@ void VirtualButton::dim(bool iButton, bool iRelease)
   // 2. Release 8  1000 Stop
   // 3. Press   1  0001 Down
   // 4. Release 0  0000 Stop
-  SERIAL_DEBUG.printf("    BTN%i DIMSTATUS %i/%i/%i\n\r", mIndex, lControl, mParams.statusShort);
+  SERIAL_DEBUG.printf("    BTN%i DIMSTATUS %i/%i/%i\n\r", mIndex, lControl, mParams.statusLong);
   getKo(BTN_KoBTNOutput2)->value(lControl, getDPT(VAL_DPT_5));
 }
