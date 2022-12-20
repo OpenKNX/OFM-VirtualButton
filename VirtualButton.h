@@ -19,9 +19,6 @@ struct VirtualButtonGlobalParams
 {
   uint8_t mode = 0;
   uint8_t lock = 0;
-  bool statusShort = false;
-  bool statusLong = false;
-  bool statusExtraLong = false;
   uint8_t outputShort = 0;
   uint8_t outputLong = 0;
   uint8_t outputExtraLong = 0;
@@ -31,6 +28,7 @@ struct VirtualButtonGlobalParams
   uint16_t reactionTimeMultiClick;
   uint16_t reactionTimeLong;
   uint16_t reactionTimeExtraLong;
+  uint16_t reactionTimeSpecial;
 };
 
 struct VirtualButtonState
@@ -70,6 +68,10 @@ private:
   void processInputKoStatus(GroupObject &iKom, uint8_t iStatusNumber, bool &oStatus);
   
   uint8_t mIndex = 0;
+  uint8_t mLock = 0;
+  bool mStatusShort = false;
+  bool mStatusLong = false;
+  bool mStatusExtraLong = false;
 
   VirtualButtonState mButtonState[2] = {
     VirtualButtonState(),
