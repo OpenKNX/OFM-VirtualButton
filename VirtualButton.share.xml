@@ -8,7 +8,7 @@
           <Static>
             <ParameterTypes>
               <ParameterType Id="%AID%_PT-BTNMode" Name="BTNMode">
-                <TypeRestriction Base="Value" SizeInBit="8">
+                <TypeRestriction Base="Value" SizeInBit="4">
                   <Enumeration Text="Deaktviert" Value="0" Id="%AID%_PT-BTNMode_EN-0" />
                   <Enumeration Text="1-Taster" Value="1" Id="%AID%_PT-BTNMode_EN-1" />
                   <Enumeration Text="2-Taster" Value="2" Id="%AID%_PT-BTNMode_EN-2" />
@@ -28,11 +28,6 @@
                   <Enumeration Text="25ms" Value="2" Id="%AID%_PT-BTNDebouncing_EN-2" />
                   <Enumeration Text="50ms" Value="3" Id="%AID%_PT-BTNDebouncing_EN-3" />
                   <Enumeration Text="100ms" Value="4" Id="%AID%_PT-BTNDebouncing_EN-4" />
-                </TypeRestriction>
-              </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNInput" Name="BTNInput">
-                <TypeRestriction Base="Value" SizeInBit="16">
-                  <Enumeration Text="Extern " Value="0" Id="%AID%_PT-BTNInput_EN-0" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-BTNOutput" Name="BTNOutput">

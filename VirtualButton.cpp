@@ -37,28 +37,6 @@ void VirtualButton::setup()
   mParams.mode = knx.paramByte(calcParamIndex(BTN_BTNMode));
   mParams.lock = (knx.paramByte(calcParamIndex(BTN_BTNLock)) & BTN_BTNLockMask) >> BTN_BTNLockShift;
 
-  // ReactionTimes
-  mParams.reactionTimeMultiClick = knx.paramByte(calcParamIndex(BTN_BTNReactionTimeMultiClick));
-  if (mParams.reactionTimeMultiClick > 0)
-    mParams.reactionTimeMultiClick *= 100;
-  else
-    mParams.reactionTimeMultiClick = knx.paramByte(BTN_ReactionTimeMultiClick) * 100;
-
-  if (mParams.reactionTimeLong > 0)
-    mParams.reactionTimeLong *= 100;
-  else
-    mParams.reactionTimeLong = knx.paramByte(BTN_ReactionTimeLong) * 100;
-
-  if (mParams.reactionTimeExtraLong > 0)
-    mParams.reactionTimeExtraLong *= 100;
-  else
-    mParams.reactionTimeExtraLong = knx.paramByte(BTN_ReactionTimeExtraLong) * 100;
-
-  if (mParams.reactionTimeExtraLong > 0)
-    mParams.reactionTimeExtraLong *= 100;
-  else
-    mParams.reactionTimeExtraLong = knx.paramByte(BTN_ReactionTimeExtraLong) * 100;
-
   mParams.outputShort = knx.paramByte(calcParamIndex(BTN_BTNOutputShort));
   mParams.outputLong = knx.paramByte(calcParamIndex(BTN_BTNOutputLong));
   mParams.outputExtraLong = knx.paramByte(calcParamIndex(BTN_BTNOutputExtraLong));
@@ -67,22 +45,59 @@ void VirtualButton::setup()
   mParams.eventLong = knx.paramByte(calcParamIndex(BTN_BTNOutputLongEvent));
   mParams.eventExtraLong = knx.paramByte(calcParamIndex(BTN_BTNOutputExtraLongEvent));
 
+  mButtonParams[0].inputKo = knx.paramWord(calcParamIndex(BTN_BTNInputKoA)) & 0x7fff;
   mButtonParams[0].outputShort = knx.paramByte(calcParamIndex(BTN_BTNOutput1ShortDpt1));
   mButtonParams[0].outputLong = knx.paramByte(calcParamIndex(BTN_BTNOutput1LongDpt1));
   mButtonParams[0].outputExtraLong = knx.paramByte(calcParamIndex(BTN_BTNOutput1ExtraLongDpt1));
 
+  mButtonParams[1].inputKo = knx.paramWord(calcParamIndex(BTN_BTNInputKoB)) & 0x7fff;
   mButtonParams[1].outputShort = knx.paramByte(calcParamIndex(BTN_BTNOutput2ShortDpt1));
   mButtonParams[1].outputLong = knx.paramByte(calcParamIndex(BTN_BTNOutput2LongDpt1));
   mButtonParams[1].outputExtraLong = knx.paramByte(calcParamIndex(BTN_BTNOutput2ExtraLongDpt1));
+
+  // ReactionTimes
+  mParams.reactionTimeMultiClick = knx.paramByte(calcParamIndex(BTN_BTNReactionTimeMultiClick));
+  if (mParams.reactionTimeMultiClick > 0)
+    mParams.reactionTimeMultiClick *= 100;
+  else
+    mParams.reactionTimeMultiClick = knx.paramByte(BTN_ReactionTimeMultiClick) * 100;
+
+  // For Dim & Jal nutze eine separate Longtime
+  if (mParams.outputLong == 7 || mParams.outputLong == 8)
+  {
+    if (mParams.reactionTimeLong > 0)
+      mParams.reactionTimeLong *= 100;
+    else
+      mParams.reactionTimeLong = knx.paramByte(BTN_ReactionTimeSpecial) * 100;
+  }
+  else
+  {
+    if (mParams.reactionTimeLong > 0)
+      mParams.reactionTimeLong *= 100;
+    else
+      mParams.reactionTimeLong = knx.paramByte(BTN_ReactionTimeLong) * 100;
+  }
+
+  if (mParams.reactionTimeExtraLong > 0)
+    mParams.reactionTimeExtraLong *= 100;
+  else
+    mParams.reactionTimeExtraLong = knx.paramByte(BTN_ReactionTimeExtraLong) * 100;
+
+  if (mParams.reactionTimeExtraLong > 0)
+    mParams.reactionTimeExtraLong *= 100;
+  else
+    mParams.reactionTimeExtraLong = knx.paramByte(BTN_ReactionTimeExtraLong) * 100;
 
   mMultiClickParams[0] = knx.paramByte(calcParamIndex(BTN_BTNM1Dpt1));
   mMultiClickParams[1] = knx.paramByte(calcParamIndex(BTN_BTNM2Dpt1));
   mMultiClickParams[2] = knx.paramByte(calcParamIndex(BTN_BTNM3Dpt1));
 
   // Debug
+  SERIAL_DEBUG.printf("BTN %i inputKo: %i/%i\n\r", mIndex, mButtonParams[0].inputKo, calcParamIndex(BTN_BTNInputKoA));
   SERIAL_DEBUG.printf("BTN %i outputShort: %i/%i\n\r", mIndex, mButtonParams[0].outputShort, calcParamIndex(BTN_BTNOutput1ShortDpt1));
   SERIAL_DEBUG.printf("BTN %i outputLong: %i/%i\n\r", mIndex, mButtonParams[0].outputLong, calcParamIndex(BTN_BTNOutput1LongDpt1));
   SERIAL_DEBUG.printf("BTN %i outputExtraLong: %i/%i\n\r", mIndex, mButtonParams[0].outputExtraLong, calcParamIndex(BTN_BTNOutput1ExtraLongDpt1));
+  SERIAL_DEBUG.printf("BTN %i lock: %i\n\r", mIndex, mParams.lock);
   SERIAL_DEBUG.printf("BTN %i eventShort: %i\n\r", mIndex, mParams.eventShort);
   SERIAL_DEBUG.printf("BTN %i eventLong: %i\n\r", mIndex, mParams.eventLong);
   SERIAL_DEBUG.printf("BTN %i eventExtraLong: %i\n\r", mIndex, mParams.eventExtraLong);
@@ -91,7 +106,7 @@ void VirtualButton::setup()
   SERIAL_DEBUG.printf("BTN %i mMultiClickParams[2]: %i\n\r", mIndex, mMultiClickParams[2]);
   SERIAL_DEBUG.printf("BTN %i reactionTimeMultiClick: %i\n\r", mIndex, mParams.reactionTimeMultiClick);
   SERIAL_DEBUG.printf("BTN %i reactionTimeLong: %i\n\r", mIndex, mParams.reactionTimeLong);
-  SERIAL_DEBUG.printf("BTN %i reactionTimeExtraLong: %i\n\r", mIndex,mParams.reactionTimeExtraLong);
+  SERIAL_DEBUG.printf("BTN %i reactionTimeExtraLong: %i\n\r", mIndex, mParams.reactionTimeExtraLong);
   SERIAL_DEBUG.printf("BTN %i mParamMode: %i\n\r", mIndex, mParams.mode);
 }
 
@@ -107,7 +122,20 @@ void VirtualButton::processInputKo(GroupObject &iKo)
   if (mParams.mode == 0)
     return;
 
-  switch (calcKoIndex(iKo.asap()))
+  uint16_t lKoNumber = iKo.asap();
+  uint8_t lKoIndex = calcKoIndex(lKoNumber);
+
+  // Internal
+  if (lKoNumber == mButtonParams[0].inputKo)
+  {
+    lKoIndex = BTN_KoBTNInput1;
+  }
+  else if (lKoNumber == mButtonParams[1].inputKo)
+  {
+    lKoIndex = BTN_KoBTNInput2;
+  }
+
+  switch (lKoIndex)
   {
   case BTN_KoBTNInput1:
     processInputKoInput(iKo, 0);
@@ -130,18 +158,21 @@ void VirtualButton::processInputKo(GroupObject &iKo)
   }
 }
 
-void VirtualButton::processInputKoStatus(GroupObject &iKo, uint8_t iStatusNumber, bool &oStatus) {
+void VirtualButton::processInputKoStatus(GroupObject &iKo, uint8_t iStatusNumber, bool &oStatus)
+{
   SERIAL_DEBUG.printf("BTN::processInputKoStatus %i: %i/%i\n\r", mIndex, iStatusNumber, oStatus);
 
   // Special for Long DPT3007
-  if (iStatusNumber == 2 && mParams.outputLong == 7) {
+  if (iStatusNumber == 2 && mParams.outputLong == 7)
+  {
     uint8_t lValue = iKo.value(getDPT(VAL_DPT_5001));
     if (lValue == 0 && oStatus)
       oStatus = false;
     if (lValue == 100 && !oStatus)
       oStatus = true;
-
-  } else {
+  }
+  else
+  {
     bool lValue = iKo.value(getDPT(VAL_DPT_1));
     oStatus = lValue;
   }
@@ -153,14 +184,14 @@ void VirtualButton::processInputKoLock(GroupObject &iKo)
     return;
 
   bool lValue = iKo.value(getDPT(VAL_DPT_1));
- 
+
   if (mParams.lock == 1)
     mLock = lValue;
-    return;
- 
+  return;
+
   if (mParams.lock == 2)
     mLock = !lValue;
-    return;
+  return;
 
   // Reset
   mButtonState[0].multiClicks = 0;

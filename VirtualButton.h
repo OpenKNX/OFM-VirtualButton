@@ -7,15 +7,15 @@
 
 #define BTN_MaxMuliClicks 3
 
-
-struct VirtualButtonParams
+struct sVirtualButtonParams
 {
   uint8_t outputShort;
   uint8_t outputLong;
   uint8_t outputExtraLong;
+  uint16_t inputKo;
 };
 
-struct VirtualButtonGlobalParams
+struct sVirtualButtonGlobalParams
 {
   uint8_t mode = 0;
   uint8_t lock = 0;
@@ -28,10 +28,9 @@ struct VirtualButtonGlobalParams
   uint16_t reactionTimeMultiClick;
   uint16_t reactionTimeLong;
   uint16_t reactionTimeExtraLong;
-  uint16_t reactionTimeSpecial;
 };
 
-struct VirtualButtonState
+struct sVirtualButtonState
 {
   bool press = false;
   bool pressLong = false;
@@ -66,23 +65,24 @@ private:
   void dim(bool iButton, bool iRelease);
   void writeSwitchOutput(uint8_t iOutput, uint8_t iValue, bool &oStatus, uint8_t iKoOutput);
   void processInputKoStatus(GroupObject &iKom, uint8_t iStatusNumber, bool &oStatus);
-  
+
   uint8_t mIndex = 0;
   uint8_t mLock = 0;
   bool mStatusShort = false;
   bool mStatusLong = false;
   bool mStatusExtraLong = false;
 
-  VirtualButtonState mButtonState[2] = {
-    VirtualButtonState(),
-    VirtualButtonState()
+  sVirtualButtonState mButtonState[2] = {
+    sVirtualButtonState(),
+    sVirtualButtonState()
   };
-  VirtualButtonParams mButtonParams[2] = {
-    VirtualButtonParams(),
-    VirtualButtonParams()
+  sVirtualButtonParams mButtonParams[2] = {
+    sVirtualButtonParams(),
+    sVirtualButtonParams()
   };
-  VirtualButtonGlobalParams mParams;
+  sVirtualButtonGlobalParams mParams;
   uint8_t mMultiClickParams[3];
+
 
 public:
   VirtualButton(uint8_t iIndex);
