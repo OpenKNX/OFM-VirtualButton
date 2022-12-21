@@ -95,7 +95,7 @@ void VirtualButton::setup()
   mParams.dynamicStatusThreshold = knx.paramByte(calcParamIndex(BTN_BTNStatusThreshold));
   mParams.dynamicStatusFallback = (getDelayPattern(calcParamIndex(BTN_BTNStatusFallbackBase)));
 
-  mDynamicStatusTimer = millis() + mParams.dynamicStatusFallback;
+  mDynamicStatusTimer = millis() + mParams.dynamicStatusFallback; // 
 
   // Debug
   // SERIAL_DEBUG.printf("BTN %i inputKo: %i/%i\n\r", mIndex, mButtonParams[0].inputKo, calcParamIndex(BTN_BTNInputKoA));
