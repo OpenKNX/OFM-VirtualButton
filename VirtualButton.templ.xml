@@ -8,6 +8,7 @@
           <Static>
             <Parameters>
               <Parameter Id="%AID%_P-%T%%CCC%000" Name="BTN%C%Name" ParameterType="%AID%_PT-Text40Byte" Text="Beschreibung" Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%003" Name="BTN%C%ShowDynamicStatus" ParameterType="%AID%_PT-CheckBox" Text="Dynamischer Status" Value="0" />
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%001" Name="BTN%C%Mode" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNMode" Text="Modus" Value="0" />
@@ -17,8 +18,8 @@
               <!-- Inputs -->
               <Union SizeInBit="32">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="1" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%006" Name="BTN%C%InputKoA" Offset="0" BitOffset="1" ParameterType="%AID%_PT-KONumber" Text="" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%007" Name="BTN%C%InputKoB" Offset="2" BitOffset="1" ParameterType="%AID%_PT-KONumber" Text="" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%006" Name="BTN%C%InputKoA" Offset="0" BitOffset="1" ParameterType="%AID%_PT-KONumber" Text="" Value="%K1%" />
+                <Parameter Id="%AID%_UP-%T%%CCC%007" Name="BTN%C%InputKoB" Offset="2" BitOffset="1" ParameterType="%AID%_PT-KONumber" Text="" Value="%K2%" />
                 <Parameter Id="%AID%_UP-%T%%CCC%008" Name="BTN%C%InputA" Offset="0" BitOffset="0" ParameterType="%AID%_PT-CheckBox" Text="" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%009" Name="BTN%C%InputB" Offset="2" BitOffset="0" ParameterType="%AID%_PT-CheckBox" Text="" Value="0" />
               </Union>
@@ -110,11 +111,25 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%054" Name="BTN%C%ReactionTimeSpecial"    Offset="3" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTimeDefault" Text="  Dimmen / Jalousie" Value="0" />
               </Union>
 
+              <!-- Dynamischer 1-Taster DimStatus -->
+              <Union SizeInBit="24">
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="25" BitOffset="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%060" Name="BTN%C%StatusThreshold" Offset="0" BitOffset="0" ParameterType="%AID%_PT-ValueDpt5001" Text="Schwellwert" Value="25" SuffixText="%" />
+                <Parameter Id="%AID%_UP-%T%%CCC%061" Name="BTN%C%StatusFallbackBase" Offset="1" BitOffset="0" ParameterType="%AID%_PT-DelayBase" Text="Zeitbasis" Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CCC%062" Name="BTN%C%StatusFallbackTime" Offset="1" BitOffset="2" ParameterType="%AID%_PT-DelayTime" Text="Zeit" Value="1" />
+              </Union>
             </Parameters>
             <ParameterRefs>
+            
               <ParameterRef Id="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" RefId="%AID%_P-%T%%CCC%000" />
+              <ParameterRef Id="%AID%_P-%T%%CCC%003_R-%T%%CCC%00301" RefId="%AID%_P-%T%%CCC%003" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101" RefId="%AID%_UP-%T%%CCC%001" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%002_R-%T%%CCC%00201" RefId="%AID%_UP-%T%%CCC%002" />
+              
+              <!-- Dynamischer 1-Taster DimStatus -->
+              <ParameterRef Id="%AID%_UP-%T%%CCC%060_R-%T%%CCC%06001" RefId="%AID%_UP-%T%%CCC%060" />
+              <ParameterRef Id="%AID%_UP-%T%%CCC%061_R-%T%%CCC%06101" RefId="%AID%_UP-%T%%CCC%061" />
+              <ParameterRef Id="%AID%_UP-%T%%CCC%062_R-%T%%CCC%06201" RefId="%AID%_UP-%T%%CCC%062" />
 
               <!-- Multiple -->
               <ParameterRef Id="%AID%_UP-%T%%CCC%411_R-%T%%CCC%41101" RefId="%AID%_UP-%T%%CCC%411" />
@@ -279,8 +294,12 @@
             </ComObjectRefs>
           </Static>
           <Dynamic>
-            <ChannelIndependentBlock> 
+            <ChannelIndependentBlock>
               <!-- START INCLUDE HERE -->
+              
+              <!-- Hidden -->
+              <ParameterRefRef RefId="%AID%_P-%T%%CCC%003_R-%T%%CCC%00301" />
+              
               <ParameterBlock Id="%AID%_PB-%C%1" Name="BTN%C%Page" Text="Taster %C%: {{0:unbenannt}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001">
                 <Channel Id="%AID%_CH-BTN%CC%" Name="f%CC%BTN" Number="BTN%CC%" Text="Taster %CC%: {{0:unbenannt}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001">
                   <ParameterBlock Id="%AID%_PB-%T%%CCC%01" Name="BTN%C%Wrapper" Inline="true">
@@ -319,7 +338,7 @@
                                 <Row Id="%AID%_PB-nnn_R-11" Name="Row1" />
                               </Rows>
                               <ParameterSeparator Id="%AID%_PS-nnn" Text="Taste" Cell="1,1" />
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Ein innternes KO verwenden?" Cell="1,3" />
+                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Ein internes KO verwenden?" Cell="1,3" />
                               <ParameterRefRef RefId="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00801" Cell="1,2"/>
                               <choose ParamRefId="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00801">
                                 <when test="0">
@@ -339,8 +358,8 @@
                               </Rows>
                               <ParameterSeparator Id="%AID%_PS-nnn" Text="Taste 1" Cell="1,1" />
                               <ParameterSeparator Id="%AID%_PS-nnn" Text="Taste 2" Cell="2,1" />
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Ein innternes KO verwenden?" Cell="1,3" />
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Ein innternes KO verwenden?" Cell="2,3" />
+                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Ein internes KO verwenden?" Cell="1,3" />
+                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Ein internes KO verwenden?" Cell="2,3" />
                               <ParameterRefRef RefId="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00801" Cell="1,2" />
                               <ParameterRefRef RefId="%AID%_UP-%T%%CCC%009_R-%T%%CCC%00901" Cell="2,2" />
                               <choose ParamRefId="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00801">
@@ -508,7 +527,7 @@
                                 <ParameterRefRef RefId="%AID%_UP-%T%%CCC%601_R-%T%%CCC%60102" />
                                 <ComObjectRefRef RefId="%AID%_O-%T%%CCC%012_R-%T%%CCC%01201" />
                                 <!-- Umschlatstatus -->
-                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%022_R-%T%%CCC%02202" />
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%022_R-%T%%CCC%02201" />
                               </when>
                               <when test="2">
                                 <!-- DPT2 -->
@@ -533,15 +552,11 @@
                               <when test="7">
                                 <!-- DPT3007 -->
                                 <ParameterRefRef RefId="%AID%_UP-%T%%CCC%609_R-%T%%CCC%60902" />
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%012_R-%T%%CCC%01207" />
                               </when>
                               <when test="8">
                                 <!-- DPT3008 -->
                                 <ParameterRefRef RefId="%AID%_UP-%T%%CCC%611_R-%T%%CCC%61102" />
-                              </when>
-                              <when test="7 8">
-                                <!-- Umschlatstatus 3007 3008 -->
-                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%012_R-%T%%CCC%01207" />
-                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%022_R-%T%%CCC%02202" />
                               </when>
                             </choose>
                           </when>
@@ -583,18 +598,37 @@
                                 <!-- DPT3007 -->
                                 <ParameterRefRef RefId="%AID%_UP-%T%%CCC%609_R-%T%%CCC%60901" />
                                 <ParameterRefRef RefId="%AID%_UP-%T%%CCC%610_R-%T%%CCC%61001" />
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%012_R-%T%%CCC%01207" />
                               </when>
                               <when test="8">
                                 <!-- DPT3008 -->
                                 <ParameterRefRef RefId="%AID%_UP-%T%%CCC%611_R-%T%%CCC%61101" />
                                 <ParameterRefRef RefId="%AID%_UP-%T%%CCC%612_R-%T%%CCC%61201" />
                               </when>
-                              <when test="7 8">
-                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%012_R-%T%%CCC%01207" />
-                                <!-- Umschlatstatus -->
-                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%022_R-%T%%CCC%02202" />
-                              </when>
                             </choose>
+                          </when>
+                        </choose>
+
+                        <!-- Umschlatstatus 3007 3008 / Aus-->
+                        <!-- 1-Taster: Taste 1 -->
+                        <choose ParamRefId="%AID%_UP-%T%%CCC%609_R-%T%%CCC%60902">
+                          <when test="3">
+                            <Assign TargetParamRefRef="%AID%_P-%T%%CCC%003_R-%T%%CCC%00301" Value="1" />
+                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%022_R-%T%%CCC%02202" />
+                          </when>
+                        </choose>
+                        <!-- 2-Taster: Taste 1 -->
+                        <choose ParamRefId="%AID%_UP-%T%%CCC%609_R-%T%%CCC%60901">
+                          <when test="3">
+                            <Assign TargetParamRefRef="%AID%_P-%T%%CCC%003_R-%T%%CCC%00301" Value="1" />
+                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%022_R-%T%%CCC%02202" />
+                          </when>
+                        </choose>
+                        <!-- 2-Taster: Taste 2 -->
+                        <choose ParamRefId="%AID%_UP-%T%%CCC%610_R-%T%%CCC%61001">
+                          <when test="3">
+                            <Assign TargetParamRefRef="%AID%_P-%T%%CCC%003_R-%T%%CCC%00301" Value="1" />
+                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%022_R-%T%%CCC%02202" />
                           </when>
                         </choose>
 
@@ -678,9 +712,31 @@
                           </when>
                         </choose>
 
+                        <!-- Dynamischer 1-Taster DimStatus -->
+                        <choose ParamRefId="%AID%_P-%T%%CCC%003_R-%T%%CCC%00301">
+                          <when test="1">
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="Dynamischer 1-Tasterstatus" UIHint="Headline" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%060_R-%T%%CCC%06001" />
+                            <ParameterBlock Id="%AID%_PB-nnn" Name="Input%C%DynamicStatus" Inline="true" Layout="Grid">
+                              <Rows>
+                                <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
+                              </Rows>
+                              <Columns>
+                                <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="45%" />
+                                <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="35%" />
+                                <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="20%" />
+                              </Columns>
+                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Rückfallzeit" Cell="1,1" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%062_R-%T%%CCC%06201" Cell="1,2" />
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%061_R-%T%%CCC%06101" Cell="1,3" />
+                            </ParameterBlock>
+                          </when>
+                        </choose>
+
                         <!-- ReacionTime -->
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
-                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Reaktionszeiten"  UIHint="Headline"  />
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Reaktionszeiten" UIHint="Headline" />
                         <!-- MC -->
                         <choose ParamRefId="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101">
                           <when test="3">

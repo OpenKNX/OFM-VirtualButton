@@ -28,6 +28,8 @@ struct sVirtualButtonGlobalParams
   uint16_t reactionTimeMultiClick;
   uint16_t reactionTimeLong;
   uint16_t reactionTimeExtraLong;
+  uint8_t dynamicStatusThreshold = 0;
+  uint32_t dynamicStatusFallback = 0;
 };
 
 struct sVirtualButtonState
@@ -65,12 +67,14 @@ private:
   void dim(bool iButton, bool iRelease);
   void writeSwitchOutput(uint8_t iOutput, uint8_t iValue, bool &oStatus, uint8_t iKoOutput);
   void processInputKoStatus(GroupObject &iKom, uint8_t iStatusNumber, bool &oStatus);
+  void processDynamicStatus();
 
   uint8_t mIndex = 0;
   uint8_t mLock = 0;
   bool mStatusShort = false;
   bool mStatusLong = false;
   bool mStatusExtraLong = false;
+  u_int32_t mDynamicStatusTimer = 0;
 
   sVirtualButtonState mButtonState[2] = {
     sVirtualButtonState(),
