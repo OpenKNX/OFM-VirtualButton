@@ -15,6 +15,13 @@
                   <Enumeration Text="Mehrfach-Klick" Value="3" Id="%AID%_PT-BTNMode_EN-3" />
                 </TypeRestriction>
               </ParameterType>
+              <ParameterType Id="%AID%_PT-BTNLock" Name="BTNLock">
+                <TypeRestriction Base="Value" SizeInBit="2">
+                  <Enumeration Text="nicht aktiv" Value="0" Id="%AID%_PT-BTNLock_EN-0" />
+                  <Enumeration Text="gesperrt (1) / nicht gesperrt (0)" Value="1" Id="%AID%_PT-BTNLock_EN-1" />
+                  <Enumeration Text="gesperrt (0) / nicht gesperrt (1)" Value="2" Id="%AID%_PT-BTNLock_EN-2" />
+                </TypeRestriction>
+              </ParameterType>
               <ParameterType Id="%AID%_PT-BTctiveInactive" Name="BTNOnOff">
                 <TypeRestriction Base="Value" SizeInBit="1">
                   <Enumeration Text="Inaktiv" Value="0" Id="%AID%_PT-BTNOnOff_EN-0" />

@@ -12,7 +12,7 @@
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%001" Name="BTN%C%Mode" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNMode" Text="Modus" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%002" Name="BTN%C%Lock" Offset="0" BitOffset="4" ParameterType="%AID%_PT-SOMLock" Text="Sperre" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%002" Name="BTN%C%Lock" Offset="0" BitOffset="4" ParameterType="%AID%_PT-BTNLock" Text="Sperre" Value="0" />
               </Union>
 
               <!-- Inputs -->
