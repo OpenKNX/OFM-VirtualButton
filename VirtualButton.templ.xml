@@ -323,6 +323,10 @@
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Eingabe" UIHint="Headline" />
 
                         <ParameterBlock Id="%AID%_PB-nnn" Name="BTN%C%Inputs" Inline="true" Layout="Grid">
+                          <Rows>
+                            <Row Id="%AID%_PB-nnn_R-21" Name="Row1" />
+                            <Row Id="%AID%_PB-nnn_R-22" Name="Row2" />
+                          </Rows>
                           <Columns>
                             <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="45%" />
                             <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="5%" />
@@ -332,9 +336,6 @@
 
                           <choose ParamRefId="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101">                         
                             <when test="1 3">
-                              <Rows>
-                                <Row Id="%AID%_PB-nnn_R-11" Name="Row1" />
-                              </Rows>
                               <ParameterSeparator Id="%AID%_PS-nnn" Text="Taste" Cell="1,1" />
                               <ParameterSeparator Id="%AID%_PS-nnn" Text="Ein internes KO verwenden?" Cell="1,3" />
                               <ParameterRefRef RefId="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00801" Cell="1,2"/>
@@ -350,10 +351,6 @@
                               </choose>
                             </when>
                             <when test="2">
-                              <Rows>
-                                <Row Id="%AID%_PB-nnn_R-21" Name="Row1" />
-                                <Row Id="%AID%_PB-nnn_R-22" Name="Row2" />
-                              </Rows>
                               <ParameterSeparator Id="%AID%_PS-nnn" Text="Taste 1" Cell="1,1" />
                               <ParameterSeparator Id="%AID%_PS-nnn" Text="Taste 2" Cell="2,1" />
                               <ParameterSeparator Id="%AID%_PS-nnn" Text="Ein internes KO verwenden?" Cell="1,3" />
