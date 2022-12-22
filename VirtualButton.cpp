@@ -127,9 +127,7 @@ void VirtualButton::loop()
 
 void VirtualButton::processDynamicStatus()
 {
-  if (
-      mDynamicStatusTimer > 0 &&
-      (millis() - mDynamicStatusTimer) > mParams.dynamicStatusFallback)
+  if (mDynamicStatusTimer > 0 && delayCheck(mDynamicStatusTimer, mParams.dynamicStatusFallback))
   {
     uint8_t lValue = getKo(BTN_KoBTNOutput2Status)->value(getDPT(VAL_DPT_5001));
     mStatusLong = (lValue < mParams.dynamicStatusThreshold) ? false : true;
@@ -261,7 +259,7 @@ void VirtualButton::processPressAndHold(bool iButton)
   if (mParams.outputLong == 0 && mParams.outputLong != 7 && mParams.outputLong != 8)
     return;
 
-  if (!mButtonState[iButton].pressLong && (millis() - mButtonState[iButton].pressStart) > mParams.reactionTimeLong)
+  if (!mButtonState[iButton].pressLong && delayCheck(mButtonState[iButton].pressStart, mParams.reactionTimeLong))
   {
     eventLongPress(iButton);
     mButtonState[iButton].pressLong = true;
@@ -271,7 +269,7 @@ void VirtualButton::processPressAndHold(bool iButton)
   if (mParams.outputExtraLong == 0)
     return;
 
-  if (!mButtonState[iButton].pressExtraLong && (millis() - mButtonState[iButton].pressStart) > mParams.reactionTimeExtraLong)
+  if (!mButtonState[iButton].pressExtraLong && delayCheck(mButtonState[iButton].pressStart, mParams.reactionTimeExtraLong))
   {
     eventExtraLongPress(iButton);
     mButtonState[iButton].pressExtraLong = true;
@@ -347,7 +345,7 @@ void VirtualButton::processMultiClick()
   if (mButtonState[0].multiClickTimer == 0)
     return;
 
-  if (millis() - mButtonState[0].multiClickTimer > mParams.reactionTimeMultiClick)
+  if (delayCheck(mButtonState[0].multiClickTimer, mParams.reactionTimeMultiClick))
   {
     eventMultiClick(mButtonState[0].multiClicks);
     mButtonState[0].multiClickTimer = 0;
