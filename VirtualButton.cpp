@@ -83,11 +83,6 @@ void VirtualButton::setup()
   else
     mParams.reactionTimeExtraLong = knx.paramByte(BTN_ReactionTimeExtraLong) * 100;
 
-  if (mParams.reactionTimeExtraLong > 0)
-    mParams.reactionTimeExtraLong *= 100;
-  else
-    mParams.reactionTimeExtraLong = knx.paramByte(BTN_ReactionTimeExtraLong) * 100;
-
   mMultiClickParams[0] = knx.paramByte(calcParamIndex(BTN_BTNM1Dpt1));
   mMultiClickParams[1] = knx.paramByte(calcParamIndex(BTN_BTNM2Dpt1));
   mMultiClickParams[2] = knx.paramByte(calcParamIndex(BTN_BTNM3Dpt1));
