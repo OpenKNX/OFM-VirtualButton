@@ -412,19 +412,21 @@
               </ParameterType>
             </ParameterTypes>
             <Parameters>
+              <Parameter Id="%AID%_P-%T%000001" Name="BTN%C%HideInputs" ParameterType="%AID%_PT-CheckBox" Text="Hide Inputs" Value="0" Access="None"/>
               <Union SizeInBit="32">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%011" Name="ReactionTimeMultiClick" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Mehrfach-Klick" Value="5" />
-                <Parameter Id="%AID%_UP-%T%%CCC%012" Name="ReactionTimeLong"       Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Langer Tasterdruck" Value="10" />
-                <Parameter Id="%AID%_UP-%T%%CCC%013" Name="ReactionTimeExtraLong"  Offset="2" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Extra langer Tastedruck" Value="20" />
-                <Parameter Id="%AID%_UP-%T%%CCC%014" Name="ReactionTimeSpecial"    Offset="3" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Dimmen / Jalousie" Value="4" />
+                <Parameter Id="%AID%_UP-%T%000011" Name="ReactionTimeMultiClick" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Mehrfach-Klick" Value="5" />
+                <Parameter Id="%AID%_UP-%T%000012" Name="ReactionTimeLong"       Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Langer Tasterdruck" Value="10" />
+                <Parameter Id="%AID%_UP-%T%000013" Name="ReactionTimeExtraLong"  Offset="2" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Extra langer Tastedruck" Value="20" />
+                <Parameter Id="%AID%_UP-%T%000014" Name="ReactionTimeSpecial"    Offset="3" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Dimmen / Jalousie" Value="4" />
               </Union>
             </Parameters>
             <ParameterRefs>
-              <ParameterRef Id="%AID%_UP-%T%%CCC%011_R-%T%%CCC%01101" RefId="%AID%_UP-%T%%CCC%011" />
-              <ParameterRef Id="%AID%_UP-%T%%CCC%012_R-%T%%CCC%01201" RefId="%AID%_UP-%T%%CCC%012" />
-              <ParameterRef Id="%AID%_UP-%T%%CCC%013_R-%T%%CCC%01301" RefId="%AID%_UP-%T%%CCC%013" />
-              <ParameterRef Id="%AID%_UP-%T%%CCC%014_R-%T%%CCC%01401" RefId="%AID%_UP-%T%%CCC%014" />
+              <ParameterRef Id="%AID%_P-%T%000001_R-%T%00000101" RefId="%AID%_P-%T%000001" />
+              <ParameterRef Id="%AID%_UP-%T%000011_R-%T%00001101" RefId="%AID%_UP-%T%000011" />
+              <ParameterRef Id="%AID%_UP-%T%000012_R-%T%00001201" RefId="%AID%_UP-%T%000012" />
+              <ParameterRef Id="%AID%_UP-%T%000013_R-%T%00001301" RefId="%AID%_UP-%T%000013" />
+              <ParameterRef Id="%AID%_UP-%T%000014_R-%T%00001401" RefId="%AID%_UP-%T%000014" />
             </ParameterRefs>
             <ComObjectTable>
             </ComObjectTable>
@@ -434,15 +436,18 @@
           <Dynamic>
             <Channel Id="%AID%_CH-BTN1" Name="BTNBasicChannel" Number="1" Text="Taster Grundeinstellung">
               <ParameterBlock Id="%AID%_PB-5" Name="BTNBasic" Text="Grundeinstellung">
-                <ParameterSeparator Id="%AID%_PS-nnn" Text="Reaktionszeiten" UIHint="Headline" />                
+                <!-- Hidden -->
+                <ParameterRefRef RefId="%AID%_P-%T%000001_R-%T%00000101" />
+
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Reaktionszeiten" UIHint="Headline" />
                 <!-- MC -->
-                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%011_R-%T%%CCC%01101" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000011_R-%T%00001101" />
                 <!-- Dimmen / Jalousie -->
-                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%014_R-%T%%CCC%01401" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000014_R-%T%00001401" />
                 <!-- Long -->
-                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%012_R-%T%%CCC%01201" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000012_R-%T%00001201" />
                 <!-- ExtraLong -->
-                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%013_R-%T%%CCC%01301" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000013_R-%T%00001301" />
               </ParameterBlock>
             </Channel>
           </Dynamic>

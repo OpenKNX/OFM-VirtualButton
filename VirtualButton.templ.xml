@@ -18,10 +18,8 @@
               <!-- Inputs -->
               <Union SizeInBit="32">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="1" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%006" Name="BTN%C%InputKoA" Offset="0" BitOffset="1" ParameterType="%AID%_PT-KONumber" Text="" Value="%K1%" />
-                <Parameter Id="%AID%_UP-%T%%CCC%007" Name="BTN%C%InputKoB" Offset="2" BitOffset="1" ParameterType="%AID%_PT-KONumber" Text="" Value="%K2%" />
-                <Parameter Id="%AID%_UP-%T%%CCC%008" Name="BTN%C%InputA" Offset="0" BitOffset="0" ParameterType="%AID%_PT-CheckBox" Text="" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%009" Name="BTN%C%InputB" Offset="2" BitOffset="0" ParameterType="%AID%_PT-CheckBox" Text="" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%008" Name="BTN%C%InputA" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNInputs" Text="  Taster 1" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%009" Name="BTN%C%InputB" Offset="2" BitOffset="0" ParameterType="%AID%_PT-BTNInputs" Text="  Taster 2" Value="0" />
               </Union>
 
               <!-- Short -->
@@ -123,6 +121,7 @@
             
               <ParameterRef Id="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" RefId="%AID%_P-%T%%CCC%000" />
               <ParameterRef Id="%AID%_P-%T%%CCC%003_R-%T%%CCC%00301" RefId="%AID%_P-%T%%CCC%003" />
+              
               <ParameterRef Id="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101" RefId="%AID%_UP-%T%%CCC%001" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%002_R-%T%%CCC%00201" RefId="%AID%_UP-%T%%CCC%002" />
               
@@ -216,10 +215,11 @@
               <ParameterRef Id="%AID%_UP-%T%%CCC%792_R-%T%%CCC%79201" RefId="%AID%_UP-%T%%CCC%792" />
               
               <!-- Eingänge -->
-              <ParameterRef Id="%AID%_UP-%T%%CCC%006_R-%T%%CCC%00601" RefId="%AID%_UP-%T%%CCC%006" />
-              <ParameterRef Id="%AID%_UP-%T%%CCC%007_R-%T%%CCC%00701" RefId="%AID%_UP-%T%%CCC%007" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00801" RefId="%AID%_UP-%T%%CCC%008" />
+              <ParameterRef Id="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00802" RefId="%AID%_UP-%T%%CCC%008" Text="  Taster" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%009_R-%T%%CCC%00901" RefId="%AID%_UP-%T%%CCC%009" />
+              <ParameterRef Id="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00809" RefId="%AID%_UP-%T%%CCC%008" Access="None" />
+              <ParameterRef Id="%AID%_UP-%T%%CCC%009_R-%T%%CCC%00909" RefId="%AID%_UP-%T%%CCC%009" Access="None" />
 
               <!-- ReacionTime -->
               <ParameterRef Id="%AID%_UP-%T%%CCC%051_R-%T%%CCC%05101" RefId="%AID%_UP-%T%%CCC%051" />
@@ -299,7 +299,7 @@
               <ParameterBlock Id="%AID%_PB-%C%1" Name="BTN%C%Page" Text="Taster %C%: {{0:-}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001">
                 <Channel Id="%AID%_CH-BTN%CC%" Name="f%CC%BTN" Number="BTN%CC%" Text="Taster %CC%: {{0:-}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001">
                   <ParameterBlock Id="%AID%_PB-%T%%CCC%01" Name="BTN%C%Wrapper" Inline="true">
-                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Tasterkonfiguration" UIHint="Headline" />              
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Tasterkonfiguration" UIHint="Headline" />
                     <!-- Hidden -->
                     <ParameterRefRef RefId="%AID%_P-%T%%CCC%003_R-%T%%CCC%00301" />
                     <!-- Name -->
@@ -319,67 +319,57 @@
                     <choose ParamRefId="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101">
                       <when test=">0">
                         <!-- Eingabe -->
-                        <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
-                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Eingabe" UIHint="Headline" />
 
-                        <ParameterBlock Id="%AID%_PB-nnn" Name="BTN%C%Inputs" Inline="true" Layout="Grid">
-                          <Rows>
-                            <Row Id="%AID%_PB-nnn_R-21" Name="Row1" />
-                            <Row Id="%AID%_PB-nnn_R-22" Name="Row2" />
-                          </Rows>
-                          <Columns>
-                            <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="45%" />
-                            <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="5%" />
-                            <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="35%" />
-                            <Column Id="%AID%_PB-nnn_C-4" Name="Col4" Width="15%" />
-                          </Columns>
-
-                          <choose ParamRefId="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101">                         
-                            <when test="1 3">
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Taste" Cell="1,1" />
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Ein internes KO verwenden?" Cell="1,3" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00801" Cell="1,2"/>
-                              <choose ParamRefId="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00801">
-                                <when test="0">
-                                  <!-- Externes KO -->
-                                  <ComObjectRefRef RefId="%AID%_O-%T%%CCC%003_R-%T%%CCC%00302" />
-                                </when>
-                                <when test="1">
-                                  <!-- Internes KO -->
-                                  <ParameterRefRef RefId="%AID%_UP-%T%%CCC%006_R-%T%%CCC%00601" Cell="1,4" />
-                                </when>
-                              </choose>
-                            </when>
-                            <when test="2">
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Taste 1" Cell="1,1" />
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Taste 2" Cell="2,1" />
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Ein internes KO verwenden?" Cell="1,3" />
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="Ein internes KO verwenden?" Cell="2,3" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00801" Cell="1,2" />
-                              <ParameterRefRef RefId="%AID%_UP-%T%%CCC%009_R-%T%%CCC%00901" Cell="2,2" />
-                              <choose ParamRefId="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00801">
-                                <when test="0">
-                                  <!-- Externes KO -->
-                                  <ComObjectRefRef RefId="%AID%_O-%T%%CCC%003_R-%T%%CCC%00301" />
-                                </when>
-                                <when test="1">
-                                  <!-- Internes KO -->
-                                  <ParameterRefRef RefId="%AID%_UP-%T%%CCC%006_R-%T%%CCC%00601" Cell="1,4" />
-                                </when>
-                              </choose>
-                              <choose ParamRefId="%AID%_UP-%T%%CCC%009_R-%T%%CCC%00901">
-                                <when test="0">
-                                  <!-- Externes KO -->
-                                  <ComObjectRefRef RefId="%AID%_O-%T%%CCC%004_R-%T%%CCC%00401" />
-                                </when>
-                                <when test="1">
-                                  <!-- Internes KO -->
-                                  <ParameterRefRef RefId="%AID%_UP-%T%%CCC%007_R-%T%%CCC%00701" Cell="2,4" />
-                                </when>
-                              </choose>
-                            </when>
-                          </choose>
-                        </ParameterBlock>
+                        <!-- Verstecke Eingänge wenn es keine Binäreingänge gibt -->
+                        <choose ParamRefId="%AID%_P-%T%000001_R-%T%00000101">
+                          <when test="0">
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="Eingabe" UIHint="Headline" />
+                            <choose ParamRefId="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101">                         
+                              <when test="1 3">
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00802"/>
+                                <Assign TargetParamRefRef="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00809" SourceParamRefRef="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00802" />
+                              </when>
+                              <when test="2">
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00801" />
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%009_R-%T%%CCC%00901" />
+                                <Assign TargetParamRefRef="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00809" SourceParamRefRef="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00801" />
+                                <Assign TargetParamRefRef="%AID%_UP-%T%%CCC%009_R-%T%%CCC%00909" SourceParamRefRef="%AID%_UP-%T%%CCC%009_R-%T%%CCC%00901" />
+                              </when>
+                            </choose>
+                          </when>
+                          <when test="1">
+                            <!-- Init Params mit Access=None, damit KOs angezeigt werden. -->
+                            <Assign TargetParamRefRef="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00809" Value="0" />
+                            <Assign TargetParamRefRef="%AID%_UP-%T%%CCC%009_R-%T%%CCC%00909" Value="0" />
+                          </when>
+                        </choose>
+                        
+                        <!-- Externe KOs for Inputs -->
+                        <choose ParamRefId="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101">                         
+                          <when test="1 3">
+                            <!-- 1 Taster / Taste 1-->
+                            <choose ParamRefId="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00809">
+                              <when test="0">
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%003_R-%T%%CCC%00302" />
+                              </when>
+                            </choose>
+                          </when>
+                          <when test="2">
+                            <!-- 2 Taster / Taste 1 -->
+                            <choose ParamRefId="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00809">
+                              <when test="0">
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%003_R-%T%%CCC%00301" />
+                              </when>
+                            </choose>
+                            <!-- 2 Taster / Taste 2 -->
+                            <choose ParamRefId="%AID%_UP-%T%%CCC%009_R-%T%%CCC%00909">
+                              <when test="0">
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%004_R-%T%%CCC%00401" />
+                              </when>
+                            </choose>
+                          </when>
+                        </choose>
 
                         <!-- Ausgabe -->
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />

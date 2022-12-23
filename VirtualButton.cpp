@@ -45,12 +45,12 @@ void VirtualButton::setup()
   mParams.eventLong = knx.paramByte(calcParamIndex(BTN_BTNOutputLongEvent));
   mParams.eventExtraLong = knx.paramByte(calcParamIndex(BTN_BTNOutputExtraLongEvent));
 
-  mButtonParams[0].inputKo = knx.paramWord(calcParamIndex(BTN_BTNInputKoA)) & 0x7fff;
+  mButtonParams[0].inputKo = knx.paramWord(calcParamIndex(BTN_BTNInputA));
   mButtonParams[0].outputShort = knx.paramByte(calcParamIndex(BTN_BTNOutput1ShortDpt1));
   mButtonParams[0].outputLong = knx.paramByte(calcParamIndex(BTN_BTNOutput1LongDpt1));
   mButtonParams[0].outputExtraLong = knx.paramByte(calcParamIndex(BTN_BTNOutput1ExtraLongDpt1));
 
-  mButtonParams[1].inputKo = knx.paramWord(calcParamIndex(BTN_BTNInputKoB)) & 0x7fff;
+  mButtonParams[1].inputKo = knx.paramWord(calcParamIndex(BTN_BTNInputB));
   mButtonParams[1].outputShort = knx.paramByte(calcParamIndex(BTN_BTNOutput2ShortDpt1));
   mButtonParams[1].outputLong = knx.paramByte(calcParamIndex(BTN_BTNOutput2LongDpt1));
   mButtonParams[1].outputExtraLong = knx.paramByte(calcParamIndex(BTN_BTNOutput2ExtraLongDpt1));
@@ -141,11 +141,11 @@ void VirtualButton::processInputKo(GroupObject &iKo)
   uint8_t lKoIndex = calcKoIndex(lKoNumber);
 
   // Internal
-  if (lKoNumber == mButtonParams[0].inputKo)
+  if (mButtonParams[0].inputKo > 0 && mButtonParams[0].inputKo == lKoNumber)
   {
     lKoIndex = BTN_KoBTNInput1;
   }
-  else if (lKoNumber == mButtonParams[1].inputKo)
+  else if (mButtonParams[1].inputKo > 0 && mButtonParams[1].inputKo == lKoNumber)
   {
     lKoIndex = BTN_KoBTNInput2;
   }
