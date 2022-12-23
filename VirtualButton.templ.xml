@@ -8,7 +8,7 @@
           <Static>
             <Parameters>
               <Parameter Id="%AID%_P-%T%%CCC%000" Name="BTN%C%Name" ParameterType="%AID%_PT-Text40Byte" Text="Beschreibung" Value="" />
-              <Parameter Id="%AID%_P-%T%%CCC%003" Name="BTN%C%ShowDynamicStatus" ParameterType="%AID%_PT-CheckBox" Text="Dynamischer Status" Value="0" />
+              <Parameter Id="%AID%_P-%T%%CCC%003" Name="BTN%C%ShowDynamicStatus" ParameterType="%AID%_PT-CheckBox" Text="Dynamischer Status" Value="0" Access="None"/>
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%001" Name="BTN%C%Mode" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNMode" Text="Modus" Value="0" />
