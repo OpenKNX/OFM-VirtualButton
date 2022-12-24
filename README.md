@@ -13,7 +13,7 @@ DPTs
 - DPT3.007: Dimmen (nur per Lang-Taster)
 - DPT5.001: Prozent
 - DPT5.005: Ganzzahl
-- DPT17.001: Szenen (ohne Speichern)
+- DPT18.001: Szenen
   
 Weitere Funktionen
 - Sperre

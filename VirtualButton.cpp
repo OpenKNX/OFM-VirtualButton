@@ -90,7 +90,7 @@ void VirtualButton::setup()
   mParams.dynamicStatusThreshold = knx.paramByte(calcParamIndex(BTN_BTNStatusThreshold));
   mParams.dynamicStatusFallback = (getDelayPattern(calcParamIndex(BTN_BTNStatusFallbackBase)));
 
-  mDynamicStatusTimer = millis() + mParams.dynamicStatusFallback; // 
+  mDynamicStatusTimer = millis() + mParams.dynamicStatusFallback;
 
   // Debug
   // SERIAL_DEBUG.printf("BTN %i inputKo: %i/%i\n\r", mIndex, mButtonParams[0].inputKo, calcParamIndex(BTN_BTNInputKoA));
@@ -107,8 +107,8 @@ void VirtualButton::setup()
   // SERIAL_DEBUG.printf("BTN %i reactionTimeMultiClick: %i\n\r", mIndex, mParams.reactionTimeMultiClick);
   // SERIAL_DEBUG.printf("BTN %i reactionTimeLong: %i\n\r", mIndex, mParams.reactionTimeLong);
   // SERIAL_DEBUG.printf("BTN %i reactionTimeExtraLong: %i\n\r", mIndex, mParams.reactionTimeExtraLong);
-  SERIAL_DEBUG.printf("BTN %i dynamicStatusThreshold: %i\n\r", mIndex, mParams.dynamicStatusThreshold);
-  SERIAL_DEBUG.printf("BTN %i dynamicStatusFallback: %i\n\r", mIndex, mParams.dynamicStatusFallback);
+  // SERIAL_DEBUG.printf("BTN %i dynamicStatusThreshold: %i\n\r", mIndex, mParams.dynamicStatusThreshold);
+  // SERIAL_DEBUG.printf("BTN %i dynamicStatusFallback: %i\n\r", mIndex, mParams.dynamicStatusFallback);
   // SERIAL_DEBUG.printf("BTN %i mParamMode: %i\n\r", mIndex, mParams.mode);
 }
 
@@ -124,7 +124,7 @@ void VirtualButton::processDynamicStatus()
 {
   if (mDynamicStatusTimer > 0 && delayCheck(mDynamicStatusTimer, mParams.dynamicStatusFallback))
   {
-    uint8_t lValue = getKo(BTN_KoBTNOutput2Status)->value(getDPT(VAL_DPT_5001));
+    uint8_t lValue = getKo(BTN_KoBTNOutput2Status)->value(DPT_Scaling);
     mStatusLong = (lValue < mParams.dynamicStatusThreshold) ? false : true;
     SERIAL_DEBUG.printf("BTN::processDynamicStatus %i/%i/%i: triggered\n\r", mIndex, lValue, mStatusLong);
 
@@ -180,7 +180,7 @@ void VirtualButton::processInputKoStatus(GroupObject &iKo, uint8_t iStatusNumber
   // Special for Long DPT3007
   if (iStatusNumber == 2 && mParams.outputLong == 7)
   {
-    uint8_t lValue = iKo.value(getDPT(VAL_DPT_5001));
+    uint8_t lValue = iKo.value(DPT_Scaling);
     if (lValue == 0 && oStatus)
       oStatus = false;
     if (lValue == 100 && !oStatus)
@@ -188,7 +188,7 @@ void VirtualButton::processInputKoStatus(GroupObject &iKo, uint8_t iStatusNumber
   }
   else
   {
-    bool lValue = iKo.value(getDPT(VAL_DPT_1));
+    bool lValue = iKo.value(DPT_Switch);
     oStatus = lValue;
   }
 }
@@ -198,7 +198,7 @@ void VirtualButton::processInputKoLock(GroupObject &iKo)
   if (mParams.lock == 0)
     return;
 
-  bool lValue = iKo.value(getDPT(VAL_DPT_1));
+  bool lValue = iKo.value(DPT_Switch);
 
   if (mParams.lock == 1)
     mLock = lValue;
@@ -227,7 +227,7 @@ void VirtualButton::processInputKoLock(GroupObject &iKo)
 
 void VirtualButton::processInputKoInput(GroupObject &iKo, bool iButton)
 {
-  bool lNewPress = iKo.value(getDPT(VAL_DPT_1));
+  bool lNewPress = iKo.value(DPT_Switch);
   bool lLastPress = mButtonState[iButton].press;
 
   // no state change
@@ -368,7 +368,7 @@ void VirtualButton::eventMultiClick(uint8_t iClicks)
     if (lValue == 1)
       lValueBool = false;
 
-    getKo(BTN_KoBTNOutput1Multi + lIndex)->value((bool)lValueBool, getDPT(VAL_DPT_1));
+    getKo(BTN_KoBTNOutput1Multi + lIndex)->value((bool)lValueBool, DPT_Switch);
   }
   else if (mParams.outputShort == 2)
   {
@@ -377,20 +377,27 @@ void VirtualButton::eventMultiClick(uint8_t iClicks)
       return;
 
     lValue = (uint8_t)(lValue & 3);
-    getKo(BTN_KoBTNOutput1)->value(lValue, getDPT(VAL_DPT_5));
+    getKo(BTN_KoBTNOutput1)->value(lValue, DPT_DecimalFactor);
   }
   else if (mParams.outputShort == 4)
   {
-    getKo(BTN_KoBTNOutput1)->value(lValue, getDPT(VAL_DPT_5));
+    getKo(BTN_KoBTNOutput1)->value(lValue, DPT_DecimalFactor);
   }
   else if (mParams.outputShort == 5)
   {
-    getKo(BTN_KoBTNOutput1)->value(lValue, getDPT(VAL_DPT_5001));
+    getKo(BTN_KoBTNOutput1)->value(lValue, DPT_Scaling);
   }
   else if (mParams.outputShort == 6)
   {
-    lValue = (uint8_t)(lValue - 1);
-    getKo(BTN_KoBTNOutput1)->value(lValue, getDPT(VAL_DPT_17));
+    if (lValue >= 100)
+    {
+      lValue = (uint8_t)((lValue - 101) | 0x80);
+    }
+    else
+    {
+      lValue = (uint8_t)(lValue - 1);
+    }
+    getKo(BTN_KoBTNOutput1)->value(lValue, DPT_DecimalFactor);
   }
 }
 void VirtualButton::eventShortPress(bool iButton)
@@ -498,7 +505,7 @@ void VirtualButton::writeSwitchOutput(uint8_t iOutput, uint8_t iValue, bool &oSt
       oStatus = !oStatus;
     }
 
-    getKo(iKoOutput)->value((bool)oStatus, getDPT(VAL_DPT_1));
+    getKo(iKoOutput)->value((bool)oStatus, DPT_Switch);
     break;
 
   case 2:
@@ -508,17 +515,17 @@ void VirtualButton::writeSwitchOutput(uint8_t iOutput, uint8_t iValue, bool &oSt
     if (iValue == 0)
       return;
 
-    getKo(iKoOutput)->value((uint8_t)(iValue & 3), getDPT(VAL_DPT_5));
+    getKo(iKoOutput)->value((uint8_t)(iValue & 3), DPT_DecimalFactor);
     break;
 
   case 4:
     // DPT5
-    getKo(iKoOutput)->value((uint8_t)iValue, getDPT(VAL_DPT_5));
+    getKo(iKoOutput)->value((uint8_t)iValue, DPT_DecimalFactor);
     break;
 
   case 5:
     // DPT5001
-    getKo(iKoOutput)->value((uint8_t)iValue, getDPT(VAL_DPT_5001));
+    getKo(iKoOutput)->value((uint8_t)iValue, DPT_Scaling);
     break;
 
   case 6:
@@ -526,8 +533,16 @@ void VirtualButton::writeSwitchOutput(uint8_t iOutput, uint8_t iValue, bool &oSt
     if (iValue == 0)
       return;
 
-    // DPT17
-    getKo(iKoOutput)->value((uint8_t)(iValue - 1), getDPT(VAL_DPT_17));
+    // DPT18
+    if (iValue >= 100)
+    {
+      iValue = (uint8_t)((iValue - 101) | 0x81);
+    }
+    else
+    {
+      iValue = (uint8_t)(iValue - 1);
+    }
+    getKo(iKoOutput)->value(iValue, DPT_DecimalFactor);
     break;
   }
 }
@@ -554,7 +569,7 @@ void VirtualButton::dim(bool iButton, bool iRelease)
   if (!iRelease)
     lControl |= 1;
 
-  // Start Timer for Status Fallback  
+  // Start Timer for Status Fallback
   mDynamicStatusTimer = iRelease ? millis() : 0;
 
   // 1. Press   9  1001 Up
@@ -562,5 +577,5 @@ void VirtualButton::dim(bool iButton, bool iRelease)
   // 3. Press   1  0001 Down
   // 4. Release 0  0000 Stop
   SERIAL_DEBUG.printf("    BTN%i DIMSTATUS %i/%i/%i/%i\n\r", mIndex, lControl, mStatusLong, mDynamicStatusTimer);
-  getKo(BTN_KoBTNOutput2)->value(lControl, getDPT(VAL_DPT_5));
+  getKo(BTN_KoBTNOutput2)->value(lControl, DPT_DecimalFactor);
 }
