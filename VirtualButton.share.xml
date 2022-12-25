@@ -94,9 +94,9 @@
 
 
               <ParameterType Id="%AID%_PT-BTNSendingEvent" Name="BTNSendingEvent">
-                <TypeRestriction Base="Value" SizeInBit="2">
-                  <Enumeration Text="nicht senden" Value="0" Id="%AID%_PT-BTNSendingEvent_EN-0" />
-                  <Enumeration Text="senden"       Value="1" Id="%AID%_PT-BTNSendingEvent_EN-1" />
+                <TypeRestriction Base="Value" SizeInBit="1">
+                  <Enumeration Text="Nicht Senden" Value="0" Id="%AID%_PT-BTNSendingEvent_EN-0" />
+                  <Enumeration Text="Senden"       Value="1" Id="%AID%_PT-BTNSendingEvent_EN-1" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-BTNOutputDpt1NoSending" Name="BTNOutputDpt1NoSending">
@@ -112,6 +112,13 @@
                   <Enumeration Text="AUS (0)"    Value="1" Id="%AID%_PT-BTNOutputDpt1_EN-1" />
                   <Enumeration Text="EIN (1)"    Value="2" Id="%AID%_PT-BTNOutputDpt1_EN-2" />
                   <Enumeration Text="Umschalten" Value="3" Id="%AID%_PT-BTNOutputDpt1_EN-3" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="%AID%_PT-BTNOutput2" Name="BTNOutput2">
+                <TypeRestriction Base="Value" SizeInBit="2">
+                  <Enumeration Text="Nicht Senden" Value="0" Id="%AID%_PT-BTNOutput2_EN-0" />
+                  <Enumeration Text="AUS (0)"      Value="2" Id="%AID%_PT-BTNOutput2_EN-2" />
+                  <Enumeration Text="EIN (1)"      Value="3" Id="%AID%_PT-BTNOutput2_EN-3" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-BTNOutputDpt2" Name="BTNOutputDpt2">
