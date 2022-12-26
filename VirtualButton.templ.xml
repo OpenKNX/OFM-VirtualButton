@@ -33,10 +33,10 @@
 
               <Union SizeInBit="32">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="9" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%100" Name="BTN%C%OutputShort_DPT"     Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNOutput"      Text="Ausgabe" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%200" Name="BTN%C%OutputLong_DPT"      Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNOutput"      Text="Ausgabe" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%300" Name="BTN%C%OutputExtraLong_DPT" Offset="2" BitOffset="0" ParameterType="%AID%_PT-BTNOutput"      Text="Ausgabe" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%400" Name="BTN%C%OutputMulti_DPT"     Offset="3" BitOffset="0" ParameterType="%AID%_PT-BTNOutputMulti" Text="Ausgabe" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%100" Name="BTN%C%OutputShort_DPT"     Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNOutput"      Text="Datentyp" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%200" Name="BTN%C%OutputLong_DPT"      Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNOutput"      Text="Datentyp" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%300" Name="BTN%C%OutputExtraLong_DPT" Offset="2" BitOffset="0" ParameterType="%AID%_PT-BTNOutput"      Text="Datentyp" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%400" Name="BTN%C%OutputMulti_DPT"     Offset="3" BitOffset="0" ParameterType="%AID%_PT-BTNOutputMulti" Text="Datentyp" Value="0" />
               </Union>
 
               <Union SizeInBit="8">
@@ -216,12 +216,12 @@
 
               <Union SizeInBit="16">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="47" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%191" Name="BTN%C%Output2Short_Taster1"      Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNOutput2" Text="  Weitere Ausgabe (DPT1 beim Loslassen)" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%192" Name="BTN%C%Output2Short_Taster2"      Offset="1" BitOffset="2" ParameterType="%AID%_PT-BTNOutput2" Text="  Weitere Ausgabe (DPT1 beim Loslassen)" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%291" Name="BTN%C%Output2Long_Taster1"       Offset="0" BitOffset="4" ParameterType="%AID%_PT-BTNOutput2" Text="  Weitere Ausgabe (DPT1 beim Loslassen)" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%292" Name="BTN%C%Output2Long_Taster2"       Offset="0" BitOffset="6" ParameterType="%AID%_PT-BTNOutput2" Text="  Weitere Ausgabe (DPT1 beim Loslassen)" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%391" Name="BTN%C%Output2ExtraLong_Taster1"  Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNOutput2" Text="  Weitere Ausgabe (DPT1 beim Loslassen)" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%392" Name="BTN%C%Output2ExtraLong_Taster2"  Offset="1" BitOffset="2" ParameterType="%AID%_PT-BTNOutput2" Text="  Weitere Ausgabe (DPT1 beim Loslassen)" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%191" Name="BTN%C%Output2Short_Taster1"      Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNOutput2" Text="  Zusatzausgang (DPT1 beim Loslassen)" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%192" Name="BTN%C%Output2Short_Taster2"      Offset="1" BitOffset="2" ParameterType="%AID%_PT-BTNOutput2" Text="  Zusatzausgang (DPT1 beim Loslassen)" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%291" Name="BTN%C%Output2Long_Taster1"       Offset="0" BitOffset="4" ParameterType="%AID%_PT-BTNOutput2" Text="  Zusatzausgang (DPT1 beim Loslassen)" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%292" Name="BTN%C%Output2Long_Taster2"       Offset="0" BitOffset="6" ParameterType="%AID%_PT-BTNOutput2" Text="  Zusatzausgang (DPT1 beim Loslassen)" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%391" Name="BTN%C%Output2ExtraLong_Taster1"  Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNOutput2" Text="  Zusatzausgang (DPT1 beim Loslassen)" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%392" Name="BTN%C%Output2ExtraLong_Taster2"  Offset="1" BitOffset="2" ParameterType="%AID%_PT-BTNOutput2" Text="  Zusatzausgang (DPT1 beim Loslassen)" Value="0" />
               </Union>
 
               <!-- Dynamischer 1-Taster DimStatus -->
@@ -418,21 +418,21 @@
               <ParameterRef Id="%AID%_UP-%T%%CCC%053_R-%T%%CCC%05301" RefId="%AID%_UP-%T%%CCC%053" />
             </ParameterRefs>
             <ComObjectTable>
-              <ComObject Id="%AID%_O-%T%%CCC%000" Name="BTN%C%Lock"          Number="%K0%"  ObjectSize="1 Bit" Text="" FunctionText=""                                  ReadFlag="Enabled"  WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="%AID%_O-%T%%CCC%000" Name="BTN%C%Lock"          Number="%K0%"  ObjectSize="1 Bit" Text="" FunctionText=""                                      ReadFlag="Enabled"  WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
 
-              <ComObject Id="%AID%_O-%T%%CCC%011" Name="BTN%C%Input1"        Number="%K1%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Eingang 1"             ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-16" />
-              <ComObject Id="%AID%_O-%T%%CCC%012" Name="BTN%C%Input2"        Number="%K2%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Eingang 2"             ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-16" />
+              <ComObject Id="%AID%_O-%T%%CCC%011" Name="BTN%C%Input1"        Number="%K1%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Eingang 1"                 ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-16" />
+              <ComObject Id="%AID%_O-%T%%CCC%012" Name="BTN%C%Input2"        Number="%K2%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Eingang 2"                 ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-16" />
               
-              <ComObject Id="%AID%_O-%T%%CCC%021" Name="BTN%C%Output1Status" Number="%K3%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Status"                ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Enabled" DatapointType="DPST-1-11" />
-              <ComObject Id="%AID%_O-%T%%CCC%022" Name="BTN%C%Output2Status" Number="%K4%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Status (Lang)"         ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Enabled" DatapointType="DPST-1-11" />
-              <ComObject Id="%AID%_O-%T%%CCC%023" Name="BTN%C%Output3Status" Number="%K5%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Status (Extralang)"    ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Enabled" DatapointType="DPST-1-11" />
+              <ComObject Id="%AID%_O-%T%%CCC%021" Name="BTN%C%Output1Status" Number="%K3%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Status"                    ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Enabled" DatapointType="DPST-1-11" />
+              <ComObject Id="%AID%_O-%T%%CCC%022" Name="BTN%C%Output2Status" Number="%K4%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Status (Lang)"             ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Enabled" DatapointType="DPST-1-11" />
+              <ComObject Id="%AID%_O-%T%%CCC%023" Name="BTN%C%Output3Status" Number="%K5%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Status (Extralang)"        ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled" ReadOnInitFlag="Enabled" DatapointType="DPST-1-11" />
 
-              <ComObject Id="%AID%_O-%T%%CCC%101" Name="BTN%C%Output1"       Number="%K6%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Ausgang 1"             ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="%AID%_O-%T%%CCC%102" Name="BTN%C%Output2"       Number="%K7%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Ausgang 1 (Lang)"      ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="%AID%_O-%T%%CCC%103" Name="BTN%C%Output3"       Number="%K8%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Ausgang 1 (Extralang)" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="%AID%_O-%T%%CCC%104" Name="BTN%C%Output4"       Number="%K9%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Ausgang 2"             ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="%AID%_O-%T%%CCC%105" Name="BTN%C%Output5"       Number="%K10%" ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Ausgang 2 (Lang)"      ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
-              <ComObject Id="%AID%_O-%T%%CCC%106" Name="BTN%C%Output6"       Number="%K11%" ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Ausgang 2 (Extralang)" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="%AID%_O-%T%%CCC%101" Name="BTN%C%Output1"       Number="%K6%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Ausgang"                   ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="%AID%_O-%T%%CCC%102" Name="BTN%C%Output2"       Number="%K7%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Ausgang (Lang)"            ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="%AID%_O-%T%%CCC%103" Name="BTN%C%Output3"       Number="%K8%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Ausgang (Extralang)"       ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="%AID%_O-%T%%CCC%104" Name="BTN%C%Output4"       Number="%K9%"  ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Zusatzausgang"             ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="%AID%_O-%T%%CCC%105" Name="BTN%C%Output5"       Number="%K10%" ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Zusatzausgang (Lang)"      ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
+              <ComObject Id="%AID%_O-%T%%CCC%106" Name="BTN%C%Output6"       Number="%K11%" ObjectSize="1 Bit" Text="" FunctionText="Taster %C%, Zusatzausgang (Extralang)" ReadFlag="Disabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
             </ComObjectTable>
             <ComObjectRefs>
               <ComObjectRef Id="%AID%_O-%T%%CCC%000_R-%T%%CCC%00001" RefId="%AID%_O-%T%%CCC%000" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" FunctionText="Taster %C%, Sperre=1 / Entsperre=0"  />

@@ -496,9 +496,9 @@
               <Parameter Id="%AID%_P-%T%000001" Name="BTN%C%HideInputs" ParameterType="%AID%_PT-CheckBox" Text="Hide Inputs" Value="0" Access="None" />
               <Union SizeInBit="32">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%000011" Name="ReactionTimeMultiClick" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Mehrfach-Klick" Value="5" />
-                <Parameter Id="%AID%_UP-%T%000012" Name="ReactionTimeLong"       Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Langer Tasterdruck" Value="10" />
-                <Parameter Id="%AID%_UP-%T%000013" Name="ReactionTimeExtraLong"  Offset="2" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Extra langer Tastedruck" Value="20" />
+                <Parameter Id="%AID%_UP-%T%000011" Name="ReactionTimeMultiClick" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Mehrfach-Klick" Value="4" />
+                <Parameter Id="%AID%_UP-%T%000012" Name="ReactionTimeLong"       Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Langer Tasterdruck" Value="4" />
+                <Parameter Id="%AID%_UP-%T%000013" Name="ReactionTimeExtraLong"  Offset="2" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Extra langer Tastedruck" Value="16" />
               </Union>
             </Parameters>
             <ParameterRefs>
