@@ -8,13 +8,15 @@
           <Static>
             <ParameterTypes>
               <ParameterType Id="%AID%_PT-BTNMode" Name="BTNMode">
+
                 <TypeRestriction Base="Value" SizeInBit="4">
                   <Enumeration Text="Deaktviert" Value="0" Id="%AID%_PT-BTNMode_EN-0" />
-                  <Enumeration Text="1-Taster" Value="1" Id="%AID%_PT-BTNMode_EN-1" />
-                  <Enumeration Text="2-Taster" Value="2" Id="%AID%_PT-BTNMode_EN-2" />
+                  <Enumeration Text="1fach-Taster" Value="1" Id="%AID%_PT-BTNMode_EN-1" />
+                  <Enumeration Text="2fach-Taster" Value="2" Id="%AID%_PT-BTNMode_EN-2" />
                   <Enumeration Text="Mehrfach-Klick" Value="3" Id="%AID%_PT-BTNMode_EN-3" />
                 </TypeRestriction>
               </ParameterType>
+
               <ParameterType Id="%AID%_PT-BTNLock" Name="BTNLock">
                 <TypeRestriction Base="Value" SizeInBit="2">
                   <Enumeration Text="nicht aktiv" Value="0" Id="%AID%_PT-BTNLock_EN-0" />
@@ -22,15 +24,7 @@
                   <Enumeration Text="gesperrt (0) / nicht gesperrt (1)" Value="2" Id="%AID%_PT-BTNLock_EN-2" />
                 </TypeRestriction>
               </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNDebouncing" Name="BTNDebouncing">
-                <TypeRestriction Base="Value" SizeInBit="3">
-                  <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNDebouncing_EN-0" />
-                  <Enumeration Text="10ms" Value="1" Id="%AID%_PT-BTNDebouncing_EN-1" />
-                  <Enumeration Text="25ms" Value="2" Id="%AID%_PT-BTNDebouncing_EN-2" />
-                  <Enumeration Text="50ms" Value="3" Id="%AID%_PT-BTNDebouncing_EN-3" />
-                  <Enumeration Text="100ms" Value="4" Id="%AID%_PT-BTNDebouncing_EN-4" />
-                </TypeRestriction>
-              </ParameterType>
+
               <ParameterType Id="%AID%_PT-BTNOutput" Name="BTNOutput">
                 <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNOutput_EN-0" />
@@ -44,69 +38,34 @@
                   <Enumeration Text="DPT 18.001 Szene" Value="6" Id="%AID%_PT-BTNOutput_EN-6" />
                 </TypeRestriction>
               </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputLong" Name="BTNOutputLong">
-                <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNOutputLong_EN-0" />
-                  <Enumeration Text="DPT 1.001 Schalten" Value="1" Id="%AID%_PT-BTNOutputLong_EN-1" />
-                  <Enumeration Text="DPT 2.001 Zwangsführung" Value="2" Id="%AID%_PT-BTNOutputLong_EN-2" />
-                  <Enumeration Text="DPT 3.007 Dimmen" Value="7" Id="%AID%_PT-BTNOutputLong_EN-7" />
-                  <!-- <Enumeration Text="DPT 3.008 Jalousie" Value="8" Id="%AID%_PT-BTNOutputLong_EN-8" /> -->
-                  <Enumeration Text="DPT 5.005 Ganzzahl" Value="4" Id="%AID%_PT-BTNOutputLong_EN-4" />
-                  <Enumeration Text="DPT 5.001 Prozent" Value="5" Id="%AID%_PT-BTNOutputLong_EN-5" />
-                  <Enumeration Text="DPT 9.001 Ganzzahl" Value="6" Id="%AID%_PT-BTNOutputLong_EN-9" />
-                  <Enumeration Text="DPT 18.001 Szene" Value="6" Id="%AID%_PT-BTNOutputLong_EN-6" />
-                </TypeRestriction>
-              </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputMultiple" Name="BTNOutputMultiple">
-                <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="DPT 1.001 Schalten" Value="1" Id="%AID%_PT-BTNOutputMultiple_EN-1" />
-                  <Enumeration Text="DPT 2.001 Zwangsführung" Value="2" Id="%AID%_PT-BTNOutputMultiple_EN-2" />
-                  <Enumeration Text="DPT 5.005 Ganzzahl" Value="4" Id="%AID%_PT-BTNOutputMultiple_EN-4" />
-                  <Enumeration Text="DPT 5.001 Prozent" Value="5" Id="%AID%_PT-BTNOutputMultiple_EN-5" />
-                  <Enumeration Text="DPT 9.001 Ganzzahl" Value="5" Id="%AID%_PT-BTNOutputMultiple_EN-9" />
-                  <Enumeration Text="DPT 18.001 Szene" Value="6" Id="%AID%_PT-BTNOutputMultiple_EN-6" />
-                </TypeRestriction>
-              </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputPriotiy" Name="BTNOutputPriotiy">
-                <TypeRestriction Base="Value" SizeInBit="3">
-                  <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNOutputPriotiy_EN-0" />
-                  <Enumeration Text="00 - Keine Priorität, Aus" Value="4" Id="%AID%_PT-BTNOutputPriotiy_EN-4" />
-                  <Enumeration Text="01 - Keine Priorität, Ein" Value="5" Id="%AID%_PT-BTNOutputPriotiy_EN-5" />
-                  <Enumeration Text="10 - Priorität, Aus" Value="6" Id="%AID%_PT-BTNOutputPriotiy_EN-6" />
-                  <Enumeration Text="11 - Priorität, Ein" Value="7" Id="%AID%_PT-BTNOutputPriotiy_EN-7" />
-                </TypeRestriction>
-              </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputBool1" Name="BTNOutputBool1">
-                <TypeRestriction Base="Value" SizeInBit="2">
-                  <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNOutputBool1_EN-0" />
-                  <Enumeration Text="Aus" Value="1" Id="%AID%_PT-BTNOutputBool1_EN-1" />
-                  <Enumeration Text="Ein" Value="2" Id="%AID%_PT-BTNOutputBool1_EN-2" />
-                </TypeRestriction>
-              </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputBool2" Name="BTNOutputBool2">
-                <TypeRestriction Base="Value" SizeInBit="2">
-                  <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNOutputBool2_EN-0" />
-                  <Enumeration Text="Aus" Value="1" Id="%AID%_PT-BTNOutputBool2_EN-1" />
-                  <Enumeration Text="Ein" Value="2" Id="%AID%_PT-BTNOutputBool2_EN-2" />
-                  <Enumeration Text="Umschalten" Value="3" Id="%AID%_PT-BTNOutputBool2_EN-3" />
-                </TypeRestriction>
-              </ParameterType>
 
+              <ParameterType Id="%AID%_PT-BTNOutputMulti" Name="BTNOutputMulti">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNOutputMulti_EN-0" />
+                  <Enumeration Text="DPT 2.001 Zwangsführung" Value="2" Id="%AID%_PT-BTNOutputMulti_EN-2" />
+                  <Enumeration Text="DPT 5.005 Ganzzahl" Value="4" Id="%AID%_PT-BTNOutputMulti_EN-4" />
+                  <Enumeration Text="DPT 5.001 Prozent" Value="5" Id="%AID%_PT-BTNOutputMulti_EN-5" />
+                  <Enumeration Text="DPT 9.001 Ganzzahl" Value="9" Id="%AID%_PT-BTNOutputMulti_EN-9" />
+                  <Enumeration Text="DPT 18.001 Szene" Value="6" Id="%AID%_PT-BTNOutputMulti_EN-6" />
+                </TypeRestriction>
+              </ParameterType>
 
               <ParameterType Id="%AID%_PT-BTNSendingEvent" Name="BTNSendingEvent">
                 <TypeRestriction Base="Value" SizeInBit="1">
-                  <Enumeration Text="Nicht Senden" Value="0" Id="%AID%_PT-BTNSendingEvent_EN-0" />
-                  <Enumeration Text="Senden"       Value="1" Id="%AID%_PT-BTNSendingEvent_EN-1" />
+                  <Enumeration Text="Inaktiv" Value="0" Id="%AID%_PT-BTNSendingEvent_EN-0" />
+                  <Enumeration Text="Aktiv"   Value="1" Id="%AID%_PT-BTNSendingEvent_EN-1" />
                 </TypeRestriction>
               </ParameterType>
+
               <ParameterType Id="%AID%_PT-BTNOutputDpt1NoSending" Name="BTNOutputDpt1NoSending">
                 <TypeRestriction Base="Value" SizeInBit="16">
-                  <Enumeration Text="Nicht senden" Value="1" Id="%AID%_PT-BTNOutputDpt1NoSending_EN-0" />
-                  <Enumeration Text="AUS (0)"      Value="1" Id="%AID%_PT-BTNOutputDpt1NoSending_EN-1" />
-                  <Enumeration Text="EIN (1)"      Value="2" Id="%AID%_PT-BTNOutputDpt1NoSending_EN-2" />
-                  <Enumeration Text="Umschalten"   Value="3" Id="%AID%_PT-BTNOutputDpt1NoSending_EN-3" />
+                  <Enumeration Text="Inaktiv"    Value="1" Id="%AID%_PT-BTNOutputDpt1NoSending_EN-0" />
+                  <Enumeration Text="AUS (0)"    Value="1" Id="%AID%_PT-BTNOutputDpt1NoSending_EN-1" />
+                  <Enumeration Text="EIN (1)"    Value="2" Id="%AID%_PT-BTNOutputDpt1NoSending_EN-2" />
+                  <Enumeration Text="Umschalten" Value="3" Id="%AID%_PT-BTNOutputDpt1NoSending_EN-3" />
                 </TypeRestriction>
               </ParameterType>
+
               <ParameterType Id="%AID%_PT-BTNOutputDpt1" Name="BTNOutputDpt1">
                 <TypeRestriction Base="Value" SizeInBit="16">
                   <Enumeration Text="AUS (0)"    Value="1" Id="%AID%_PT-BTNOutputDpt1_EN-1" />
@@ -114,13 +73,15 @@
                   <Enumeration Text="Umschalten" Value="3" Id="%AID%_PT-BTNOutputDpt1_EN-3" />
                 </TypeRestriction>
               </ParameterType>
+
               <ParameterType Id="%AID%_PT-BTNOutput2" Name="BTNOutput2">
                 <TypeRestriction Base="Value" SizeInBit="2">
-                  <Enumeration Text="Nicht Senden" Value="0" Id="%AID%_PT-BTNOutput2_EN-0" />
-                  <Enumeration Text="AUS (0)"      Value="2" Id="%AID%_PT-BTNOutput2_EN-2" />
-                  <Enumeration Text="EIN (1)"      Value="3" Id="%AID%_PT-BTNOutput2_EN-3" />
+                  <Enumeration Text="Inaktiv" Value="0" Id="%AID%_PT-BTNOutput2_EN-0" />
+                  <Enumeration Text="AUS (0)" Value="2" Id="%AID%_PT-BTNOutput2_EN-2" />
+                  <Enumeration Text="EIN (1)" Value="3" Id="%AID%_PT-BTNOutput2_EN-3" />
                 </TypeRestriction>
               </ParameterType>
+
               <ParameterType Id="%AID%_PT-BTNOutputDpt2" Name="BTNOutputDpt2">
                 <TypeRestriction Base="Value" SizeInBit="16">
                   <Enumeration Text="normal AUS (00)"           Value="0"  Id="%AID%_PT-BTNOutputDpt2_EN-0" />
@@ -131,6 +92,7 @@
                   <Enumeration Text="priorität Umschalten (1_)" Value="11" Id="%AID%_PT-BTNOutputDpt2_EN-11" />
                 </TypeRestriction>
               </ParameterType>
+
               <ParameterType Id="%AID%_PT-BTNOutputDpt3007" Name="BTNOutputDpt3007">
                 <TypeRestriction Base="Value" SizeInBit="16">
                   <Enumeration Text="Verringern, Stop (00)" Value="0"   Id="%AID%_PT-BTNOutputDpt3007_EN-0" />
@@ -153,6 +115,7 @@
                   <Enumeration Text="1-Taster, 100%"        Value="17"  Id="%AID%_PT-BTNOutputDpt3007_EN-17" />
                 </TypeRestriction>
               </ParameterType>
+
               <ParameterType Id="%AID%_PT-BTNOutputDpt3008" Name="BTNOutputDpt3008">
                 <TypeRestriction Base="Value" SizeInBit="16">
                   <Enumeration Text="Runter, Stop (00)" Value="0"   Id="%AID%_PT-BTNOutputDpt3008_EN-0" />
@@ -175,15 +138,19 @@
                   <Enumeration Text="1-Taster, 100%"    Value="17"  Id="%AID%_PT-BTNOutputDpt3008_EN-17" />
                 </TypeRestriction>
               </ParameterType>
+
               <ParameterType Id="%AID%_PT-BTNOutputDpt5" Name="BTNOutputDpt5">
                 <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="0" maxInclusive="255" />
               </ParameterType>
+
               <ParameterType Id="%AID%_PT-BTNOutputDpt5001" Name="BTNOutputDpt5001">
                 <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="0" maxInclusive="100" />
               </ParameterType>
+
               <ParameterType Id="%AID%_PT-BTNOutputDpt9" Name="BTNOutputDpt9">
                 <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="0" maxInclusive="65535" />
               </ParameterType>
+
               <ParameterType Id="%AID%_PT-BTNOutputDpt18" Name="BTNOutputDpt18">
                 <TypeRestriction Base="Value" SizeInBit="16">
                   <Enumeration Text="Szene 1 (Aktivieren)" Value="1" Id="%AID%_PT-BTNOutputDpt18_EN-1" />
@@ -317,182 +284,6 @@
                 </TypeRestriction>
               </ParameterType>
 
-
-              <ParameterType Id="%AID%_PT-BTNOutputChanger" Name="BTNOutputChanger">
-                <TypeRestriction Base="Value" SizeInBit="2">
-                  <Enumeration Text="Anfang" Value="0" Id="%AID%_PT-BTNOutputChanger_EN-0" />
-                  <Enumeration Text="Hoch" Value="1" Id="%AID%_PT-BTNOutputChanger_EN-1" />
-                  <Enumeration Text="Runter" Value="2" Id="%AID%_PT-BTNOutputChanger_EN-2" />
-                  <Enumeration Text="Ende" Value="3" Id="%AID%_PT-BTNOutputChanger_EN-3" />
-                </TypeRestriction>
-              </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputDirection" Name="BTNOutputDirection">
-                <TypeRestriction Base="Value" SizeInBit="1">
-                  <Enumeration Text="Auf/Ab" Value="0" Id="%AID%_PT-BTNOutputDirection_EN-0" />
-                  <Enumeration Text="Ab/Auf" Value="1" Id="%AID%_PT-BTNOutputDirection_EN-1" />
-                </TypeRestriction>
-              </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputJalousie" Name="BTNOutputJalousie">
-                <TypeRestriction Base="Value" SizeInBit="1">
-                  <Enumeration Text="Kurz=Stopp/Lamellen / Lang=Fahren" Value="0" Id="%AID%_PT-BTNOutputJalousie_EN-0" />
-                  <Enumeration Text="Kurz=Fahren / Lang=Stopp/Lamellen" Value="1" Id="%AID%_PT-BTNOutputJalousie_EN-1" />
-                </TypeRestriction>
-              </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputDim" Name="BTNOutputDim">
-                <TypeRestriction Base="Value" SizeInBit="2">
-                  <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNOutputDim_EN-0" />
-                  <Enumeration Text="Heller" Value="1" Id="%AID%_PT-BTNOutputDim_EN-1" />
-                  <Enumeration Text="Dunkler" Value="2" Id="%AID%_PT-BTNOutputDim_EN-2" />
-                  <Enumeration Text="1-Taster Dimmen" Value="3" Id="%AID%_PT-BTNOutputDim_EN-3" />
-                </TypeRestriction>
-              </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNOutputJal" Name="BTNOutputJal">
-                <TypeRestriction Base="Value" SizeInBit="2">
-                  <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNOutputJal_EN-0" />
-                  <Enumeration Text="Hoch" Value="1" Id="%AID%_PT-BTNOutputJal_EN-1" />
-                  <Enumeration Text="Runter" Value="2" Id="%AID%_PT-BTNOutputJal_EN-2" />
-                  <Enumeration Text="1-Taster Jalousie" Value="3" Id="%AID%_PT-BTNOutputJal_EN-3" />
-                </TypeRestriction>
-              </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNEvent" Name="BTNEvent">
-                <TypeRestriction Base="Value" SizeInBit="1">
-                  <Enumeration Text="Loslassen" Value="0" Id="%AID%_PT-BTNEvent_EN-0" />
-                  <Enumeration Text="Drücken" Value="1" Id="%AID%_PT-BTNEvent_EN-1" />
-                </TypeRestriction>
-              </ParameterType>
-              <ParameterType Id="%AID%_PT-BTNScene" Name="BTNScene">
-                <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNScene_EN-0" />
-                  <Enumeration Text="Szene 1 (Aktivieren)" Value="1" Id="%AID%_PT-BTNScene_EN-1" />
-                  <Enumeration Text="Szene 2 (Aktivieren)" Value="2" Id="%AID%_PT-BTNScene_EN-2" />
-                  <Enumeration Text="Szene 3 (Aktivieren)" Value="3" Id="%AID%_PT-BTNScene_EN-3" />
-                  <Enumeration Text="Szene 4 (Aktivieren)" Value="4" Id="%AID%_PT-BTNScene_EN-4" />
-                  <Enumeration Text="Szene 5 (Aktivieren)" Value="5" Id="%AID%_PT-BTNScene_EN-5" />
-                  <Enumeration Text="Szene 6 (Aktivieren)" Value="6" Id="%AID%_PT-BTNScene_EN-6" />
-                  <Enumeration Text="Szene 7 (Aktivieren)" Value="7" Id="%AID%_PT-BTNScene_EN-7" />
-                  <Enumeration Text="Szene 8 (Aktivieren)" Value="8" Id="%AID%_PT-BTNScene_EN-8" />
-                  <Enumeration Text="Szene 9 (Aktivieren)" Value="9" Id="%AID%_PT-BTNScene_EN-9" />
-                  <Enumeration Text="Szene 10 (Aktivieren)" Value="10" Id="%AID%_PT-BTNScene_EN-10" />
-                  <Enumeration Text="Szene 11 (Aktivieren)" Value="11" Id="%AID%_PT-BTNScene_EN-11" />
-                  <Enumeration Text="Szene 12 (Aktivieren)" Value="12" Id="%AID%_PT-BTNScene_EN-12" />
-                  <Enumeration Text="Szene 13 (Aktivieren)" Value="13" Id="%AID%_PT-BTNScene_EN-13" />
-                  <Enumeration Text="Szene 14 (Aktivieren)" Value="14" Id="%AID%_PT-BTNScene_EN-14" />
-                  <Enumeration Text="Szene 15 (Aktivieren)" Value="15" Id="%AID%_PT-BTNScene_EN-15" />
-                  <Enumeration Text="Szene 16 (Aktivieren)" Value="16" Id="%AID%_PT-BTNScene_EN-16" />
-                  <Enumeration Text="Szene 17 (Aktivieren)" Value="17" Id="%AID%_PT-BTNScene_EN-17" />
-                  <Enumeration Text="Szene 18 (Aktivieren)" Value="18" Id="%AID%_PT-BTNScene_EN-18" />
-                  <Enumeration Text="Szene 19 (Aktivieren)" Value="19" Id="%AID%_PT-BTNScene_EN-19" />
-                  <Enumeration Text="Szene 20 (Aktivieren)" Value="20" Id="%AID%_PT-BTNScene_EN-20" />
-                  <Enumeration Text="Szene 21 (Aktivieren)" Value="21" Id="%AID%_PT-BTNScene_EN-21" />
-                  <Enumeration Text="Szene 22 (Aktivieren)" Value="22" Id="%AID%_PT-BTNScene_EN-22" />
-                  <Enumeration Text="Szene 23 (Aktivieren)" Value="23" Id="%AID%_PT-BTNScene_EN-23" />
-                  <Enumeration Text="Szene 24 (Aktivieren)" Value="24" Id="%AID%_PT-BTNScene_EN-24" />
-                  <Enumeration Text="Szene 25 (Aktivieren)" Value="25" Id="%AID%_PT-BTNScene_EN-25" />
-                  <Enumeration Text="Szene 26 (Aktivieren)" Value="26" Id="%AID%_PT-BTNScene_EN-26" />
-                  <Enumeration Text="Szene 27 (Aktivieren)" Value="27" Id="%AID%_PT-BTNScene_EN-27" />
-                  <Enumeration Text="Szene 28 (Aktivieren)" Value="28" Id="%AID%_PT-BTNScene_EN-28" />
-                  <Enumeration Text="Szene 29 (Aktivieren)" Value="29" Id="%AID%_PT-BTNScene_EN-29" />
-                  <Enumeration Text="Szene 30 (Aktivieren)" Value="30" Id="%AID%_PT-BTNScene_EN-30" />
-                  <Enumeration Text="Szene 31 (Aktivieren)" Value="31" Id="%AID%_PT-BTNScene_EN-31" />
-                  <Enumeration Text="Szene 32 (Aktivieren)" Value="32" Id="%AID%_PT-BTNScene_EN-32" />
-                  <Enumeration Text="Szene 33 (Aktivieren)" Value="33" Id="%AID%_PT-BTNScene_EN-33" />
-                  <Enumeration Text="Szene 34 (Aktivieren)" Value="34" Id="%AID%_PT-BTNScene_EN-34" />
-                  <Enumeration Text="Szene 35 (Aktivieren)" Value="35" Id="%AID%_PT-BTNScene_EN-35" />
-                  <Enumeration Text="Szene 36 (Aktivieren)" Value="36" Id="%AID%_PT-BTNScene_EN-36" />
-                  <Enumeration Text="Szene 37 (Aktivieren)" Value="37" Id="%AID%_PT-BTNScene_EN-37" />
-                  <Enumeration Text="Szene 38 (Aktivieren)" Value="38" Id="%AID%_PT-BTNScene_EN-38" />
-                  <Enumeration Text="Szene 39 (Aktivieren)" Value="39" Id="%AID%_PT-BTNScene_EN-39" />
-                  <Enumeration Text="Szene 40 (Aktivieren)" Value="40" Id="%AID%_PT-BTNScene_EN-40" />
-                  <Enumeration Text="Szene 41 (Aktivieren)" Value="41" Id="%AID%_PT-BTNScene_EN-41" />
-                  <Enumeration Text="Szene 42 (Aktivieren)" Value="42" Id="%AID%_PT-BTNScene_EN-42" />
-                  <Enumeration Text="Szene 43 (Aktivieren)" Value="43" Id="%AID%_PT-BTNScene_EN-43" />
-                  <Enumeration Text="Szene 44 (Aktivieren)" Value="44" Id="%AID%_PT-BTNScene_EN-44" />
-                  <Enumeration Text="Szene 45 (Aktivieren)" Value="45" Id="%AID%_PT-BTNScene_EN-45" />
-                  <Enumeration Text="Szene 46 (Aktivieren)" Value="46" Id="%AID%_PT-BTNScene_EN-46" />
-                  <Enumeration Text="Szene 47 (Aktivieren)" Value="47" Id="%AID%_PT-BTNScene_EN-47" />
-                  <Enumeration Text="Szene 48 (Aktivieren)" Value="48" Id="%AID%_PT-BTNScene_EN-48" />
-                  <Enumeration Text="Szene 49 (Aktivieren)" Value="49" Id="%AID%_PT-BTNScene_EN-49" />
-                  <Enumeration Text="Szene 50 (Aktivieren)" Value="50" Id="%AID%_PT-BTNScene_EN-50" />
-                  <Enumeration Text="Szene 51 (Aktivieren)" Value="51" Id="%AID%_PT-BTNScene_EN-51" />
-                  <Enumeration Text="Szene 52 (Aktivieren)" Value="52" Id="%AID%_PT-BTNScene_EN-52" />
-                  <Enumeration Text="Szene 53 (Aktivieren)" Value="53" Id="%AID%_PT-BTNScene_EN-53" />
-                  <Enumeration Text="Szene 54 (Aktivieren)" Value="54" Id="%AID%_PT-BTNScene_EN-54" />
-                  <Enumeration Text="Szene 55 (Aktivieren)" Value="55" Id="%AID%_PT-BTNScene_EN-55" />
-                  <Enumeration Text="Szene 56 (Aktivieren)" Value="56" Id="%AID%_PT-BTNScene_EN-56" />
-                  <Enumeration Text="Szene 57 (Aktivieren)" Value="57" Id="%AID%_PT-BTNScene_EN-57" />
-                  <Enumeration Text="Szene 58 (Aktivieren)" Value="58" Id="%AID%_PT-BTNScene_EN-58" />
-                  <Enumeration Text="Szene 59 (Aktivieren)" Value="59" Id="%AID%_PT-BTNScene_EN-59" />
-                  <Enumeration Text="Szene 60 (Aktivieren)" Value="60" Id="%AID%_PT-BTNScene_EN-60" />
-                  <Enumeration Text="Szene 61 (Aktivieren)" Value="61" Id="%AID%_PT-BTNScene_EN-61" />
-                  <Enumeration Text="Szene 62 (Aktivieren)" Value="62" Id="%AID%_PT-BTNScene_EN-62" />
-                  <Enumeration Text="Szene 63 (Aktivieren)" Value="63" Id="%AID%_PT-BTNScene_EN-63" />
-                  <Enumeration Text="Szene 64 (Aktivieren)" Value="64" Id="%AID%_PT-BTNScene_EN-64" />
-                  <Enumeration Text="Szene 1 (Lernen)" Value="101" Id="%AID%_PT-BTNScene_EN-101" />
-                  <Enumeration Text="Szene 2 (Lernen)" Value="102" Id="%AID%_PT-BTNScene_EN-102" />
-                  <Enumeration Text="Szene 3 (Lernen)" Value="103" Id="%AID%_PT-BTNScene_EN-103" />
-                  <Enumeration Text="Szene 4 (Lernen)" Value="104" Id="%AID%_PT-BTNScene_EN-104" />
-                  <Enumeration Text="Szene 5 (Lernen)" Value="105" Id="%AID%_PT-BTNScene_EN-105" />
-                  <Enumeration Text="Szene 6 (Lernen)" Value="106" Id="%AID%_PT-BTNScene_EN-106" />
-                  <Enumeration Text="Szene 7 (Lernen)" Value="107" Id="%AID%_PT-BTNScene_EN-107" />
-                  <Enumeration Text="Szene 8 (Lernen)" Value="108" Id="%AID%_PT-BTNScene_EN-108" />
-                  <Enumeration Text="Szene 9 (Lernen)" Value="109" Id="%AID%_PT-BTNScene_EN-109" />
-                  <Enumeration Text="Szene 10 (Lernen)" Value="110" Id="%AID%_PT-BTNScene_EN-110" />
-                  <Enumeration Text="Szene 11 (Lernen)" Value="111" Id="%AID%_PT-BTNScene_EN-111" />
-                  <Enumeration Text="Szene 12 (Lernen)" Value="112" Id="%AID%_PT-BTNScene_EN-112" />
-                  <Enumeration Text="Szene 13 (Lernen)" Value="113" Id="%AID%_PT-BTNScene_EN-113" />
-                  <Enumeration Text="Szene 14 (Lernen)" Value="114" Id="%AID%_PT-BTNScene_EN-114" />
-                  <Enumeration Text="Szene 15 (Lernen)" Value="115" Id="%AID%_PT-BTNScene_EN-115" />
-                  <Enumeration Text="Szene 16 (Lernen)" Value="116" Id="%AID%_PT-BTNScene_EN-116" />
-                  <Enumeration Text="Szene 17 (Lernen)" Value="117" Id="%AID%_PT-BTNScene_EN-117" />
-                  <Enumeration Text="Szene 18 (Lernen)" Value="118" Id="%AID%_PT-BTNScene_EN-118" />
-                  <Enumeration Text="Szene 19 (Lernen)" Value="119" Id="%AID%_PT-BTNScene_EN-119" />
-                  <Enumeration Text="Szene 20 (Lernen)" Value="120" Id="%AID%_PT-BTNScene_EN-120" />
-                  <Enumeration Text="Szene 21 (Lernen)" Value="121" Id="%AID%_PT-BTNScene_EN-121" />
-                  <Enumeration Text="Szene 22 (Lernen)" Value="122" Id="%AID%_PT-BTNScene_EN-122" />
-                  <Enumeration Text="Szene 23 (Lernen)" Value="123" Id="%AID%_PT-BTNScene_EN-123" />
-                  <Enumeration Text="Szene 24 (Lernen)" Value="124" Id="%AID%_PT-BTNScene_EN-124" />
-                  <Enumeration Text="Szene 25 (Lernen)" Value="125" Id="%AID%_PT-BTNScene_EN-125" />
-                  <Enumeration Text="Szene 26 (Lernen)" Value="126" Id="%AID%_PT-BTNScene_EN-126" />
-                  <Enumeration Text="Szene 27 (Lernen)" Value="127" Id="%AID%_PT-BTNScene_EN-127" />
-                  <Enumeration Text="Szene 28 (Lernen)" Value="128" Id="%AID%_PT-BTNScene_EN-128" />
-                  <Enumeration Text="Szene 29 (Lernen)" Value="129" Id="%AID%_PT-BTNScene_EN-129" />
-                  <Enumeration Text="Szene 30 (Lernen)" Value="130" Id="%AID%_PT-BTNScene_EN-130" />
-                  <Enumeration Text="Szene 31 (Lernen)" Value="131" Id="%AID%_PT-BTNScene_EN-131" />
-                  <Enumeration Text="Szene 32 (Lernen)" Value="132" Id="%AID%_PT-BTNScene_EN-132" />
-                  <Enumeration Text="Szene 33 (Lernen)" Value="133" Id="%AID%_PT-BTNScene_EN-133" />
-                  <Enumeration Text="Szene 34 (Lernen)" Value="134" Id="%AID%_PT-BTNScene_EN-134" />
-                  <Enumeration Text="Szene 35 (Lernen)" Value="135" Id="%AID%_PT-BTNScene_EN-135" />
-                  <Enumeration Text="Szene 36 (Lernen)" Value="136" Id="%AID%_PT-BTNScene_EN-136" />
-                  <Enumeration Text="Szene 37 (Lernen)" Value="137" Id="%AID%_PT-BTNScene_EN-137" />
-                  <Enumeration Text="Szene 38 (Lernen)" Value="138" Id="%AID%_PT-BTNScene_EN-138" />
-                  <Enumeration Text="Szene 39 (Lernen)" Value="139" Id="%AID%_PT-BTNScene_EN-139" />
-                  <Enumeration Text="Szene 40 (Lernen)" Value="140" Id="%AID%_PT-BTNScene_EN-140" />
-                  <Enumeration Text="Szene 41 (Lernen)" Value="141" Id="%AID%_PT-BTNScene_EN-141" />
-                  <Enumeration Text="Szene 42 (Lernen)" Value="142" Id="%AID%_PT-BTNScene_EN-142" />
-                  <Enumeration Text="Szene 43 (Lernen)" Value="143" Id="%AID%_PT-BTNScene_EN-143" />
-                  <Enumeration Text="Szene 44 (Lernen)" Value="144" Id="%AID%_PT-BTNScene_EN-144" />
-                  <Enumeration Text="Szene 45 (Lernen)" Value="145" Id="%AID%_PT-BTNScene_EN-145" />
-                  <Enumeration Text="Szene 46 (Lernen)" Value="146" Id="%AID%_PT-BTNScene_EN-146" />
-                  <Enumeration Text="Szene 47 (Lernen)" Value="147" Id="%AID%_PT-BTNScene_EN-147" />
-                  <Enumeration Text="Szene 48 (Lernen)" Value="148" Id="%AID%_PT-BTNScene_EN-148" />
-                  <Enumeration Text="Szene 49 (Lernen)" Value="149" Id="%AID%_PT-BTNScene_EN-149" />
-                  <Enumeration Text="Szene 50 (Lernen)" Value="150" Id="%AID%_PT-BTNScene_EN-150" />
-                  <Enumeration Text="Szene 51 (Lernen)" Value="151" Id="%AID%_PT-BTNScene_EN-151" />
-                  <Enumeration Text="Szene 52 (Lernen)" Value="152" Id="%AID%_PT-BTNScene_EN-152" />
-                  <Enumeration Text="Szene 53 (Lernen)" Value="153" Id="%AID%_PT-BTNScene_EN-153" />
-                  <Enumeration Text="Szene 54 (Lernen)" Value="154" Id="%AID%_PT-BTNScene_EN-154" />
-                  <Enumeration Text="Szene 55 (Lernen)" Value="155" Id="%AID%_PT-BTNScene_EN-155" />
-                  <Enumeration Text="Szene 56 (Lernen)" Value="156" Id="%AID%_PT-BTNScene_EN-156" />
-                  <Enumeration Text="Szene 57 (Lernen)" Value="157" Id="%AID%_PT-BTNScene_EN-157" />
-                  <Enumeration Text="Szene 58 (Lernen)" Value="158" Id="%AID%_PT-BTNScene_EN-158" />
-                  <Enumeration Text="Szene 59 (Lernen)" Value="159" Id="%AID%_PT-BTNScene_EN-159" />
-                  <Enumeration Text="Szene 60 (Lernen)" Value="160" Id="%AID%_PT-BTNScene_EN-160" />
-                  <Enumeration Text="Szene 61 (Lernen)" Value="161" Id="%AID%_PT-BTNScene_EN-161" />
-                  <Enumeration Text="Szene 62 (Lernen)" Value="162" Id="%AID%_PT-BTNScene_EN-162" />
-                  <Enumeration Text="Szene 63 (Lernen)" Value="163" Id="%AID%_PT-BTNScene_EN-163" />
-                  <Enumeration Text="Szene 64 (Lernen)" Value="164" Id="%AID%_PT-BTNScene_EN-164" />
-                </TypeRestriction>
-              </ParameterType>
               <ParameterType Id="%AID%_PT-BTNReactionTime" Name="BTNReactionTime">
                 <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="0,1s" Value="1" Id="%AID%_PT-BTNReactionTime_EN-1" />
@@ -702,7 +493,7 @@
               </ParameterType>
             </ParameterTypes>
             <Parameters>
-              <Parameter Id="%AID%_P-%T%000001" Name="BTN%C%HideInputs" ParameterType="%AID%_PT-CheckBox" Text="Hide Inputs" Value="0" Access="None"/>
+              <Parameter Id="%AID%_P-%T%000001" Name="BTN%C%HideInputs" ParameterType="%AID%_PT-CheckBox" Text="Hide Inputs" Value="0" /><!-- Access="None" -->
               <Union SizeInBit="32">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%000011" Name="ReactionTimeMultiClick" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Mehrfach-Klick" Value="5" />
