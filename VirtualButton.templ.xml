@@ -8,7 +8,7 @@
           <Static>
             <Parameters>
               <Parameter Id="%AID%_P-%T%%CCC%000" Name="BTN%C%Name" ParameterType="%AID%_PT-Text40Byte" Text="Beschreibung" Value="" />
-              <Parameter Id="%AID%_P-%T%%CCC%003" Name="BTN%C%ShowDynamicStatus" ParameterType="%AID%_PT-CheckBox" Text="Dynamischer Status" Value="0" Access="None"/>
+              <Parameter Id="%AID%_P-%T%%CCC%003" Name="BTN%C%ShowDynamicStatus" ParameterType="%AID%_PT-CheckBox" Text="Dynamischer Status" Value="0" Access="None" />
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%001" Name="BTN%C%Mode" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNMode" Text="Modus" Value="0" />
@@ -42,10 +42,10 @@
               <!-- NEW -->
               <Union SizeInBit="32">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="28" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%100" Name="BTN%C%OutputShort_DPT" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNOutput" Text="Ausgabe DPT" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%200" Name="BTN%C%OutputLong_DPT" Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNOutput" Text="Ausgabe DPT" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%300" Name="BTN%C%OutputExtraLong_DPT" Offset="3" BitOffset="0" ParameterType="%AID%_PT-BTNOutput" Text="Ausgabe DPT" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%400" Name="BTN%C%OutputMulti_DPT" Offset="4" BitOffset="0" ParameterType="%AID%_PT-BTNOutputMulti" Text="Ausgabe DPT" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%100" Name="BTN%C%OutputShort_DPT"     Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNOutput"      Text="Ausgabe" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%200" Name="BTN%C%OutputLong_DPT"      Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNOutput"      Text="Ausgabe" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%300" Name="BTN%C%OutputExtraLong_DPT" Offset="3" BitOffset="0" ParameterType="%AID%_PT-BTNOutput"      Text="Ausgabe" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%400" Name="BTN%C%OutputMulti_DPT"     Offset="4" BitOffset="0" ParameterType="%AID%_PT-BTNOutputMulti" Text="Ausgabe" Value="0" />
               </Union>
 
               <Union SizeInBit="8">
@@ -62,13 +62,13 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%103" Name="BTN%C%OutputShort_Taster2_Active_Press"       Offset="0" BitOffset="2" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Drücken"   Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%104" Name="BTN%C%OutputShort_Taster2_Active_Release"     Offset="0" BitOffset="3" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Loslassen" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%201" Name="BTN%C%OutputLong_Taster1_Active_Press"        Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Drücken"   Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%202" Name="BTN%C%OutputLong_Taster1_Active_Release"      Offset="1" BitOffset="1" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Loslassen" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%202" Name="BTN%C%OutputLong_Taster1_Active_Release"      Offset="1" BitOffset="1" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Loslassen" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%203" Name="BTN%C%OutputLong_Taster2_Active_Press"        Offset="1" BitOffset="2" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Drücken"   Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%204" Name="BTN%C%OutputLong_Taster2_Active_Release"      Offset="1" BitOffset="3" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Loslassen" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%204" Name="BTN%C%OutputLong_Taster2_Active_Release"      Offset="1" BitOffset="3" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Loslassen" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%301" Name="BTN%C%OutputExtraLong_Taster1_Active_Press"   Offset="2" BitOffset="0" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Drücken"   Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%302" Name="BTN%C%OutputExtraLong_Taster1_Active_Release" Offset="2" BitOffset="1" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Loslassen" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%302" Name="BTN%C%OutputExtraLong_Taster1_Active_Release" Offset="2" BitOffset="1" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Loslassen" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%303" Name="BTN%C%OutputExtraLong_Taster2_Active_Press"   Offset="2" BitOffset="2" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Drücken"   Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%304" Name="BTN%C%OutputExtraLong_Taster2_Active_Release" Offset="2" BitOffset="3" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Loslassen" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%304" Name="BTN%C%OutputExtraLong_Taster2_Active_Release" Offset="2" BitOffset="3" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Loslassen" Value="1" />
               </Union>
 
               <Union SizeInBit="240">
@@ -225,12 +225,12 @@
 
               <Union SizeInBit="16">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="46" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%191" Name="BTN%C%Output2Short_Taster1"      Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNOutput2" Text="  Zusätzliches DPT1 beim Loslassen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%192" Name="BTN%C%Output2Short_Taster2"      Offset="1" BitOffset="2" ParameterType="%AID%_PT-BTNOutput2" Text="  Zusätzliches DPT1 beim Loslassen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%291" Name="BTN%C%Output2Long_Taster1"       Offset="0" BitOffset="4" ParameterType="%AID%_PT-BTNOutput2" Text="  Zusätzliches DPT1 beim Loslassen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%292" Name="BTN%C%Output2Long_Taster2"       Offset="0" BitOffset="6" ParameterType="%AID%_PT-BTNOutput2" Text="  Zusätzliches DPT1 beim Loslassen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%391" Name="BTN%C%Output2ExtraLong_Taster1"  Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNOutput2" Text="  Zusätzliches DPT1 beim Loslassen" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%392" Name="BTN%C%Output2ExtraLong_Taster2"  Offset="1" BitOffset="2" ParameterType="%AID%_PT-BTNOutput2" Text="  Zusätzliches DPT1 beim Loslassen" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%191" Name="BTN%C%Output2Short_Taster1"      Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNOutput2" Text="  Weitere Ausgabe (DPT1 beim Loslassen)" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%192" Name="BTN%C%Output2Short_Taster2"      Offset="1" BitOffset="2" ParameterType="%AID%_PT-BTNOutput2" Text="  Weitere Ausgabe (DPT1 beim Loslassen)" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%291" Name="BTN%C%Output2Long_Taster1"       Offset="0" BitOffset="4" ParameterType="%AID%_PT-BTNOutput2" Text="  Weitere Ausgabe (DPT1 beim Loslassen)" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%292" Name="BTN%C%Output2Long_Taster2"       Offset="0" BitOffset="6" ParameterType="%AID%_PT-BTNOutput2" Text="  Weitere Ausgabe (DPT1 beim Loslassen)" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%391" Name="BTN%C%Output2ExtraLong_Taster1"  Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNOutput2" Text="  Weitere Ausgabe (DPT1 beim Loslassen)" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%392" Name="BTN%C%Output2ExtraLong_Taster2"  Offset="1" BitOffset="2" ParameterType="%AID%_PT-BTNOutput2" Text="  Weitere Ausgabe (DPT1 beim Loslassen)" Value="0" />
               </Union>
 
             </Parameters>
@@ -738,8 +738,11 @@
                                       </when>
                                     </choose>
                                   </when>
-                                  
-                                  <when test="!=0">
+                                </choose>
+
+                                <!-- Zeigt ein weitere DPT1 wenn keine Mehrachklick aktiv ist -->
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101">
+                                  <when test="!=3">
                                     <!-- Additional DPT1 -->     
                                     <ParameterRefRef RefId="%AID%_UP-%T%%CCC%191_R-%T%%CCC%19101" />
                                   </when>
@@ -896,18 +899,20 @@
                                           </when>
                                         </choose>
                                       </when>
-
-                                      <when test="!=0">
-                                        <!-- Additional DPT1 -->     
-                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%192_R-%T%%CCC%19201" />
-                                      </when>
                                     </choose>
-
                                   </when>
                                 </choose>
+
+                                <!-- Zeigt ein weitere DPT1 wenn keine Mehrachklick aktiv ist -->
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101">
+                                  <when test="!=3">
+                                    <!-- Additional DPT1 -->     
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%192_R-%T%%CCC%19201" />
+                                  </when>
+                                </choose>
+
                               </when>
                             </choose>
-                            
                           </when>
                           <when test="3">
                             <!-- MCBLOCK -->
@@ -1016,6 +1021,335 @@
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Langer Tastendruck" UIHint="Headline" />
 
+                        <!-- DPT Select -->
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%200_R-%T%%CCC%20001" />
+                        <!-- DPT nicht deaktiviert-->
+                        <choose ParamRefId="%AID%_UP-%T%%CCC%200_R-%T%%CCC%20001">
+                          <when test="!=0">
+                            <!-- 1. Taster -->                            
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="1. Taster" />
+                            
+                            <choose ParamRefId="%AID%_UP-%T%%CCC%200_R-%T%%CCC%20001">
+                              <!-- DPT1-->
+                              <when test="1">
+                                <!-- Event Press -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%201_R-%T%%CCC%20102" />
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%201_R-%T%%CCC%20102">
+                                  <when test="1">
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%205_R-%T%%CCC%20501" />
+                                  </when>
+                                </choose>
+
+                                <!-- Event Release -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%202_R-%T%%CCC%20201" />
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%202_R-%T%%CCC%20201">
+                                  <when test="1">
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%206_R-%T%%CCC%20601" />
+                                  </when>
+                                </choose>
+                              </when>
+                              <!-- DPT2-->
+                              <when test="2">
+                                <!-- Event Press -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%201_R-%T%%CCC%20101" />
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%201_R-%T%%CCC%20101">
+                                  <when test="1">
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%209_R-%T%%CCC%20901" />
+                                  </when>
+                                </choose>
+
+                                <!-- Event Release -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%202_R-%T%%CCC%20201" />
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%202_R-%T%%CCC%20201">
+                                  <when test="1">
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%210_R-%T%%CCC%21001" />
+                                  </when>
+                                </choose>
+                              </when>
+                              <!-- DPT5-->
+                              <when test="4">
+                                <!-- Event Press -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%201_R-%T%%CCC%20101" />
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%201_R-%T%%CCC%20101">
+                                  <when test="1">
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%213_R-%T%%CCC%21301" />
+                                  </when>
+                                </choose>
+
+                                <!-- Event Release -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%202_R-%T%%CCC%20201" />
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%202_R-%T%%CCC%20201">
+                                  <when test="1">
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%214_R-%T%%CCC%21401" />
+                                  </when>
+                                </choose>
+                              </when>
+                              <!-- DPT5001-->
+                              <when test="5">
+                                <!-- Event Press -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%201_R-%T%%CCC%20101" />
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%201_R-%T%%CCC%20101">
+                                  <when test="1">
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%217_R-%T%%CCC%21701" />
+                                  </when>
+                                </choose>
+
+                                <!-- Event Release -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%202_R-%T%%CCC%20201" />
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%202_R-%T%%CCC%20201">
+                                  <when test="1">
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%218_R-%T%%CCC%21801" />
+                                  </when>
+                                </choose>
+                              </when>
+                              <!-- DPT9 -->
+                              <when test="9">
+                                <!-- Event Press -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%201_R-%T%%CCC%20101" />
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%201_R-%T%%CCC%20101">
+                                  <when test="1">
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%221_R-%T%%CCC%22101" />
+                                  </when>
+                                </choose>
+
+                                <!-- Event Release -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%202_R-%T%%CCC%20201" />
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%202_R-%T%%CCC%20201">
+                                  <when test="1">
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%222_R-%T%%CCC%22201" />
+                                  </when>
+                                </choose>
+                              </when>
+                              <!-- DPT18 -->
+                              <when test="6">
+                                <!-- Event Press -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%201_R-%T%%CCC%20101" />
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%201_R-%T%%CCC%20101">
+                                  <when test="1">
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%225_R-%T%%CCC%22501" />
+                                  </when>
+                                </choose>
+
+                                <!-- Event Release -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%202_R-%T%%CCC%20201" />
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%202_R-%T%%CCC%20201">
+                                  <when test="1">
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%226_R-%T%%CCC%22601" />
+                                  </when>
+                                </choose>
+                              </when>
+                              <!-- DPT3007 -->
+                              <when test="7">
+                                <!-- Event Press -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%201_R-%T%%CCC%20102" />
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%201_R-%T%%CCC%20102">
+                                  <when test="1">
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%229_R-%T%%CCC%22901" />
+                                  </when>
+                                </choose>
+
+                                <!-- Event Release -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%202_R-%T%%CCC%20201" />
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%202_R-%T%%CCC%20201">
+                                  <when test="1">
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%230_R-%T%%CCC%23001" />
+                                  </when>
+                                </choose>
+                              </when>
+                              <!-- DPT3008 -->
+                              <when test="8">
+                                <!-- Event Press -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%201_R-%T%%CCC%20102" />
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%201_R-%T%%CCC%20102">
+                                  <when test="1">
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%233_R-%T%%CCC%23301" />
+                                  </when>
+                                </choose>
+
+                                <!-- Event Release -->
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%202_R-%T%%CCC%20201" />
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%202_R-%T%%CCC%20201">
+                                  <when test="1">
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%234_R-%T%%CCC%23401" />
+                                  </when>
+                                </choose>
+                              </when>
+                            </choose>
+
+                            <!-- Zeigt ein weitere DPT1 wenn keine Mehrachklick aktiv ist -->
+                            <choose ParamRefId="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101">
+                              <when test="!=3">
+                                <!-- Additional DPT1 -->     
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%291_R-%T%%CCC%29101" />
+                              </when>
+                            </choose>
+
+                            <!-- 2. Taster if enabled -->    
+                            <choose ParamRefId="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101">
+                              <when test="2">
+                                <ParameterSeparator Id="%AID%_PS-nnn" Text=" " />
+                                <ParameterSeparator Id="%AID%_PS-nnn" Text="2. Taster" />
+
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%200_R-%T%%CCC%20001">
+                                  <!-- DPT1-->
+                                  <when test="1">
+                                    <!-- Event Press -->
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%203_R-%T%%CCC%20302" />
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%203_R-%T%%CCC%20302">
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%207_R-%T%%CCC%20701" />
+                                      </when>
+                                    </choose>
+
+                                    <!-- Event Release -->
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%204_R-%T%%CCC%20401" />
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%204_R-%T%%CCC%20401">
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%208_R-%T%%CCC%20801" />
+                                      </when>
+                                    </choose>
+                                  </when>
+                                  <!-- DPT2-->
+                                  <when test="2">
+                                    <!-- Event Press -->
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%203_R-%T%%CCC%20301" />
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%203_R-%T%%CCC%20301">
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%211_R-%T%%CCC%21101" />
+                                      </when>
+                                    </choose>
+
+                                    <!-- Event Release -->
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%204_R-%T%%CCC%20401" />
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%204_R-%T%%CCC%20401">
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%211_R-%T%%CCC%21101" />
+                                      </when>
+                                    </choose>
+                                  </when>
+                                  <!-- DPT5-->
+                                  <when test="4">
+                                    <!-- Event Press -->
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%203_R-%T%%CCC%20301" />
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%203_R-%T%%CCC%20301">
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%215_R-%T%%CCC%21501" />
+                                      </when>
+                                    </choose>
+
+                                    <!-- Event Release -->
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%204_R-%T%%CCC%20401" />
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%204_R-%T%%CCC%20401">
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%216_R-%T%%CCC%21601" />
+                                      </when>
+                                    </choose>
+                                  </when>
+                                  <!-- DPT5001-->
+                                  <when test="5">
+                                    <!-- Event Press -->
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%203_R-%T%%CCC%20301" />
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%203_R-%T%%CCC%20301">
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%219_R-%T%%CCC%21901" />
+                                      </when>
+                                    </choose>
+
+                                    <!-- Event Release -->
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%204_R-%T%%CCC%20401" />
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%204_R-%T%%CCC%20401">
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%220_R-%T%%CCC%22001" />
+                                      </when>
+                                    </choose>
+                                  </when>
+                                  <!-- DPT9 -->
+                                  <when test="9">
+                                    <!-- Event Press -->
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%203_R-%T%%CCC%20301" />
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%203_R-%T%%CCC%20301">
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%223_R-%T%%CCC%22301" />
+                                      </when>
+                                    </choose>
+
+                                    <!-- Event Release -->
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%204_R-%T%%CCC%20401" />
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%204_R-%T%%CCC%20401">
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%224_R-%T%%CCC%22401" />
+                                      </when>
+                                    </choose>
+                                  </when>
+                                  <!-- DPT18 -->
+                                  <when test="6">
+                                    <!-- Event Press -->
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%203_R-%T%%CCC%20301" />
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%203_R-%T%%CCC%20301">
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%227_R-%T%%CCC%22701" />
+                                      </when>
+                                    </choose>
+
+                                    <!-- Event Release -->
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%204_R-%T%%CCC%20401" />
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%204_R-%T%%CCC%20401">
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%228_R-%T%%CCC%22801" />
+                                      </when>
+                                    </choose>
+                                  </when>
+                                  <!-- DPT3007 -->
+                                  <when test="7">
+                                    <!-- Event Press -->
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%203_R-%T%%CCC%20302" />
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%203_R-%T%%CCC%20302">
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%231_R-%T%%CCC%23101" />
+                                      </when>
+                                    </choose>
+
+                                    <!-- Event Release -->
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%204_R-%T%%CCC%20401" />
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%204_R-%T%%CCC%20401">
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%232_R-%T%%CCC%23201" />
+                                      </when>
+                                    </choose>
+                                  </when>
+                                  <!-- DPT3008 -->
+                                  <when test="8">
+                                    <!-- Event Press -->
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%203_R-%T%%CCC%20302" />
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%203_R-%T%%CCC%20302">
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%235_R-%T%%CCC%23501" />
+                                      </when>
+                                    </choose>
+
+                                    <!-- Event Release -->
+                                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%204_R-%T%%CCC%20401" />
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%204_R-%T%%CCC%20401">
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%236_R-%T%%CCC%23601" />
+                                      </when>
+                                    </choose>
+                                  </when>
+                                </choose>
+                              </when>
+                            </choose>
+
+                            <!-- Zeigt ein weitere DPT1 wenn keine Mehrachklick aktiv ist -->
+                            <choose ParamRefId="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101">
+                              <when test="!=3">
+                                <!-- Additional DPT1 -->     
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%292_R-%T%%CCC%29201" />
+                              </when>
+                            </choose>
+
+                          </when>
+                        </choose>
+                            
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Extralanger Tastendruck" UIHint="Headline" />
 
