@@ -31,9 +31,9 @@
                   <Enumeration Text="DPT 2.001 Zwangsführung" Value="2" Id="%AID%_PT-BTNOutput_EN-2" />
                   <Enumeration Text="DPT 3.007 Dimmen" Value="7" Id="%AID%_PT-BTNOutput_EN-7" />
                   <Enumeration Text="DPT 3.008 Jalousie" Value="8" Id="%AID%_PT-BTNOutput_EN-8" />
-                  <Enumeration Text="DPT 5.005 Ganzzahl" Value="4" Id="%AID%_PT-BTNOutput_EN-4" />
-                  <Enumeration Text="DPT 5.001 Prozent" Value="5" Id="%AID%_PT-BTNOutput_EN-5" />
-                  <Enumeration Text="DPT 9.001 Ganzzahl" Value="9" Id="%AID%_PT-BTNOutput_EN-9" />
+                  <Enumeration Text="DPT 5.005 (0..255)" Value="4" Id="%AID%_PT-BTNOutput_EN-4" />
+                  <Enumeration Text="DPT 5.001 (0..100%)" Value="5" Id="%AID%_PT-BTNOutput_EN-5" />
+                  <Enumeration Text="DPT 7.001 (0..65535)" Value="3" Id="%AID%_PT-BTNOutput_EN-3" />
                   <Enumeration Text="DPT 18.001 Szene" Value="6" Id="%AID%_PT-BTNOutput_EN-6" />
                 </TypeRestriction>
               </ParameterType>
@@ -42,9 +42,9 @@
                 <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNOutputMulti_EN-0" />
                   <Enumeration Text="DPT 2.001 Zwangsführung" Value="2" Id="%AID%_PT-BTNOutputMulti_EN-2" />
-                  <Enumeration Text="DPT 5.005 Ganzzahl" Value="4" Id="%AID%_PT-BTNOutputMulti_EN-4" />
-                  <Enumeration Text="DPT 5.001 Prozent" Value="5" Id="%AID%_PT-BTNOutputMulti_EN-5" />
-                  <Enumeration Text="DPT 9.001 Ganzzahl" Value="9" Id="%AID%_PT-BTNOutputMulti_EN-9" />
+                  <Enumeration Text="DPT 5.005 (0..255)" Value="4" Id="%AID%_PT-BTNOutputMulti_EN-4" />
+                  <Enumeration Text="DPT 5.001 (0..100%)" Value="5" Id="%AID%_PT-BTNOutputMulti_EN-5" />
+                  <Enumeration Text="DPT 7.001 (0..65535)" Value="3" Id="%AID%_PT-BTNOutputMulti_EN-3" />
                   <Enumeration Text="DPT 18.001 Szene" Value="6" Id="%AID%_PT-BTNOutputMulti_EN-6" />
                 </TypeRestriction>
               </ParameterType>
@@ -67,8 +67,8 @@
               <ParameterType Id="%AID%_PT-BTNOutput2" Name="BTNOutput2">
                 <TypeRestriction Base="Value" SizeInBit="2">
                   <Enumeration Text="Inaktiv" Value="0" Id="%AID%_PT-BTNOutput2_EN-0" />
-                  <Enumeration Text="AUS (0)" Value="2" Id="%AID%_PT-BTNOutput2_EN-2" />
-                  <Enumeration Text="EIN (1)" Value="3" Id="%AID%_PT-BTNOutput2_EN-3" />
+                  <Enumeration Text="AUS (0)" Value="1" Id="%AID%_PT-BTNOutput2_EN-2" />
+                  <Enumeration Text="EIN (1)" Value="2" Id="%AID%_PT-BTNOutput2_EN-3" />
                 </TypeRestriction>
               </ParameterType>
 
@@ -137,7 +137,7 @@
                 <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="0" maxInclusive="100" />
               </ParameterType>
 
-              <ParameterType Id="%AID%_PT-BTNOutputDpt9" Name="BTNOutputDpt9">
+              <ParameterType Id="%AID%_PT-BTNOutputDpt7" Name="BTNOutputDpt9">
                 <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="0" maxInclusive="65535" />
               </ParameterType>
 

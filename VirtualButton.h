@@ -6,6 +6,14 @@
 #include "hardware.h"
 
 #define BTN_MaxMuliClicks 3
+#define BTN_DPT1 1
+#define BTN_DPT2 2
+#define BTN_DPT5 4
+#define BTN_DPT5001 5
+#define BTN_DPT18 6
+#define BTN_DPT3007 7
+#define BTN_DPT3008 8
+#define BTN_DPT7 3
 
 struct sMultiClickParams
 {
