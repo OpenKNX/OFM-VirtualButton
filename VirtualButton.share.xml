@@ -8,7 +8,6 @@
           <Static>
             <ParameterTypes>
               <ParameterType Id="%AID%_PT-BTNMode" Name="BTNMode">
-
                 <TypeRestriction Base="Value" SizeInBit="4">
                   <Enumeration Text="Deaktviert" Value="0" Id="%AID%_PT-BTNMode_EN-0" />
                   <Enumeration Text="1fach-Taster" Value="1" Id="%AID%_PT-BTNMode_EN-1" />
@@ -54,15 +53,6 @@
                 <TypeRestriction Base="Value" SizeInBit="1">
                   <Enumeration Text="Inaktiv" Value="0" Id="%AID%_PT-BTNSendingEvent_EN-0" />
                   <Enumeration Text="Aktiv"   Value="1" Id="%AID%_PT-BTNSendingEvent_EN-1" />
-                </TypeRestriction>
-              </ParameterType>
-
-              <ParameterType Id="%AID%_PT-BTNOutputDpt1NoSending" Name="BTNOutputDpt1NoSending">
-                <TypeRestriction Base="Value" SizeInBit="16">
-                  <Enumeration Text="Inaktiv"    Value="1" Id="%AID%_PT-BTNOutputDpt1NoSending_EN-0" />
-                  <Enumeration Text="AUS (0)"    Value="1" Id="%AID%_PT-BTNOutputDpt1NoSending_EN-1" />
-                  <Enumeration Text="EIN (1)"    Value="2" Id="%AID%_PT-BTNOutputDpt1NoSending_EN-2" />
-                  <Enumeration Text="Umschalten" Value="3" Id="%AID%_PT-BTNOutputDpt1NoSending_EN-3" />
                 </TypeRestriction>
               </ParameterType>
 
