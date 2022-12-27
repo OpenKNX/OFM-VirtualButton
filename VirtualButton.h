@@ -84,7 +84,7 @@ private:
   void eventLongRelease(bool iButton);
   void eventExtraLongRelease(bool iButton);
   // void dim(bool iButton, bool iRelease);
-  void writeSwitchOutput(uint8_t iOutput, uint8_t iValue, bool &oStatus, uint8_t iKoOutput);
+  void writeOutput(uint8_t iOutputDPT, uint16_t iOutputKo, uint16_t iOutputValue, bool &oStatus);
   void processInputKoStatus(GroupObject &iKom, uint8_t iStatusNumber, bool &oStatus);
   void processDynamicStatus();
 

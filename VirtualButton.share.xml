@@ -108,24 +108,24 @@
 
               <ParameterType Id="%AID%_PT-BTNOutputDpt3008" Name="BTNOutputDpt3008">
                 <TypeRestriction Base="Value" SizeInBit="16">
-                  <Enumeration Text="Runter, Stop (00)" Value="0"   Id="%AID%_PT-BTNOutputDpt3008_EN-0" />
-                  <Enumeration Text="Runter, 100% (01)" Value="1"   Id="%AID%_PT-BTNOutputDpt3008_EN-1" />
-                  <Enumeration Text="Runter, 50% (02)"  Value="2"   Id="%AID%_PT-BTNOutputDpt3008_EN-2" />
-                  <Enumeration Text="Runter, 25% (03)"  Value="3"   Id="%AID%_PT-BTNOutputDpt3008_EN-3" />
-                  <Enumeration Text="Runter, 12% (04)"  Value="4"   Id="%AID%_PT-BTNOutputDpt3008_EN-4" />
-                  <Enumeration Text="Runter, 6% (05)"   Value="5"   Id="%AID%_PT-BTNOutputDpt3008_EN-5" />
-                  <Enumeration Text="Runter, 3% (06)"   Value="6"   Id="%AID%_PT-BTNOutputDpt3008_EN-6" />
-                  <Enumeration Text="Runter, 1% (07)"   Value="7"   Id="%AID%_PT-BTNOutputDpt3008_EN-7" />
-                  <Enumeration Text="Hoch, Stop (08)"   Value="8"   Id="%AID%_PT-BTNOutputDpt3008_EN-8" />
-                  <Enumeration Text="Hoch, 100% (09)"   Value="9"   Id="%AID%_PT-BTNOutputDpt3008_EN-9" />
-                  <Enumeration Text="Hoch, 50% (0A)"    Value="10"  Id="%AID%_PT-BTNOutputDpt3008_EN-10" />
-                  <Enumeration Text="Hoch, 25% (0B)"    Value="11"  Id="%AID%_PT-BTNOutputDpt3008_EN-11" />
-                  <Enumeration Text="Hoch, 12% (0C)"    Value="12"  Id="%AID%_PT-BTNOutputDpt3008_EN-12" />
-                  <Enumeration Text="Hoch, 6% (0D)"     Value="13"  Id="%AID%_PT-BTNOutputDpt3008_EN-13" />
-                  <Enumeration Text="Hoch, 3% (0E)"     Value="14"  Id="%AID%_PT-BTNOutputDpt3008_EN-14" />
-                  <Enumeration Text="Hoch, 1% (0F)"     Value="15"  Id="%AID%_PT-BTNOutputDpt3008_EN-15" />
-                  <Enumeration Text="1-Taster, Stop"    Value="16"  Id="%AID%_PT-BTNOutputDpt3008_EN-16" />
-                  <Enumeration Text="1-Taster, 100%"    Value="17"  Id="%AID%_PT-BTNOutputDpt3008_EN-17" />
+                  <Enumeration Text="Hoch, Stop (00)"    Value="0"   Id="%AID%_PT-BTNOutputDpt3008_EN-0" />
+                  <Enumeration Text="Hoch, 100% (01)"    Value="1"   Id="%AID%_PT-BTNOutputDpt3008_EN-1" />
+                  <Enumeration Text="Hoch, 50% (02)"     Value="2"   Id="%AID%_PT-BTNOutputDpt3008_EN-2" />
+                  <Enumeration Text="Hoch, 25% (03)"     Value="3"   Id="%AID%_PT-BTNOutputDpt3008_EN-3" />
+                  <Enumeration Text="Hoch, 12% (04)"     Value="4"   Id="%AID%_PT-BTNOutputDpt3008_EN-4" />
+                  <Enumeration Text="Hoch, 6% (05)"      Value="5"   Id="%AID%_PT-BTNOutputDpt3008_EN-5" />
+                  <Enumeration Text="Hoch, 3% (06)"      Value="6"   Id="%AID%_PT-BTNOutputDpt3008_EN-6" />
+                  <Enumeration Text="Hoch, 1% (07)"      Value="7"   Id="%AID%_PT-BTNOutputDpt3008_EN-7" />
+                  <Enumeration Text="Runter, Stop (08)"  Value="8"   Id="%AID%_PT-BTNOutputDpt3008_EN-8" />
+                  <Enumeration Text="Runter, 100% (09)"  Value="9"   Id="%AID%_PT-BTNOutputDpt3008_EN-9" />
+                  <Enumeration Text="Runter, 50% (0A)"   Value="10"  Id="%AID%_PT-BTNOutputDpt3008_EN-10" />
+                  <Enumeration Text="Runter, 25% (0B)"   Value="11"  Id="%AID%_PT-BTNOutputDpt3008_EN-11" />
+                  <Enumeration Text="Runter, 12% (0C)"   Value="12"  Id="%AID%_PT-BTNOutputDpt3008_EN-12" />
+                  <Enumeration Text="Runter, 6% (0D)"    Value="13"  Id="%AID%_PT-BTNOutputDpt3008_EN-13" />
+                  <Enumeration Text="Runter, 3% (0E)"    Value="14"  Id="%AID%_PT-BTNOutputDpt3008_EN-14" />
+                  <Enumeration Text="Runter, 1% (0F)"    Value="15"  Id="%AID%_PT-BTNOutputDpt3008_EN-15" />
+                  <Enumeration Text="1-Taster, Stop"     Value="16"  Id="%AID%_PT-BTNOutputDpt3008_EN-16" />
+                  <Enumeration Text="1-Taster, 100%"     Value="17"  Id="%AID%_PT-BTNOutputDpt3008_EN-17" />
                 </TypeRestriction>
               </ParameterType>
 
