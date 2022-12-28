@@ -36,6 +36,7 @@ void VirtualButton::setup()
   // Global Params
   mParams.mode = (knx.paramByte(calcParamIndex(BTN_BTNMode)) & BTN_BTNModeMask) >> BTN_BTNModeShift;
   mParams.lock = (knx.paramByte(calcParamIndex(BTN_BTNLock)) & BTN_BTNLockMask) >> BTN_BTNLockShift;
+  mParams.multiClickCount = (knx.paramByte(calcParamIndex(BTN_BTNMultiClickCount)) & BTN_BTNMultiClickCountMask) >> BTN_BTNMultiClickCountShift;
 
   // Input
   mButtonParams[0].inputKo = knx.paramWord(calcParamIndex(BTN_BTNInputA));
@@ -46,6 +47,7 @@ void VirtualButton::setup()
   mParams.outputShortDpt = knx.paramByte(calcParamIndex(BTN_BTNOutputShort_DPT));
   mParams.outputLongDpt = knx.paramByte(calcParamIndex(BTN_BTNOutputLong_DPT));
   mParams.outputExtraLongDpt = knx.paramByte(calcParamIndex(BTN_BTNOutputExtraLong_DPT));
+  mParams.outputMultiClickDpt = knx.paramByte(calcParamIndex(BTN_BTNOutputMulti_DPT));
 
   //   Events
   mButtonParams[0].outputShortPressActive = (knx.paramByte(calcParamIndex(BTN_BTNOutputShort_Taster1_Active_Press)) & BTN_BTNOutputShort_Taster1_Active_PressMask) >> BTN_BTNOutputShort_Taster1_Active_PressShift;
@@ -79,7 +81,7 @@ void VirtualButton::setup()
   mButtonParams[1].outputExtraLongPress = knx.paramWord(calcParamIndex(BTN_BTNOutputExtraLong_Taster2_Dpt1_Press));
   mButtonParams[1].outputExtraLongRelease = knx.paramWord(calcParamIndex(BTN_BTNOutputExtraLong_Taster2_Dpt1_Release));
 
-  // Output 2 (immer DPT2)
+  // Output 2
   mButtonParams[0].output2Short = (knx.paramByte(calcParamIndex(BTN_BTNOutput2Short_Taster1)) & BTN_BTNOutput2Short_Taster1Mask) >> BTN_BTNOutput2Short_Taster1Shift;
   mButtonParams[1].output2Short = (knx.paramByte(calcParamIndex(BTN_BTNOutput2Short_Taster2)) & BTN_BTNOutput2Short_Taster2Mask) >> BTN_BTNOutput2Short_Taster2Shift;
   mButtonParams[0].output2Long = (knx.paramByte(calcParamIndex(BTN_BTNOutput2Long_Taster1)) & BTN_BTNOutput2Long_Taster1Mask) >> BTN_BTNOutput2Long_Taster1Shift;
@@ -93,9 +95,9 @@ void VirtualButton::setup()
   mMultiClickParams[2].active = (knx.paramByte(calcParamIndex(BTN_BTNOutputMulti_Click3_Active)) & BTN_BTNOutputMulti_Click3_ActiveMask) >> BTN_BTNOutputMulti_Click3_ActiveShift;
 
   // DPT2 ist stellvertretend für alle DPTs (DPT1 nicht ntuzbar da für die einzeldklicks in Verwendung)
-  mMultiClickParams[0].output = knx.paramWord(calcParamIndex(BTN_BTNOutputMulti_Click1_Dpt2));
-  mMultiClickParams[1].output = knx.paramWord(calcParamIndex(BTN_BTNOutputMulti_Click2_Dpt2));
-  mMultiClickParams[2].output = knx.paramWord(calcParamIndex(BTN_BTNOutputMulti_Click3_Dpt2));
+  mMultiClickParams[0].output = knx.paramWord(calcParamIndex(BTN_BTNOutputMulti_Click1_Dpt1));
+  mMultiClickParams[1].output = knx.paramWord(calcParamIndex(BTN_BTNOutputMulti_Click2_Dpt1));
+  mMultiClickParams[2].output = knx.paramWord(calcParamIndex(BTN_BTNOutputMulti_Click3_Dpt1));
 
   // ReactionTimes
   mParams.reactionTimeMultiClick = knx.paramByte(calcParamIndex(BTN_BTNReactionTimeMultiClick));
@@ -405,63 +407,25 @@ void VirtualButton::processMultiClick()
 
 void VirtualButton::eventMultiClick(uint8_t iClicks)
 {
+  if (mParams.multiClickCount)
+    getKo(BTN_KoBTNOutput1)->value(iClicks, DPT_DecimalFactor);
+
   if (iClicks > BTN_MaxMuliClicks)
     return;
 
   uint8_t lIndex = iClicks - 1;
+  uint16_t lOutputKo = BTN_KoBTNOutput1;
   sMultiClickParams lParams = mMultiClickParams[lIndex];
 
   if (!lParams.active)
     return;
 
-  SERIAL_DEBUG.printf("  BTN%i/%i: MultiClick %i clicks - type %i value %i\n\r", mIndex, 0, iClicks, mParams.outputShortDpt, lParams.output);
+  // Sonderlocke für DTPT1
+  if (mParams.outputMultiClickDpt == 1)
+    lOutputKo = BTN_KoBTNOutput4 + lIndex;
 
-  // Output 1 (without DPT1)
-  if (mParams.outputShortDpt > 1)
-    writeOutput(mParams.outputShortDpt, BTN_KoBTNOutput1, lParams.output, mStatusShort);
-
-  // // if special - dpt1
-  // if (mParams.outputShort == 1)
-  // {
-  //   // disabled
-  //   if (lValue == 0)
-  //     return;
-
-  //   bool lValueBool = true;
-  //   if (lValue == 1)
-  //     lValueBool = false;
-
-  //   getKo(BTN_KoBTNOutput1Multi + lIndex)->value((bool)lValueBool, DPT_Switch);
-  // }
-  // else if (mParams.outputShort == 2)
-  // {
-  //   // disabled
-  //   if (lValue == 0)
-  //     return;
-
-  //   lValue = (uint8_t)(lValue & 3);
-  //   getKo(BTN_KoBTNOutput1)->value(lValue, DPT_DecimalFactor);
-  // }
-  // else if (mParams.outputShort == 4)
-  // {
-  //   getKo(BTN_KoBTNOutput1)->value(lValue, DPT_DecimalFactor);
-  // }
-  // else if (mParams.outputShort == 5)
-  // {
-  //   getKo(BTN_KoBTNOutput1)->value(lValue, DPT_Scaling);
-  // }
-  // else if (mParams.outputShort == 6)
-  // {
-  //   if (lValue >= 100)
-  //   {
-  //     lValue = (uint8_t)((lValue - 101) | 0x80);
-  //   }
-  //   else
-  //   {
-  //     lValue = (uint8_t)(lValue - 1);
-  //   }
-  //   getKo(BTN_KoBTNOutput1)->value(lValue, DPT_DecimalFactor);
-  // }
+  SERIAL_DEBUG.printf("  BTN%i/%i: MultiClick %i clicks - type %i ko %i value %i\n\r", mIndex, 0, iClicks, mParams.outputMultiClickDpt, lOutputKo, lParams.output);
+  writeOutput(mParams.outputMultiClickDpt, lOutputKo, lParams.output, mStatusShort);
 }
 void VirtualButton::eventShortPress(bool iButton)
 {

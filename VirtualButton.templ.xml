@@ -14,6 +14,7 @@
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%001" Name="BTN%C%Mode" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNMode" Text="Modus" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%002" Name="BTN%C%Lock" Offset="0" BitOffset="4" ParameterType="%AID%_PT-BTNLock" Text="Sperre" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%499" Name="BTN%C%MultiClickCount" Offset="0" BitOffset="4" ParameterType="%AID%_PT-BTNSendingEvent" Text="Ausgabe der Klickanzahl" Value="0" />
               </Union>
 
               <!-- Inputs -->
@@ -31,22 +32,23 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%053" Name="BTN%C%ReactionTimeExtraLong"  Offset="2" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTimeDefault" Text="  Extra langer Tasterdruck" Value="0" />
               </Union>
 
-              <Union SizeInBit="24">
+              <Union SizeInBit="32">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="9" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%100" Name="BTN%C%OutputShort_DPT"     Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNOutput"      Text="Datentyp" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%200" Name="BTN%C%OutputLong_DPT"      Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNOutput"      Text="Datentyp" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%300" Name="BTN%C%OutputExtraLong_DPT" Offset="2" BitOffset="0" ParameterType="%AID%_PT-BTNOutput"      Text="Datentyp" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%400" Name="BTN%C%OutputMulti_DPT"     Offset="3" BitOffset="0" ParameterType="%AID%_PT-BTNOutputMulti" Text="Datentyp" Value="0" />
               </Union>
 
               <Union SizeInBit="8">
-                <Memory CodeSegment="%AID%_RS-04-00000" Offset="12" BitOffset="0" />
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="13" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%401" Name="BTN%C%OutputMulti_Click1_Active" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNSendingEvent" Text="1. Klick" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%402" Name="BTN%C%OutputMulti_Click2_Active" Offset="0" BitOffset="1" ParameterType="%AID%_PT-BTNSendingEvent" Text="2. Klick" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%403" Name="BTN%C%OutputMulti_Click3_Active" Offset="0" BitOffset="2" ParameterType="%AID%_PT-BTNSendingEvent" Text="3. Klick" Value="0" />
               </Union>
 
               <Union SizeInBit="24">
-                <Memory CodeSegment="%AID%_RS-04-00000" Offset="13" BitOffset="0" />
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="14" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%101" Name="BTN%C%OutputShort_Taster1_Active_Press"       Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Drücken"   Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%102" Name="BTN%C%OutputShort_Taster1_Active_Release"     Offset="0" BitOffset="1" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Loslassen" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%103" Name="BTN%C%OutputShort_Taster2_Active_Press"       Offset="0" BitOffset="2" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Drücken"   Value="0" />
@@ -62,7 +64,7 @@
               </Union>
 
               <Union SizeInBit="240">
-                <Memory CodeSegment="%AID%_RS-04-00000" Offset="16" BitOffset="0" />
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="17" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%105" Name="BTN%C%OutputShort_Taster1_Dpt1_Press"       Offset="0"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt1" Text="" Value="2" />
                 <Parameter Id="%AID%_UP-%T%%CCC%106" Name="BTN%C%OutputShort_Taster1_Dpt1_Release"     Offset="2"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt1" Text="" Value="2" />
                 <Parameter Id="%AID%_UP-%T%%CCC%107" Name="BTN%C%OutputShort_Taster2_Dpt1_Press"       Offset="4"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt1" Text="" Value="1" />
@@ -76,13 +78,13 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%307" Name="BTN%C%OutputExtraLong_Taster2_Dpt1_Press"   Offset="22" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt1" Text="" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%308" Name="BTN%C%OutputExtraLong_Taster2_Dpt1_Release" Offset="24" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt1" Text="" Value="1" />
 
-                <Parameter Id="%AID%_UP-%T%%CCC%404" Name="BTN%C%OutputMulti_Click1_Dpt1"              Offset="26" BitOffset="0" ParameterType="%AID%_PT-BTNOutput2"    Text="  1. Klick" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%405" Name="BTN%C%OutputMulti_Click2_Dpt1"              Offset="28" BitOffset="0" ParameterType="%AID%_PT-BTNOutput2"    Text="  2. Klick" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%406" Name="BTN%C%OutputMulti_Click3_Dpt1"              Offset="30" BitOffset="0" ParameterType="%AID%_PT-BTNOutput2"    Text="  3. Klick" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%404" Name="BTN%C%OutputMulti_Click1_Dpt1"              Offset="26" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt1" Text="" Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CCC%405" Name="BTN%C%OutputMulti_Click2_Dpt1"              Offset="28" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt1" Text="" Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CCC%406" Name="BTN%C%OutputMulti_Click3_Dpt1"              Offset="30" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt1" Text="" Value="1" />
               </Union>
 
               <Union SizeInBit="240">
-                <Memory CodeSegment="%AID%_RS-04-00000" Offset="16" BitOffset="0" />
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="17" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%109" Name="BTN%C%OutputShort_Taster1_Dpt2_Press"       Offset="0"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt2" Text="" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%110" Name="BTN%C%OutputShort_Taster1_Dpt2_Release"     Offset="2"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt2" Text="" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%111" Name="BTN%C%OutputShort_Taster2_Dpt2_Press"       Offset="4"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt2" Text="" Value="0" />
@@ -102,7 +104,7 @@
               </Union>
 
               <Union SizeInBit="240">
-                <Memory CodeSegment="%AID%_RS-04-00000" Offset="16" BitOffset="0" />
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="17" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%113" Name="BTN%C%OutputShort_Taster1_Dpt5_Press"       Offset="0" BitOffset="0"  ParameterType="%AID%_PT-BTNOutputDpt5" Text="" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%114" Name="BTN%C%OutputShort_Taster1_Dpt5_Release"     Offset="2" BitOffset="0"  ParameterType="%AID%_PT-BTNOutputDpt5" Text="" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%115" Name="BTN%C%OutputShort_Taster2_Dpt5_Press"       Offset="4" BitOffset="0"  ParameterType="%AID%_PT-BTNOutputDpt5" Text="" Value="0" />
@@ -122,7 +124,7 @@
               </Union>
 
               <Union SizeInBit="240">
-                <Memory CodeSegment="%AID%_RS-04-00000" Offset="16" BitOffset="0" />
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="17" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%117" Name="BTN%C%OutputShort_Taster1_Dpt5001_Press"       Offset="0"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt5001" Text="" Value="0" SuffixText="%" />
                 <Parameter Id="%AID%_UP-%T%%CCC%118" Name="BTN%C%OutputShort_Taster1_Dpt5001_Release"     Offset="2"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt5001" Text="" Value="0" SuffixText="%" />
                 <Parameter Id="%AID%_UP-%T%%CCC%119" Name="BTN%C%OutputShort_Taster2_Dpt5001_Press"       Offset="4"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt5001" Text="" Value="0" SuffixText="%" />
@@ -142,7 +144,7 @@
               </Union>
 
               <Union SizeInBit="240">
-                <Memory CodeSegment="%AID%_RS-04-00000" Offset="16" BitOffset="0" />
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="17" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%121" Name="BTN%C%OutputShort_Taster1_Dpt7_Press"       Offset="0"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt7" Text="" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%122" Name="BTN%C%OutputShort_Taster1_Dpt7_Release"     Offset="2"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt7" Text="" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%123" Name="BTN%C%OutputShort_Taster2_Dpt7_Press"       Offset="4"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt7" Text="" Value="0" />
@@ -162,7 +164,7 @@
               </Union>
 
               <Union SizeInBit="240">
-                <Memory CodeSegment="%AID%_RS-04-00000" Offset="16" BitOffset="0" />
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="17" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%125" Name="BTN%C%OutputShort_Taster1_Dpt18_Press"       Offset="0"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt18" Text="" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%126" Name="BTN%C%OutputShort_Taster1_Dpt18_Release"     Offset="2"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt18" Text="" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%127" Name="BTN%C%OutputShort_Taster2_Dpt18_Press"       Offset="4"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt18" Text="" Value="1" />
@@ -175,14 +177,14 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%326" Name="BTN%C%OutputExtraLong_Taster1_Dpt18_Release" Offset="20" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt18" Text="" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%327" Name="BTN%C%OutputExtraLong_Taster2_Dpt18_Press"   Offset="22" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt18" Text="" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%328" Name="BTN%C%OutputExtraLong_Taster2_Dpt18_Release" Offset="24" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt18" Text="" Value="1" />
-                
+
                 <Parameter Id="%AID%_UP-%T%%CCC%419" Name="BTN%C%OutputMulti_Click1_Dpt18"              Offset="26" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt18" Text="" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%420" Name="BTN%C%OutputMulti_Click2_Dpt18"              Offset="28" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt18" Text="" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%421" Name="BTN%C%OutputMulti_Click3_Dpt18"              Offset="30" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt18" Text="" Value="1" />
               </Union>
 
               <Union SizeInBit="240">
-                <Memory CodeSegment="%AID%_RS-04-00000" Offset="16" BitOffset="0" />
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="17" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%129" Name="BTN%C%OutputShort_Taster1_Dpt3007_Press"       Offset="0"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3007" Text="" Value="9" />
                 <Parameter Id="%AID%_UP-%T%%CCC%130" Name="BTN%C%OutputShort_Taster1_Dpt3007_Release"     Offset="2"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3007" Text="" Value="8" />
                 <Parameter Id="%AID%_UP-%T%%CCC%131" Name="BTN%C%OutputShort_Taster2_Dpt3007_Press"       Offset="4"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3007" Text="" Value="1" />
@@ -198,7 +200,7 @@
               </Union>
 
               <Union SizeInBit="240">
-                <Memory CodeSegment="%AID%_RS-04-00000" Offset="16" BitOffset="0" />
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="17" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%133" Name="BTN%C%OutputShort_Taster1_Dpt3008_Press"       Offset="0"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3008" Text="" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%134" Name="BTN%C%OutputShort_Taster1_Dpt3008_Release"     Offset="2"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3008" Text="" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%135" Name="BTN%C%OutputShort_Taster2_Dpt3008_Press"       Offset="4"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3008" Text="" Value="9" />
@@ -214,7 +216,7 @@
               </Union>
 
               <Union SizeInBit="16">
-                <Memory CodeSegment="%AID%_RS-04-00000" Offset="46" BitOffset="0" />
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="47" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%191" Name="BTN%C%Output2Short_Taster1"      Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNOutput2" Text="  Zusatzausgang (DPT1 beim Loslassen)" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%192" Name="BTN%C%Output2Short_Taster2"      Offset="0" BitOffset="2" ParameterType="%AID%_PT-BTNOutput2" Text="  Zusatzausgang (DPT1 beim Loslassen)" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%291" Name="BTN%C%Output2Long_Taster1"       Offset="0" BitOffset="4" ParameterType="%AID%_PT-BTNOutput2" Text="  Zusatzausgang (DPT1 beim Loslassen)" Value="0" />
@@ -225,7 +227,7 @@
 
               <!-- Dynamischer 1-Taster DimStatus -->
               <Union SizeInBit="24">
-                <Memory CodeSegment="%AID%_RS-04-00000" Offset="28" BitOffset="0" />
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="49" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%060" Name="BTN%C%StatusThreshold" Offset="0" BitOffset="0" ParameterType="%AID%_PT-ValueDpt5001" Text="Schwellwert" Value="25" SuffixText="%" />
                 <Parameter Id="%AID%_UP-%T%%CCC%061" Name="BTN%C%StatusFallbackBase" Offset="1" BitOffset="0" ParameterType="%AID%_PT-DelayBase" Text="Zeitbasis" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%062" Name="BTN%C%StatusFallbackTime" Offset="1" BitOffset="2" ParameterType="%AID%_PT-DelayTime" Text="Zeit" Value="1" />
@@ -237,11 +239,12 @@
               
               <ParameterRef Id="%AID%_UP-%T%%CCC%001_R-%T%%CCC%00101" RefId="%AID%_UP-%T%%CCC%001" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%002_R-%T%%CCC%00201" RefId="%AID%_UP-%T%%CCC%002" />
+              <ParameterRef Id="%AID%_UP-%T%%CCC%499_R-%T%%CCC%49901" RefId="%AID%_UP-%T%%CCC%499" />
               <!-- Output -->
               <ParameterRef Id="%AID%_UP-%T%%CCC%100_R-%T%%CCC%10001" RefId="%AID%_UP-%T%%CCC%100" />
-              <ParameterRef Id="%AID%_UP-%T%%CCC%100_R-%T%%CCC%10002" RefId="%AID%_UP-%T%%CCC%100" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%200_R-%T%%CCC%20001" RefId="%AID%_UP-%T%%CCC%200" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%300_R-%T%%CCC%30001" RefId="%AID%_UP-%T%%CCC%300" />
+              <ParameterRef Id="%AID%_UP-%T%%CCC%400_R-%T%%CCC%40001" RefId="%AID%_UP-%T%%CCC%400" />
               <!-- Event -->
               <ParameterRef Id="%AID%_UP-%T%%CCC%101_R-%T%%CCC%10101" RefId="%AID%_UP-%T%%CCC%101" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%101_R-%T%%CCC%10102" RefId="%AID%_UP-%T%%CCC%101" Value="1" />
@@ -449,37 +452,38 @@
 
               <!-- Outputs Normal -->
               <ComObjectRef Id="%AID%_O-%T%%CCC%101_R-%T%%CCC%10101" RefId="%AID%_O-%T%%CCC%101" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%101_R-%T%%CCC%10102" RefId="%AID%_O-%T%%CCC%101" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="2 Bit"  DatapointType="DPST-2-1" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%101_R-%T%%CCC%10104" RefId="%AID%_O-%T%%CCC%101" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte" DatapointType="DPST-5-5" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%101_R-%T%%CCC%10105" RefId="%AID%_O-%T%%CCC%101" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte" DatapointType="DPST-5-1" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%101_R-%T%%CCC%10106" RefId="%AID%_O-%T%%CCC%101" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte" DatapointType="DPST-18-1" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%101_R-%T%%CCC%10107" RefId="%AID%_O-%T%%CCC%101" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="4 Bit"  DatapointType="DPST-3-7" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%101_R-%T%%CCC%10108" RefId="%AID%_O-%T%%CCC%101" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="4 Bit"  DatapointType="DPST-3-8" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%101_R-%T%%CCC%10102" RefId="%AID%_O-%T%%CCC%101" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="2 Bit"   DatapointType="DPST-2-1" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%101_R-%T%%CCC%10104" RefId="%AID%_O-%T%%CCC%101" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte"  DatapointType="DPST-5-5" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%101_R-%T%%CCC%10105" RefId="%AID%_O-%T%%CCC%101" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte"  DatapointType="DPST-5-1" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%101_R-%T%%CCC%10106" RefId="%AID%_O-%T%%CCC%101" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte"  DatapointType="DPST-18-1" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%101_R-%T%%CCC%10107" RefId="%AID%_O-%T%%CCC%101" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="4 Bit"   DatapointType="DPST-3-7" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%101_R-%T%%CCC%10108" RefId="%AID%_O-%T%%CCC%101" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="4 Bit"   DatapointType="DPST-3-8" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%101_R-%T%%CCC%10109" RefId="%AID%_O-%T%%CCC%101" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="2 Bytes" DatapointType="DPST-7-1" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%101_R-%T%%CCC%10199" RefId="%AID%_O-%T%%CCC%101" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte"  DatapointType="DPST-5-5" FunctionText="Taster %C%, Ausgang (Klicks)" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%102_R-%T%%CCC%10201" RefId="%AID%_O-%T%%CCC%102" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%102_R-%T%%CCC%10202" RefId="%AID%_O-%T%%CCC%102" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="2 Bit"  DatapointType="DPST-2-1" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%102_R-%T%%CCC%10204" RefId="%AID%_O-%T%%CCC%102" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte" DatapointType="DPST-5-5" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%102_R-%T%%CCC%10205" RefId="%AID%_O-%T%%CCC%102" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte" DatapointType="DPST-5-1" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%102_R-%T%%CCC%10206" RefId="%AID%_O-%T%%CCC%102" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte" DatapointType="DPST-18-1" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%102_R-%T%%CCC%10207" RefId="%AID%_O-%T%%CCC%102" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="4 Bit"  DatapointType="DPST-3-7" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%102_R-%T%%CCC%10208" RefId="%AID%_O-%T%%CCC%102" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="4 Bit"  DatapointType="DPST-3-8" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%102_R-%T%%CCC%10202" RefId="%AID%_O-%T%%CCC%102" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="2 Bit"   DatapointType="DPST-2-1" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%102_R-%T%%CCC%10204" RefId="%AID%_O-%T%%CCC%102" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte"  DatapointType="DPST-5-5" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%102_R-%T%%CCC%10205" RefId="%AID%_O-%T%%CCC%102" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte"  DatapointType="DPST-5-1" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%102_R-%T%%CCC%10206" RefId="%AID%_O-%T%%CCC%102" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte"  DatapointType="DPST-18-1" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%102_R-%T%%CCC%10207" RefId="%AID%_O-%T%%CCC%102" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="4 Bit"   DatapointType="DPST-3-7" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%102_R-%T%%CCC%10208" RefId="%AID%_O-%T%%CCC%102" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="4 Bit"   DatapointType="DPST-3-8" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%102_R-%T%%CCC%10209" RefId="%AID%_O-%T%%CCC%102" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="2 Bytes" DatapointType="DPST-7-1" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%103_R-%T%%CCC%10301" RefId="%AID%_O-%T%%CCC%103" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%103_R-%T%%CCC%10302" RefId="%AID%_O-%T%%CCC%103" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="2 Bit"  DatapointType="DPST-2-1" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%103_R-%T%%CCC%10304" RefId="%AID%_O-%T%%CCC%103" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte" DatapointType="DPST-5-5" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%103_R-%T%%CCC%10305" RefId="%AID%_O-%T%%CCC%103" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte" DatapointType="DPST-5-1" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%103_R-%T%%CCC%10306" RefId="%AID%_O-%T%%CCC%103" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte" DatapointType="DPST-18-1" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%103_R-%T%%CCC%10307" RefId="%AID%_O-%T%%CCC%103" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="4 Bit"  DatapointType="DPST-3-7" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%103_R-%T%%CCC%10308" RefId="%AID%_O-%T%%CCC%103" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="4 Bit"  DatapointType="DPST-3-8" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%103_R-%T%%CCC%10302" RefId="%AID%_O-%T%%CCC%103" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="2 Bit"   DatapointType="DPST-2-1" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%103_R-%T%%CCC%10304" RefId="%AID%_O-%T%%CCC%103" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte"  DatapointType="DPST-5-5" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%103_R-%T%%CCC%10305" RefId="%AID%_O-%T%%CCC%103" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte"  DatapointType="DPST-5-1" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%103_R-%T%%CCC%10306" RefId="%AID%_O-%T%%CCC%103" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte"  DatapointType="DPST-18-1" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%103_R-%T%%CCC%10307" RefId="%AID%_O-%T%%CCC%103" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="4 Bit"   DatapointType="DPST-3-7" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%103_R-%T%%CCC%10308" RefId="%AID%_O-%T%%CCC%103" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="4 Bit"   DatapointType="DPST-3-8" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%103_R-%T%%CCC%10309" RefId="%AID%_O-%T%%CCC%103" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="2 Bytes" DatapointType="DPST-7-1" />
 
               <!-- Outputs Second/MC-->
               <ComObjectRef Id="%AID%_O-%T%%CCC%104_R-%T%%CCC%10401" RefId="%AID%_O-%T%%CCC%104" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%104_R-%T%%CCC%10402" RefId="%AID%_O-%T%%CCC%104" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" FunctionText="Taster %C%, Ausgang 2 (1. Klick)" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%104_R-%T%%CCC%10402" RefId="%AID%_O-%T%%CCC%104" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" FunctionText="Taster %C%, Ausgang (1. Klick)" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%105_R-%T%%CCC%10501" RefId="%AID%_O-%T%%CCC%105" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%105_R-%T%%CCC%10502" RefId="%AID%_O-%T%%CCC%105" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" FunctionText="Taster %C%, Ausgang 2 (2. Klick)" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%105_R-%T%%CCC%10502" RefId="%AID%_O-%T%%CCC%105" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" FunctionText="Taster %C%, Ausgang (2. Klick)" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%106_R-%T%%CCC%10601" RefId="%AID%_O-%T%%CCC%106" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" />
-              <ComObjectRef Id="%AID%_O-%T%%CCC%106_R-%T%%CCC%10602" RefId="%AID%_O-%T%%CCC%106" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" FunctionText="Taster %C%, Ausgang 2 (3. Klick)" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%106_R-%T%%CCC%10602" RefId="%AID%_O-%T%%CCC%106" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" FunctionText="Taster %C%, Ausgang (3. Klick)" />
 
             </ComObjectRefs>
           </Static>
@@ -910,15 +914,24 @@
                             <ParameterSeparator Id="%AID%_PS-nnn" Text="Mehrfach-Tastendruck" UIHint="Headline" />
 
                             <!-- DPT Select -->
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%100_R-%T%%CCC%10002" />
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%400_R-%T%%CCC%40001" />
                             <!-- DPT nicht deaktiviert-->
-                            <choose ParamRefId="%AID%_UP-%T%%CCC%100_R-%T%%CCC%10002">
+                            <choose ParamRefId="%AID%_UP-%T%%CCC%400_R-%T%%CCC%40001">
                               <when test="!=0">
                                 <!-- 1. Klick -->
                                 <ParameterRefRef RefId="%AID%_UP-%T%%CCC%401_R-%T%%CCC%40101" />
                                 <choose ParamRefId="%AID%_UP-%T%%CCC%401_R-%T%%CCC%40101">
                                   <when test="1">
-                                    <choose ParamRefId="%AID%_UP-%T%%CCC%100_R-%T%%CCC%10002">
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%400_R-%T%%CCC%40001">
+                                      <!-- DPT1 -->
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%404_R-%T%%CCC%40401" />
+                                        <choose ParamRefId="%AID%_UP-%T%%CCC%404_R-%T%%CCC%40401">
+                                          <when test="!=0">
+                                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%104_R-%T%%CCC%10402" />
+                                          </when>
+                                        </choose>
+                                      </when>
                                       <!-- DPT2 -->
                                       <when test="2">
                                         <ParameterRefRef RefId="%AID%_UP-%T%%CCC%407_R-%T%%CCC%40701" />
@@ -946,7 +959,16 @@
                                 <ParameterRefRef RefId="%AID%_UP-%T%%CCC%402_R-%T%%CCC%40201" />
                                 <choose ParamRefId="%AID%_UP-%T%%CCC%402_R-%T%%CCC%40201">
                                   <when test="1">
-                                    <choose ParamRefId="%AID%_UP-%T%%CCC%100_R-%T%%CCC%10002">
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%400_R-%T%%CCC%40001">
+                                      <!-- DPT1 -->
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%405_R-%T%%CCC%40501" />
+                                        <choose ParamRefId="%AID%_UP-%T%%CCC%405_R-%T%%CCC%40501">
+                                          <when test="!=0">
+                                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%105_R-%T%%CCC%10502" />
+                                          </when>
+                                        </choose>
+                                      </when>
                                       <!-- DPT2 -->
                                       <when test="2">
                                         <ParameterRefRef RefId="%AID%_UP-%T%%CCC%408_R-%T%%CCC%40801" />
@@ -974,7 +996,16 @@
                                 <ParameterRefRef RefId="%AID%_UP-%T%%CCC%403_R-%T%%CCC%40301" />
                                 <choose ParamRefId="%AID%_UP-%T%%CCC%403_R-%T%%CCC%40301">
                                   <when test="1">
-                                    <choose ParamRefId="%AID%_UP-%T%%CCC%100_R-%T%%CCC%10002">
+                                    <choose ParamRefId="%AID%_UP-%T%%CCC%400_R-%T%%CCC%40001">
+                                      <!-- DPT1 -->
+                                      <when test="1">
+                                        <ParameterRefRef RefId="%AID%_UP-%T%%CCC%406_R-%T%%CCC%40601" />
+                                        <choose ParamRefId="%AID%_UP-%T%%CCC%406_R-%T%%CCC%40601">
+                                          <when test="!=0">
+                                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%106_R-%T%%CCC%10602" />
+                                          </when>
+                                        </choose>
+                                      </when>
                                       <!-- DPT2 -->
                                       <when test="2">
                                         <ParameterRefRef RefId="%AID%_UP-%T%%CCC%409_R-%T%%CCC%40901" />
@@ -1000,28 +1031,18 @@
                                 </choose>
                               </when>
                             </choose>
-                            <ParameterSeparator Id="%AID%_PS-nnn" Text=" " />
-                            <ParameterSeparator Id="%AID%_PS-nnn" Text="Zusätzliches DPT1" />
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%404_R-%T%%CCC%40401" />
-                            <choose ParamRefId="%AID%_UP-%T%%CCC%404_R-%T%%CCC%40401">
-                              <when test="!=0">
-                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%104_R-%T%%CCC%10402" />
-                              </when>
-                            </choose>
 
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%405_R-%T%%CCC%40501" />
-                            <choose ParamRefId="%AID%_UP-%T%%CCC%405_R-%T%%CCC%40501">
-                              <when test="!=0">
-                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%105_R-%T%%CCC%10502" />
+                            <choose ParamRefId="%AID%_UP-%T%%CCC%400_R-%T%%CCC%40001">
+                              <when test="0 1">
+                                <ParameterSeparator Id="%AID%_PS-nnn" Text=" " />
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%499_R-%T%%CCC%49901" />
+                                <choose ParamRefId="%AID%_UP-%T%%CCC%499_R-%T%%CCC%49901">
+                                  <when test="1">
+                                    <ComObjectRefRef RefId="%AID%_O-%T%%CCC%101_R-%T%%CCC%10199" />
+                                  </when>
+                                </choose>
                               </when>
                             </choose>
-                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%406_R-%T%%CCC%40601" />
-                            <choose ParamRefId="%AID%_UP-%T%%CCC%406_R-%T%%CCC%40601">
-                              <when test="!=0">
-                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%106_R-%T%%CCC%10602" />
-                              </when>
-                            </choose>
-
                           </when>
                         </choose>
 
@@ -1816,11 +1837,7 @@
                           </when>
                         </choose>
                         <!-- MC -->
-                        <choose ParamRefId="%AID%_UP-%T%%CCC%100_R-%T%%CCC%10002">
-                          <when test="1">
-                            <!-- DPT1 -->
-                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%101_R-%T%%CCC%10101" />
-                          </when>
+                        <choose ParamRefId="%AID%_UP-%T%%CCC%400_R-%T%%CCC%40001">
                           <when test="2">
                             <!-- DPT2 -->
                             <ComObjectRefRef RefId="%AID%_O-%T%%CCC%101_R-%T%%CCC%10102" />

@@ -48,9 +48,12 @@ struct sVirtualButtonGlobalParams
 {
   uint8_t mode = 0;
   uint8_t lock = 0;
+  bool multiClickCount = false;
+
   uint8_t outputShortDpt = 0;
   uint8_t outputLongDpt = 0;
   uint8_t outputExtraLongDpt = 0;
+  uint8_t outputMultiClickDpt = 0;
 
   uint16_t reactionTimeMultiClick;
   uint16_t reactionTimeLong;

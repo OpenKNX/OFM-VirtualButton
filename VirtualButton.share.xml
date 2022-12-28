@@ -41,6 +41,7 @@
               <ParameterType Id="%AID%_PT-BTNOutputMulti" Name="BTNOutputMulti">
                 <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="Deaktiviert" Value="0" Id="%AID%_PT-BTNOutputMulti_EN-0" />
+                  <Enumeration Text="DPT 1.001 Schalten" Value="1" Id="%AID%_PT-BTNOutputMulti_EN-1" />
                   <Enumeration Text="DPT 2.001 Zwangsführung" Value="2" Id="%AID%_PT-BTNOutputMulti_EN-2" />
                   <Enumeration Text="DPT 5.005 (0..255)" Value="4" Id="%AID%_PT-BTNOutputMulti_EN-4" />
                   <Enumeration Text="DPT 5.001 (0..100%)" Value="5" Id="%AID%_PT-BTNOutputMulti_EN-5" />
