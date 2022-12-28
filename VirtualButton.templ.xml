@@ -447,8 +447,11 @@
 
               <!-- Status -->
               <ComObjectRef Id="%AID%_O-%T%%CCC%021_R-%T%%CCC%02101" RefId="%AID%_O-%T%%CCC%021" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%021_R-%T%%CCC%02102" RefId="%AID%_O-%T%%CCC%021" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte"  DatapointType="DPST-5-1" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%022_R-%T%%CCC%02201" RefId="%AID%_O-%T%%CCC%022" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%022_R-%T%%CCC%02202" RefId="%AID%_O-%T%%CCC%022" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte"  DatapointType="DPST-5-1" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%023_R-%T%%CCC%02301" RefId="%AID%_O-%T%%CCC%023" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%023_R-%T%%CCC%02302" RefId="%AID%_O-%T%%CCC%023" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" ObjectSize="1 Byte"  DatapointType="DPST-5-1" />
 
               <!-- Outputs Normal -->
               <ComObjectRef Id="%AID%_O-%T%%CCC%101_R-%T%%CCC%10101" RefId="%AID%_O-%T%%CCC%101" Text="Taster: {{0:Taster %C%}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" />
@@ -1871,20 +1874,29 @@
                         <!-- Main Status KOs -->
                         <!-- Short DPT -->
                         <choose ParamRefId="%AID%_UP-%T%%CCC%100_R-%T%%CCC%10001">
-                          <when test="1 2 7 8">
+                          <when test="1 2">
                             <ComObjectRefRef RefId="%AID%_O-%T%%CCC%021_R-%T%%CCC%02101" />
+                          </when>
+                          <when test="7 8">
+                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%021_R-%T%%CCC%02102" />
                           </when>
                         </choose>
                         <!-- Long DPT -->
                         <choose ParamRefId="%AID%_UP-%T%%CCC%200_R-%T%%CCC%20001">
-                          <when test="1 2 7 8">
+                          <when test="1 2">
                             <ComObjectRefRef RefId="%AID%_O-%T%%CCC%022_R-%T%%CCC%02201" />
+                          </when>
+                          <when test="7 8">
+                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%022_R-%T%%CCC%02202" />
                           </when>
                         </choose>
                         <!-- ExtraLong DPT -->
                         <choose ParamRefId="%AID%_UP-%T%%CCC%300_R-%T%%CCC%30001">
-                          <when test="1 2 7 8">
+                          <when test="1 2">
                             <ComObjectRefRef RefId="%AID%_O-%T%%CCC%023_R-%T%%CCC%02301" />
+                          </when>
+                          <when test="7 8">
+                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%023_R-%T%%CCC%02302" />
                           </when>
                         </choose>
 

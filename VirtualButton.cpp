@@ -220,35 +220,33 @@ void VirtualButton::processInputKo(GroupObject &iKo)
     processInputKoLock(iKo);
     break;
   case BTN_KoBTNOutput1Status:
-    processInputKoStatus(iKo, 1, mStatusShort);
+    processInputKoStatus(iKo, 1, mParams.outputShortDpt, mStatusShort);
     break;
   case BTN_KoBTNOutput2Status:
-    processInputKoStatus(iKo, 2, mStatusLong);
+    processInputKoStatus(iKo, 2, mParams.outputLongDpt, mStatusLong);
     break;
   case BTN_KoBTNOutput3Status:
-    processInputKoStatus(iKo, 3, mStatusExtraLong);
+    processInputKoStatus(iKo, 3, mParams.outputExtraLongDpt, mStatusExtraLong);
     break;
   }
 }
 
-void VirtualButton::processInputKoStatus(GroupObject &iKo, uint8_t iStatusNumber, bool &oStatus)
+void VirtualButton::processInputKoStatus(GroupObject &iKo, uint8_t iStatusNumber, uint8_t iDpt, bool &oStatus)
 {
-  SERIAL_DEBUG.printf("BTN::processInputKoStatus %i: %i/%i\n\r", mIndex, iStatusNumber, oStatus);
-
-  // // Special for Long DPT3007
-  // if (iStatusNumber == 2 && mParams.outputLong == 7)
-  // {
-  //   uint8_t lValue = iKo.value(DPT_Scaling);
-  //   if (lValue == 0 && oStatus)
-  //     oStatus = false;
-  //   if (lValue == 100 && !oStatus)
-  //     oStatus = true;
-  // }
-  // else
-  // {
-  bool lValue = iKo.value(DPT_Switch);
-  oStatus = lValue;
-  // }
+  SERIAL_DEBUG.printf("BTN::processInputKoStatus %i: %i/%i/%i\n\r", mIndex, iStatusNumber, iDpt, oStatus);
+  if (iDpt == 7 || iDpt == 8)
+  {
+    uint8_t lValue = iKo.value(DPT_Scaling);
+    if (lValue == 0 && oStatus)
+      oStatus = false;
+    if (lValue == 100 && !oStatus)
+      oStatus = true;
+  }
+  else
+  {
+    bool lValue = iKo.value(DPT_Switch);
+    oStatus = lValue;
+  }
 }
 
 void VirtualButton::processInputKoLock(GroupObject &iKo)
@@ -563,23 +561,31 @@ void VirtualButton::writeOutput(uint8_t iOutputDPT, uint16_t iOutputKo, uint16_t
     break;
 
   case BTN_DPT3007:
-
-    // uint8_t lControl = 0x0;
-    // if (mStatusLong)
-    //   lControl |= 0x8;
-
-    // if (!iRelease)
-    //   lControl |= 1;
-    // TODO: 1-Taster Dimmen
-
     // Start Timer for Status Fallback
     mDynamicStatusTimer = (iOutputValue == 0 || iOutputValue == 8 || iOutputValue == 16) ? millis() : 0;
+
+    if (iOutputValue == 16) // 1-Taster Stop
+      iOutputValue = oStatus ? 8 : 0;
+
+    if (iOutputValue == 17) // 1-Taster 100%
+    {
+      oStatus = !oStatus;
+      iOutputValue = oStatus ? 9 : 1;
+    }
 
     getKo(iOutputKo)->value((uint8_t)iOutputValue, DPT_DecimalFactor);
     break;
 
-  case BTN_DPT3008:
     // DPT3008
+    if (iOutputValue == 16) // 1-Taster Stop
+      iOutputValue = oStatus ? 0 : 8;
+
+    if (iOutputValue == 17) // 1-Taster 100%
+    {
+      oStatus = !oStatus;
+      iOutputValue = oStatus ? 1 : 9;
+    }
+
     getKo(iOutputKo)->value((uint8_t)iOutputValue, DPT_DecimalFactor);
     break;
 

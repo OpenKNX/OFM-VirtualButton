@@ -96,7 +96,7 @@ private:
   void eventExtraLongRelease(bool iButton);
   // void dim(bool iButton, bool iRelease);
   void writeOutput(uint8_t iOutputDPT, uint16_t iOutputKo, uint16_t iOutputValue, bool &oStatus);
-  void processInputKoStatus(GroupObject &iKom, uint8_t iStatusNumber, bool &oStatus);
+  void processInputKoStatus(GroupObject &iKom, uint8_t iStatusNumber, uint8_t iDpt, bool &oStatus);
   void processDynamicStatus();
 
   uint8_t mIndex = 0;
