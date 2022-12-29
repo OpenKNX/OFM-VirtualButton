@@ -119,9 +119,9 @@ void VirtualButton::setup()
   mParams.dynamicStatusThreshold = knx.paramByte(calcParamIndex(BTN_BTNStatusThreshold));
   mParams.dynamicStatusFallback = (getDelayPattern(calcParamIndex(BTN_BTNStatusFallbackBase)));
 
-  mDynamicStatusTimer = millis() + mParams.dynamicStatusFallback;
-
   // Debug
+  SERIAL_DEBUG.printf("BTN %i dynamicStatusThreshold: %i\n\r", mIndex, mParams.dynamicStatusThreshold);
+  SERIAL_DEBUG.printf("BTN %i dynamicStatusFallback: %i\n\r", mIndex, mParams.dynamicStatusFallback);
   // SERIAL_DEBUG.printf("BTN %i inputKo: %i/%i\n\r", mIndex, 0, mButtonParams[0].inputKo);
   // SERIAL_DEBUG.printf("BTN %i outputShortPressActive: %i/%i\n\r", mIndex, 0, mButtonParams[0].outputShortPressActive);
   // SERIAL_DEBUG.printf("BTN %i outputShortReleaseActive: %i/%i\n\r", mIndex, 0, mButtonParams[0].outputShortReleaseActive);
@@ -175,19 +175,55 @@ void VirtualButton::loop()
   processPressAndHold(0);
   processPressAndHold(1);
   processMultiClick();
-  processDynamicStatus();
+  processDynamicStatusTimer();
+}
+void VirtualButton::processDynamicStatusTimer()
+{
+  // Es ist überhaupt kein dynamischer Status aktiv
+  if (mParams.dynamicStatusFallback == 0)
+    return;
+
+  if (mDynamicStatusTimer > 0 && delayCheck(mDynamicStatusTimer, mParams.dynamicStatusFallback))
+  {
+    mDynamicStatusTimer = 0;
+    evaluateDynamicStatus();
+  }
 }
 
-void VirtualButton::processDynamicStatus()
-{
-  // if (mDynamicStatusTimer > 0 && delayCheck(mDynamicStatusTimer, mParams.dynamicStatusFallback))
-  // {
-  //   uint8_t lValue = getKo(BTN_KoBTNOutput2Status)->value(DPT_Scaling);
-  //   mStatusLong = (lValue < mParams.dynamicStatusThreshold) ? false : true;
-  //   SERIAL_DEBUG.printf("BTN::processDynamicStatus %i/%i/%i: triggered\n\r", mIndex, lValue, mStatusLong);
+/*
+  Nach jedem Tastendruck (3007/3008) wird ein Timer gestartet.
+  Läuft dieser ab (processDynamicStatusTimer) wird der interne Status neu evaluiert.
+  Ist keine Timer gestartet, so wird immer neu evaluiert (processInputKoStatus)
+*/
+void VirtualButton::evaluateDynamicStatus() {
+  // Läuft gerade ein Timer, so ist keine Änderung erlaubt.
+  if(mDynamicStatusTimer > 0)
+    return;
 
-  //   mDynamicStatusTimer = 0;
-  // }
+  // Es ist überhaupt kein dynamischer Status aktiv
+  if (mParams.dynamicStatusFallback == 0)
+    return;
+
+  SERIAL_DEBUG.printf("BTN %i: evaluateDynamicStatus\n\r", mIndex);
+
+  // Short
+  if (mParams.outputShortDpt == 7 || mParams.outputShortDpt == 8) {
+    uint8_t lValue = getKo(BTN_KoBTNOutput1Status)->value(DPT_Scaling);
+    mStatusShort = (lValue < mParams.dynamicStatusThreshold) ? false : true;
+    SERIAL_DEBUG.printf("    short: %i/%i/%i\n\r", lValue, mParams.dynamicStatusThreshold, mStatusShort);
+  }
+  // Long
+  if (mParams.outputLongDpt == 7 || mParams.outputLongDpt == 8) {
+    uint8_t lValue = getKo(BTN_KoBTNOutput2Status)->value(DPT_Scaling);
+    mStatusLong = (lValue < mParams.dynamicStatusThreshold) ? false : true;
+    SERIAL_DEBUG.printf("    long: %i/%i/%i\n\r", lValue, mParams.dynamicStatusThreshold, mStatusLong);
+  }
+  // ExtraLong
+  if (mParams.outputExtraLongDpt == 7 || mParams.outputExtraLongDpt == 8) {
+    uint8_t lValue = getKo(BTN_KoBTNOutput3Status)->value(DPT_Scaling);
+    mStatusExtraLong = (lValue < mParams.dynamicStatusThreshold) ? false : true;
+    SERIAL_DEBUG.printf("    extralong: %i/%i/%i\n\r", lValue, mParams.dynamicStatusThreshold, mStatusExtraLong);
+  }
 }
 
 void VirtualButton::processInputKo(GroupObject &iKo)
@@ -241,6 +277,8 @@ void VirtualButton::processInputKoStatus(GroupObject &iKo, uint8_t iStatusNumber
       oStatus = false;
     if (lValue == 100 && !oStatus)
       oStatus = true;
+
+    evaluateDynamicStatus();
   }
   else
   {
