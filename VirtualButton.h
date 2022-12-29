@@ -6,25 +6,55 @@
 #include "hardware.h"
 
 #define BTN_MaxMuliClicks 3
+#define BTN_DPT1 1
+#define BTN_DPT2 2
+#define BTN_DPT5 4
+#define BTN_DPT5001 5
+#define BTN_DPT18 6
+#define BTN_DPT3007 7
+#define BTN_DPT3008 8
+#define BTN_DPT7 3
+
+struct sMultiClickParams
+{
+  bool active = false;
+  uint16_t output;
+};
 
 struct sVirtualButtonParams
 {
-  uint8_t outputShort;
-  uint8_t outputLong;
-  uint8_t outputExtraLong;
+  bool outputShortPressActive = false;
+  bool outputShortReleaseActive = false;
+  uint16_t outputShortPress;
+  uint16_t outputShortRelease;
+
+  bool outputLongPressActive = false;
+  bool outputLongReleaseActive = false;
+  uint16_t outputLongPress;
+  uint16_t outputLongRelease;
+
+  bool outputExtraLongPressActive = false;
+  bool outputExtraLongReleaseActive = false;
+  uint16_t outputExtraLongPress;
+  uint16_t outputExtraLongRelease;
+
   uint16_t inputKo;
+  uint16_t output2Short = 0;
+  uint16_t output2Long = 0;
+  uint16_t output2ExtraLong = 0;
 };
 
 struct sVirtualButtonGlobalParams
 {
   uint8_t mode = 0;
   uint8_t lock = 0;
-  uint8_t outputShort = 0;
-  uint8_t outputLong = 0;
-  uint8_t outputExtraLong = 0;
-  bool eventShort = false;
-  bool eventLong = false;
-  bool eventExtraLong = false;
+  bool multiClickCount = false;
+
+  uint8_t outputShortDpt = 0;
+  uint8_t outputLongDpt = 0;
+  uint8_t outputExtraLongDpt = 0;
+  uint8_t outputMultiClickDpt = 0;
+
   uint16_t reactionTimeMultiClick;
   uint16_t reactionTimeLong;
   uint16_t reactionTimeExtraLong;
@@ -64,10 +94,11 @@ private:
   void eventShortRelease(bool iButton);
   void eventLongRelease(bool iButton);
   void eventExtraLongRelease(bool iButton);
-  void dim(bool iButton, bool iRelease);
-  void writeSwitchOutput(uint8_t iOutput, uint8_t iValue, bool &oStatus, uint8_t iKoOutput);
-  void processInputKoStatus(GroupObject &iKom, uint8_t iStatusNumber, bool &oStatus);
-  void processDynamicStatus();
+  // void dim(bool iButton, bool iRelease);
+  void writeOutput(uint8_t iOutputDPT, uint16_t iOutputKo, uint16_t iOutputValue, bool &oStatus);
+  void processInputKoStatus(GroupObject &iKom, uint8_t iStatusNumber, uint8_t iDpt, bool &oStatus);
+  void processDynamicStatusTimer();
+  void evaluateDynamicStatus();
 
   uint8_t mIndex = 0;
   uint8_t mLock = 0;
@@ -77,16 +108,13 @@ private:
   u_int32_t mDynamicStatusTimer = 0;
 
   sVirtualButtonState mButtonState[2] = {
-    sVirtualButtonState(),
-    sVirtualButtonState()
-  };
+      sVirtualButtonState(),
+      sVirtualButtonState()};
   sVirtualButtonParams mButtonParams[2] = {
-    sVirtualButtonParams(),
-    sVirtualButtonParams()
-  };
+      sVirtualButtonParams(),
+      sVirtualButtonParams()};
   sVirtualButtonGlobalParams mParams;
-  uint8_t mMultiClickParams[3];
-
+  sMultiClickParams mMultiClickParams[3];
 
 public:
   VirtualButton(uint8_t iIndex);
