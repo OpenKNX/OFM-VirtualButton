@@ -582,7 +582,7 @@
                                 <!-- DPT3 Hinweis -->
                                 <choose ParamRefId="%AID%_UP-%T%%CCC%100_R-%T%%CCC%10001">
                                   <when test="7 8">
-                                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Bei DPT3 verwendet man beim &quot;Loslassen&quot; den passenden Stopbefehl und beim &quot;Drücken&quot; den Wert mit %. Dabei arbeitet man normal mit 100%, da die Dimmgeschwindigkeit im Aktor festegelegt werden kann." UIHint="Information" />
+                                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Bei DPT3 verwendet man beim &quot;Loslassen&quot; den passenden Stopbefehl und beim &quot;Drücken&quot; in der Regel passenden 100% Wert. (Der Prozentwert gibt, an wieviel in einem Zug und ohne erneutes drücken möglich ist)." UIHint="Information" />
                                   </when>
                                 </choose>
 
@@ -1067,7 +1067,7 @@
                             <!-- DPT3 Hinweis -->
                             <choose ParamRefId="%AID%_UP-%T%%CCC%200_R-%T%%CCC%20001">
                               <when test="7 8">
-                                <ParameterSeparator Id="%AID%_PS-nnn" Text="Bei DPT3 verwendet man beim &quot;Loslassen&quot; den passenden Stopbefehl und beim &quot;Drücken&quot; den Wert mit %. Dabei arbeitet man normal mit 100%, da die Dimmgeschwindigkeit im Aktor festegelegt werden kann." UIHint="Information" />
+                                <ParameterSeparator Id="%AID%_PS-nnn" Text="Bei DPT3 verwendet man beim &quot;Loslassen&quot; den passenden Stopbefehl und beim &quot;Drücken&quot; in der Regel passenden 100% Wert. (Der Prozentwert gibt, an wieviel in einem Zug und ohne erneutes drücken möglich ist)." UIHint="Information" />
                               </when>
                             </choose>
                             <!-- 1. Taster -->                            
@@ -1416,7 +1416,7 @@
                             <!-- DPT3 Hinweis -->
                             <choose ParamRefId="%AID%_UP-%T%%CCC%300_R-%T%%CCC%30001">
                               <when test="7 8">
-                                <ParameterSeparator Id="%AID%_PS-nnn" Text="Bei DPT3 verwendet man beim &quot;Loslassen&quot; den passenden Stopbefehl und beim &quot;Drücken&quot; den Wert mit %. Dabei arbeitet man normal mit 100%, da die Dimmgeschwindigkeit im Aktor festegelegt werden kann." UIHint="Information" />
+                                <ParameterSeparator Id="%AID%_PS-nnn" Text="Bei DPT3 verwendet man beim &quot;Loslassen&quot; den passenden Stopbefehl und beim &quot;Drücken&quot; in der Regel passenden 100% Wert. (Der Prozentwert gibt, an wieviel in einem Zug und ohne erneutes drücken möglich ist)." UIHint="Information" />
                               </when>
                             </choose>
 
