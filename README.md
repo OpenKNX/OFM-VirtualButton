@@ -2,26 +2,30 @@
 
 Dies ist eine Library für virtuelle Taster zur Verwendung mit Binäreingängen oder weiteren Tastern mit weniger Funktionen. Voraussetzung ist, dass beim Tastendruck ein EIN und beim Loslassen ein AUS gesendet wird.
 
-Ausgabetyp
-- 1fach-Taster (mit Lang- und Extralang-Taster)
-- 2fach-Taster (mit Lang- und Extralang-Taster)
-- Doppel- & Dreifachklick (mit Lang-Taster)
+Modus
+- 1fach-Taster
+- 2fach-Taster
+- Mehrfach-Klick
 
 DPTs
-- DPT1.001: Normales Schalten & Umschalten
-- DPT2.001: Zwangsführung
-- DPT3.007: Dimmen (nur per Lang-Taster)
-- DPT5.001: Prozent
-- DPT5.005: Ganzzahl
-- DPT18.001: Szenen
-  
-Weitere Funktionen
-- Sperre
-- Grundeinstellung für Reaktionszeiten + abweichende Einstellung je Taster
-- Verwendung von internen KOs ohne eine GA zuzuweisen.
-- Beim einfachen Taster Aufgaben kann zwischen "Gedrückt" und "Losgelassen" unterschieden werden.
-- Für die Kombination von "MultiClick" und DPT1.001 gibt es je Mehrfachklick ein eigens KO. In Kombination mit Logikmodul können auch spezielle Anforderungen abgebildet werden.
+- DPT 1.001 Schalten
+- DPT 2.001 Zwangsführung
+- DPT 3.007 Dimmen
+- DPT 3.008 Jalousie
+- DPT 5.005 (0..255)
+- DPT 5.001 (0..100%)
+- DPT 7.001 (0..65535)
+- DPT 18.001 Szene
+
+Funktionen
+- Sperrmöglichkeit
+- Individuelle Reaktionszeiten
+- Unterschiedung zwischen "Drücken" und "Loslassen"
+- Es gibt einen Zusätzlichen DPT1 AUsgab bei 1/2fach-Tastern
+- Zusätzliches "Extra-Lang" neben den üblichen Einfacher und Langer Tastendruck.
 - Für DPT1.001 gibt es einen "Umschalter"
 - Bei DPT3.007 (Dimmer) gibt es einen helligkeitsabhängigen Status, welcher nach einer Rückfallzeit anhand eines Schwellwertes die nächste Dimmerrichung vorgibt.
+- Für die Kombination von Mehrfach-Klick und DPT1.001 gibt es je Mehrfach-Klick ein eigens KO. In Kombination mit Logikmodul können auch spezielle Anforderungen abgebildet werden.
+- Bei Mehrfach-Klick kann auch der Klickzähler ausgegeben werden, um diese in einer externen Logik über den 3fach Klick hinaus ausgewertet zu werden. 
 
 
