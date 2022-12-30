@@ -106,11 +106,13 @@ void VirtualButton::setup()
   else
     mParams.reactionTimeMultiClick = knx.paramByte(BTN_ReactionTimeMultiClick) * 100;
 
+  mParams.reactionTimeLong = knx.paramByte(calcParamIndex(BTN_BTNReactionTimeLong));
   if (mParams.reactionTimeLong > 0)
     mParams.reactionTimeLong *= 100;
   else
     mParams.reactionTimeLong = knx.paramByte(BTN_ReactionTimeLong) * 100;
 
+  mParams.reactionTimeExtraLong = knx.paramByte(calcParamIndex(BTN_BTNReactionTimeExtraLong));
   if (mParams.reactionTimeExtraLong > 0)
     mParams.reactionTimeExtraLong *= 100;
   else
@@ -120,8 +122,8 @@ void VirtualButton::setup()
   mParams.dynamicStatusFallback = (getDelayPattern(calcParamIndex(BTN_BTNStatusFallbackBase)));
 
   // Debug
-  SERIAL_DEBUG.printf("BTN %i dynamicStatusThreshold: %i\n\r", mIndex, mParams.dynamicStatusThreshold);
-  SERIAL_DEBUG.printf("BTN %i dynamicStatusFallback: %i\n\r", mIndex, mParams.dynamicStatusFallback);
+  // SERIAL_DEBUG.printf("BTN %i dynamicStatusThreshold: %i\n\r", mIndex, mParams.dynamicStatusThreshold);
+  // SERIAL_DEBUG.printf("BTN %i dynamicStatusFallback: %i\n\r", mIndex, mParams.dynamicStatusFallback);
   // SERIAL_DEBUG.printf("BTN %i inputKo: %i/%i\n\r", mIndex, 0, mButtonParams[0].inputKo);
   // SERIAL_DEBUG.printf("BTN %i outputShortPressActive: %i/%i\n\r", mIndex, 0, mButtonParams[0].outputShortPressActive);
   // SERIAL_DEBUG.printf("BTN %i outputShortReleaseActive: %i/%i\n\r", mIndex, 0, mButtonParams[0].outputShortReleaseActive);
@@ -129,7 +131,6 @@ void VirtualButton::setup()
   // SERIAL_DEBUG.printf("BTN %i outputLongReleaseActive: %i/%i\n\r", mIndex, 0, mButtonParams[0].outputLongReleaseActive);
   // SERIAL_DEBUG.printf("BTN %i outputExtraLongPressActive: %i/%i\n\r", mIndex, 0, mButtonParams[0].outputExtraLongPressActive);
   // SERIAL_DEBUG.printf("BTN %i outputExtraLongReleaseActive: %i/%i\n\r", mIndex, 0, mButtonParams[0].outputExtraLongReleaseActive);
-
   // SERIAL_DEBUG.printf("BTN %i inputKo: %i/%i\n\r", mIndex, 1, mButtonParams[1].inputKo);
   // SERIAL_DEBUG.printf("BTN %i outputShortPressActive: %i/%i\n\r", mIndex, 1, mButtonParams[1].outputShortPressActive);
   // SERIAL_DEBUG.printf("BTN %i outputShortReleaseActive: %i/%i\n\r", mIndex, 1, mButtonParams[1].outputShortReleaseActive);
@@ -137,36 +138,29 @@ void VirtualButton::setup()
   // SERIAL_DEBUG.printf("BTN %i outputLongReleaseActive: %i/%i\n\r", mIndex, 1, mButtonParams[1].outputLongReleaseActive);
   // SERIAL_DEBUG.printf("BTN %i outputExtraLongPressActive: %i/%i\n\r", mIndex, 1, mButtonParams[1].outputExtraLongPressActive);
   // SERIAL_DEBUG.printf("BTN %i outputExtraLongReleaseActive: %i/%i\n\r", mIndex, 1, mButtonParams[1].outputExtraLongReleaseActive);
-
   // SERIAL_DEBUG.printf("BTN %i outputShortPress: %i/%i\n\r", mIndex, 0, mButtonParams[0].outputShortPress);
   // SERIAL_DEBUG.printf("BTN %i outputShortRelease: %i/%i\n\r", mIndex, 0, mButtonParams[0].outputShortRelease);
   // SERIAL_DEBUG.printf("BTN %i outputLongPress: %i/%i\n\r", mIndex, 0, mButtonParams[0].outputLongPress);
   // SERIAL_DEBUG.printf("BTN %i outputLongRelease: %i/%i\n\r", mIndex, 0, mButtonParams[0].outputLongRelease);
   // SERIAL_DEBUG.printf("BTN %i outputExtraLongPress: %i/%i\n\r", mIndex, 0, mButtonParams[0].outputExtraLongPress);
   // SERIAL_DEBUG.printf("BTN %i outputExtraLongRelease: %i/%i\n\r", mIndex, 0, mButtonParams[0].outputExtraLongRelease);
-
   // SERIAL_DEBUG.printf("BTN %i outputShortPress: %i/%i\n\r", mIndex, 1, mButtonParams[1].outputShortPress);
   // SERIAL_DEBUG.printf("BTN %i outputShortRelease: %i/%i\n\r", mIndex, 1, mButtonParams[1].outputShortRelease);
   // SERIAL_DEBUG.printf("BTN %i outputLongPress: %i/%i\n\r", mIndex, 1, mButtonParams[1].outputLongPress);
   // SERIAL_DEBUG.printf("BTN %i outputLongRelease: %i/%i\n\r", mIndex, 1, mButtonParams[1].outputLongRelease);
   // SERIAL_DEBUG.printf("BTN %i outputExtraLongPress: %i/%i\n\r", mIndex, 1, mButtonParams[1].outputExtraLongPress);
   // SERIAL_DEBUG.printf("BTN %i outputExtraLongRelease: %i/%i\n\r", mIndex, 1, mButtonParams[1].outputExtraLongRelease);
-
   // SERIAL_DEBUG.printf("BTN %i output2Short: %i/%i\n\r", mIndex, 2, mButtonParams[0].output2Short);
   // SERIAL_DEBUG.printf("BTN %i output2Short: %i/%i\n\r", mIndex, 1, mButtonParams[1].output2Short);
-
   // SERIAL_DEBUG.printf("BTN %i MC Active: %i/%i\n\r", mIndex, 0, mMultiClickParams[0].active);
   // SERIAL_DEBUG.printf("BTN %i MC Output: %i/%i\n\r", mIndex, 0, mMultiClickParams[0].output);
   // SERIAL_DEBUG.printf("BTN %i MC Active: %i/%i\n\r", mIndex, 1, mMultiClickParams[1].active);
   // SERIAL_DEBUG.printf("BTN %i MC Output: %i/%i\n\r", mIndex, 1, mMultiClickParams[1].output);
   // SERIAL_DEBUG.printf("BTN %i MC Active: %i/%i\n\r", mIndex, 2, mMultiClickParams[2].active);
   // SERIAL_DEBUG.printf("BTN %i MC Output: %i/%i\n\r", mIndex, 2, mMultiClickParams[2].output);
-
   // SERIAL_DEBUG.printf("BTN %i reactionTimeMultiClick: %i\n\r", mIndex, mParams.reactionTimeMultiClick);
   // SERIAL_DEBUG.printf("BTN %i reactionTimeLong: %i\n\r", mIndex, mParams.reactionTimeLong);
   // SERIAL_DEBUG.printf("BTN %i reactionTimeExtraLong: %i\n\r", mIndex, mParams.reactionTimeExtraLong);
-  // SERIAL_DEBUG.printf("BTN %i dynamicStatusThreshold: %i\n\r", mIndex, mParams.dynamicStatusThreshold);
-  // SERIAL_DEBUG.printf("BTN %i dynamicStatusFallback: %i\n\r", mIndex, mParams.dynamicStatusFallback);
   // SERIAL_DEBUG.printf("BTN %i mParamMode: %i\n\r", mIndex, mParams.mode);
 }
 
@@ -324,7 +318,11 @@ void VirtualButton::processInputKoInput(GroupObject &iKo, bool iButton)
   bool lNewPress = iKo.value(DPT_Switch);
   bool lLastPress = mButtonState[iButton].press;
 
-  // no state change
+  // werte "Loslassen" nur aus, wenn der letze Zustand auch "gedrückt" war
+  if (!lLastPress && !lNewPress)
+    return;
+
+  // wenn der wert sich seit dem letzten mal nicht geändert hat
   if (lLastPress == lNewPress)
     return;
 
@@ -343,10 +341,6 @@ void VirtualButton::processPressAndHold(bool iButton)
   // not pressed
   if (!mButtonState[iButton].press)
     return;
-
-  // no long press configured or not dim or jal
-  // if (mParams.outputLong == 0 && mParams.outputLong != 7 && mParams.outputLong != 8)
-  //  return;
 
   if (!mButtonState[iButton].pressLong && delayCheck(mButtonState[iButton].pressStart, mParams.reactionTimeLong))
   {
@@ -633,105 +627,3 @@ void VirtualButton::writeOutput(uint8_t iOutputDPT, uint16_t iOutputKo, uint16_t
     break;
   }
 }
-
-// void VirtualButton::writeSwitchOutput(uint8_t iOutput, uint8_t iValue, bool &oStatus, uint8_t iKoOutput)
-// {
-//   SERIAL_DEBUG.printf("  BTN%i WRITE %i/%i/%i/%i\n\r", mIndex, iOutput, iValue, oStatus, iKoOutput);
-
-// switch (iOutput)
-// {
-// case 1:
-//   // DPT1
-
-//   // disabled
-//   if (iValue == 0)
-//     return;
-
-//   // aus
-//   if (iValue == 1)
-//     oStatus = false;
-
-//   // an
-//   if (iValue == 2)
-//     oStatus = true;
-
-//   // toggle
-//   if (iValue == 3)
-//   {
-//     oStatus = !oStatus;
-//   }
-
-//   getKo(iKoOutput)->value((bool)oStatus, DPT_Switch);
-//   break;
-
-// case 2:
-//   // DPT2
-
-//   // disabled
-//   if (iValue == 0)
-//     return;
-
-//   getKo(iKoOutput)->value((uint8_t)(iValue & 3), DPT_DecimalFactor);
-//   break;
-
-// case 4:
-//   // DPT5
-//   getKo(iKoOutput)->value((uint8_t)iValue, DPT_DecimalFactor);
-//   break;
-
-// case 5:
-//   // DPT5001
-//   getKo(iKoOutput)->value((uint8_t)iValue, DPT_Scaling);
-//   break;
-
-// case 6:
-//   // disabled
-//   if (iValue == 0)
-//     return;
-
-//   // DPT18
-//   if (iValue >= 100)
-//   {
-//     iValue = (uint8_t)((iValue - 101) | 0x81);
-//   }
-//   else
-//   {
-//     iValue = (uint8_t)(iValue - 1);
-//   }
-//   getKo(iKoOutput)->value(iValue, DPT_DecimalFactor);
-//   break;
-// }
-// }
-
-// void VirtualButton::dim(bool iButton, bool iRelease)
-// {
-//   SERIAL_DEBUG.printf("  BTN%i DIM %i/%i\n\r", mIndex, iButton, iRelease);
-//   if (!iRelease)
-//   {
-//     if (mButtonParams[iButton].outputLong == 1)
-//       mStatusLong = true;
-
-//     if (mButtonParams[iButton].outputLong == 2)
-//       mStatusLong = false;
-
-//     if (mButtonParams[iButton].outputLong == 3)
-//       mStatusLong = !mStatusLong;
-//   }
-
-//   uint8_t lControl = 0x0;
-//   if (mStatusLong)
-//     lControl |= 0x8;
-
-//   if (!iRelease)
-//     lControl |= 1;
-
-//   // Start Timer for Status Fallback
-//   mDynamicStatusTimer = iRelease ? millis() : 0;
-
-//   // 1. Press   9  1001 Up
-//   // 2. Release 8  1000 Stop
-//   // 3. Press   1  0001 Down
-//   // 4. Release 0  0000 Stop
-//   SERIAL_DEBUG.printf("    BTN%i DIMSTATUS %i/%i/%i/%i\n\r", mIndex, lControl, mStatusLong, mDynamicStatusTimer);
-//   getKo(BTN_KoBTNOutput2)->value(lControl, DPT_DecimalFactor);
-// }

@@ -25,20 +25,20 @@ struct sVirtualButtonParams
 {
   bool outputShortPressActive = false;
   bool outputShortReleaseActive = false;
-  uint16_t outputShortPress;
-  uint16_t outputShortRelease;
+  uint16_t outputShortPress = 0;
+  uint16_t outputShortRelease = 0;
 
   bool outputLongPressActive = false;
   bool outputLongReleaseActive = false;
-  uint16_t outputLongPress;
-  uint16_t outputLongRelease;
+  uint16_t outputLongPress = 0;
+  uint16_t outputLongRelease = 0;
 
   bool outputExtraLongPressActive = false;
   bool outputExtraLongReleaseActive = false;
-  uint16_t outputExtraLongPress;
-  uint16_t outputExtraLongRelease;
+  uint16_t outputExtraLongPress = 0;
+  uint16_t outputExtraLongRelease = 0;
 
-  uint16_t inputKo;
+  uint16_t inputKo = 0;
   uint16_t output2Short = 0;
   uint16_t output2Long = 0;
   uint16_t output2ExtraLong = 0;
@@ -55,9 +55,9 @@ struct sVirtualButtonGlobalParams
   uint8_t outputExtraLongDpt = 0;
   uint8_t outputMultiClickDpt = 0;
 
-  uint16_t reactionTimeMultiClick;
-  uint16_t reactionTimeLong;
-  uint16_t reactionTimeExtraLong;
+  uint16_t reactionTimeMultiClick = 0;
+  uint16_t reactionTimeLong = 0;
+  uint16_t reactionTimeExtraLong = 0;
   uint8_t dynamicStatusThreshold = 0;
   uint32_t dynamicStatusFallback = 0;
 };
