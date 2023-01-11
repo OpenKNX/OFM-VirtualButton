@@ -189,9 +189,10 @@ void VirtualButton::processDynamicStatusTimer()
   Läuft dieser ab (processDynamicStatusTimer) wird der interne Status neu evaluiert.
   Ist keine Timer gestartet, so wird immer neu evaluiert (processInputKoStatus)
 */
-void VirtualButton::evaluateDynamicStatus() {
+void VirtualButton::evaluateDynamicStatus()
+{
   // Läuft gerade ein Timer, so ist keine Änderung erlaubt.
-  if(mDynamicStatusTimer > 0)
+  if (mDynamicStatusTimer > 0)
     return;
 
   // Es ist überhaupt kein dynamischer Status aktiv
@@ -201,19 +202,22 @@ void VirtualButton::evaluateDynamicStatus() {
   SERIAL_DEBUG.printf("BTN %i: evaluateDynamicStatus\n\r", mIndex);
 
   // Short
-  if (mParams.outputShortDpt == 7 || mParams.outputShortDpt == 8) {
+  if (mParams.outputShortDpt == 7 || mParams.outputShortDpt == 8)
+  {
     uint8_t lValue = getKo(BTN_KoChannelOutput1Status)->value(DPT_Scaling);
     mStatusShort = (lValue < mParams.dynamicStatusThreshold) ? false : true;
     SERIAL_DEBUG.printf("    short: %i/%i/%i\n\r", lValue, mParams.dynamicStatusThreshold, mStatusShort);
   }
   // Long
-  if (mParams.outputLongDpt == 7 || mParams.outputLongDpt == 8) {
+  if (mParams.outputLongDpt == 7 || mParams.outputLongDpt == 8)
+  {
     uint8_t lValue = getKo(BTN_KoChannelOutput2Status)->value(DPT_Scaling);
     mStatusLong = (lValue < mParams.dynamicStatusThreshold) ? false : true;
     SERIAL_DEBUG.printf("    long: %i/%i/%i\n\r", lValue, mParams.dynamicStatusThreshold, mStatusLong);
   }
   // ExtraLong
-  if (mParams.outputExtraLongDpt == 7 || mParams.outputExtraLongDpt == 8) {
+  if (mParams.outputExtraLongDpt == 7 || mParams.outputExtraLongDpt == 8)
+  {
     uint8_t lValue = getKo(BTN_KoChannelOutput3Status)->value(DPT_Scaling);
     mStatusExtraLong = (lValue < mParams.dynamicStatusThreshold) ? false : true;
     SERIAL_DEBUG.printf("    extralong: %i/%i/%i\n\r", lValue, mParams.dynamicStatusThreshold, mStatusExtraLong);
@@ -341,6 +345,10 @@ void VirtualButton::processPressAndHold(bool iButton)
 {
   // not pressed
   if (!mButtonState[iButton].press)
+    return;
+
+  // no (extra) long press configured
+  if (mParams.outputLongDpt == 0 && mParams.outputExtraLongDpt == 0)
     return;
 
   if (!mButtonState[iButton].pressLong && delayCheck(mButtonState[iButton].pressStart, mParams.reactionTimeLong))
