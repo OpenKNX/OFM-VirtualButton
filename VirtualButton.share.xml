@@ -484,7 +484,7 @@
               </ParameterType>
             </ParameterTypes>
             <Parameters>
-              <Parameter Id="%AID%_P-%T%000001" Name="BTN%C%HideInputs" ParameterType="%AID%_PT-CheckBox" Text="Hide Inputs" Value="0" Access="None" />
+              <Parameter Id="%AID%_P-%T%000001" Name="HideInputs" ParameterType="%AID%_PT-CheckBox" Text="Hide Inputs" Value="0" Access="None" />
               <Union SizeInBit="32">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%000011" Name="ReactionTimeMultiClick" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Mehrfach-Klick" Value="4" />
@@ -504,8 +504,8 @@
             </ComObjectRefs>
           </Static>
           <Dynamic>
-            <Channel Id="%AID%_CH-BTN1" Name="BTNBasicChannel" Number="1" Text="Taster Grundeinstellung">
-              <ParameterBlock Id="%AID%_PB-5" Name="BTNBasic" Text="Grundeinstellung">
+            <Channel Id="%AID%_CH-Basic" Name="BasicChannel" Number="1" Text="Taster Grundeinstellung">
+              <ParameterBlock Id="%AID%_PB-5" Name="Basic" Text="Grundeinstellung">
                 <!-- Hidden -->
                 <ParameterRefRef RefId="%AID%_P-%T%000001_R-%T%00000101" />
 
