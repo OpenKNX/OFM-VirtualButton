@@ -4,6 +4,7 @@
 #include "KnxHelper.h"
 #include "knxprod.h"
 #include "hardware.h"
+#include "OpenKNX.h"
 
 #define BTN_MaxMuliClicks 3
 #define BTN_DPT1 1
@@ -72,7 +73,7 @@ struct sVirtualButtonState
   int8_t multiClicks = 0;
 };
 
-class VirtualButton
+class VirtualButton : public OpenKNX::Module
 {
 
 private:
