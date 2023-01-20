@@ -1,0 +1,107 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "OpenKNXproducer",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/src"
+            },
+            "command": "~/bin/OpenKNXproducer.exe",
+            "args": [
+                "create",
+                "--Debug",
+                "--HeaderFileName=VirtualButtonModuleKnxprod.h",
+                "VirtualButtonModule"
+            ],
+            "problemMatcher": [],
+            "group": "test"
+        },
+        {
+            "label": "RP2040: Build",
+            "type": "shell",
+            "command": "scripts/OpenKNX-Build.ps1",
+            "args": [
+                "build_RP2040"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "RP2040: Build & Upload (USB)",
+            "type": "shell",
+            "command": "scripts/OpenKNX-Build.ps1",
+            "args": [
+                "upload_USB_RP2040",
+                "upload"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "RP2040: Build & Upload (JLINK)",
+            "type": "shell",
+            "command": "scripts/OpenKNX-Build.ps1",
+            "args": [
+                "upload_JLINK_RP2040",
+                "upload"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+
+        {
+            "label": "SAMD: Build",
+            "type": "shell",
+            "command": "scripts/OpenKNX-Build.ps1",
+            "args": [
+                "build_SAMD"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "SAMD: Build & Upload (USB)",
+            "type": "shell",
+            "command": "scripts/OpenKNX-Build.ps1",
+            "args": [
+                "upload_USB_SAMD",
+                "upload"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "SAMD: Build & Upload (JLINK)",
+            "type": "shell",
+            "command": "scripts/OpenKNX-Build.ps1",
+            "args": [
+                "upload_JLINK_SAMD",
+                "upload"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+
+        {
+            "label": "Build-Release",
+            "type": "shell",
+            "command": "scripts/Build-Release.ps1", 
+            "args": [
+                "Release"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Build-Beta",
+            "type": "shell",
+            "command": "scripts/Build-Release.ps1",
+            "args": [
+            ],
+            "problemMatcher": [],
+            "group": "test"
+        }
+    ]
+}

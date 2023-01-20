@@ -73,15 +73,10 @@ struct sVirtualButtonState
   int8_t multiClicks = 0;
 };
 
-class VirtualButton : public OpenKNX::Module
+class VirtualButton : public OpenKNX::Channel
 {
 
 private:
-  uint32_t calcParamIndex(uint16_t iParamIndex);
-  uint16_t calcKoNumber(uint8_t iKoIndex);
-  int8_t calcKoIndex(uint16_t iKoNumber);
-  GroupObject *getKo(uint8_t iKoIndex);
-
   void processInputKoInput(GroupObject &iKo, bool iButton);
   void processInputKoLock(GroupObject &iKo);
   void processPress(bool iButton);
@@ -95,13 +90,11 @@ private:
   void eventShortRelease(bool iButton);
   void eventLongRelease(bool iButton);
   void eventExtraLongRelease(bool iButton);
-  // void dim(bool iButton, bool iRelease);
   void writeOutput(uint8_t iOutputDPT, uint16_t iOutputKo, uint16_t iOutputValue, bool &oStatus);
-  void processInputKoStatus(GroupObject &iKom, uint8_t iStatusNumber, uint8_t iDpt, bool &oStatus);
+  void processInputKoStatus(GroupObject &iKo, uint8_t iStatusNumber, uint8_t iDpt, bool &oStatus);
   void processDynamicStatusTimer();
   void evaluateDynamicStatus();
 
-  uint8_t mIndex = 0;
   uint8_t mLock = 0;
   bool mStatusShort = false;
   bool mStatusLong = false;
@@ -124,4 +117,5 @@ public:
   void setup();
   void loop();
   void processInputKo(GroupObject &iKo);
+  const char* name() override;
 };

@@ -228,7 +228,7 @@
               <!-- Dynamischer 1-Taster DimStatus -->
               <Union SizeInBit="24">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="48" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%060" Name="Channel%C%StatusThreshold" Offset="0" BitOffset="0" ParameterType="%AID%_PT-ValueDpt5001" Text="Schwellwert" Value="25" SuffixText="%" />
+                <Parameter Id="%AID%_UP-%T%%CCC%060" Name="Channel%C%StatusThreshold" Offset="0" BitOffset="0" ParameterType="%AID%_PT-ValueDpt5001" Text="Schwellwert" Value="50" SuffixText="%" />
                 <Parameter Id="%AID%_UP-%T%%CCC%061" Name="Channel%C%StatusFallbackBase" Offset="1" BitOffset="0" ParameterType="%AID%_PT-DelayBase" Text="Zeitbasis" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%062" Name="Channel%C%StatusFallbackTime" Offset="1" BitOffset="2" ParameterType="%AID%_PT-DelayTime" Text="Zeit" Value="0" />
               </Union>
