@@ -77,45 +77,44 @@ class VirtualButton : public OpenKNX::Channel
 {
 
 private:
-  void processInputKoInput(GroupObject &iKo, bool iButton);
-  void processInputKoLock(GroupObject &iKo);
-  void processPress(bool iButton);
-  void processRelease(bool iButton);
-  void processPressAndHold(bool iButton);
+  void processInputKoInput(GroupObject &ko, bool button);
+  void processInputKoLock(GroupObject &ko);
+  void processPress(bool button);
+  void processRelease(bool button);
+  void processPressAndHold(bool button);
   void processMultiClick();
-  void eventMultiClick(uint8_t iClicks);
-  void eventShortPress(bool iButton);
-  void eventLongPress(bool iButton);
-  void eventExtraLongPress(bool iButton);
-  void eventShortRelease(bool iButton);
-  void eventLongRelease(bool iButton);
-  void eventExtraLongRelease(bool iButton);
-  void writeOutput(uint8_t iOutputDPT, uint16_t iOutputKo, uint16_t iOutputValue, bool &oStatus);
-  void processInputKoStatus(GroupObject &iKo, uint8_t iStatusNumber, uint8_t iDpt, bool &oStatus);
+  void eventMultiClick(uint8_t clicks);
+  void eventShortPress(bool button);
+  void eventLongPress(bool button);
+  void eventExtraLongPress(bool button);
+  void eventShortRelease(bool button);
+  void eventLongRelease(bool button);
+  void eventExtraLongRelease(bool button);
+  void writeOutput(uint8_t outputDpt, uint16_t outputKo, uint16_t outputValue, bool &status);
+  void processInputKoStatus(GroupObject &ko, uint8_t statusNumber, uint8_t dpt, bool &status);
   void processDynamicStatusTimer();
   void evaluateDynamicStatus();
 
-  uint8_t mLock = 0;
-  bool mStatusShort = false;
-  bool mStatusLong = false;
-  bool mStatusExtraLong = false;
-  u_int32_t mDynamicStatusTimer = 0;
+  uint8_t _lock = 0;
+  bool _statusShort = false;
+  bool _statusLong = false;
+  bool _statusExtraLong = false;
+  u_int32_t _dynamicStatusTimer = 0;
 
-  sVirtualButtonState mButtonState[2] = {
+  sVirtualButtonState _buttonState[2] = {
       sVirtualButtonState(),
       sVirtualButtonState()};
-  sVirtualButtonParams mButtonParams[2] = {
+  sVirtualButtonParams _buttonParams[2] = {
       sVirtualButtonParams(),
       sVirtualButtonParams()};
   sVirtualButtonGlobalParams mParams;
-  sMultiClickParams mMultiClickParams[3];
+  sMultiClickParams _multiClickParams[3];
 
 public:
-  VirtualButton(uint8_t iIndex);
-  ~VirtualButton();
+  VirtualButton(uint8_t index);
 
   void setup();
   void loop();
-  void processInputKo(GroupObject &iKo);
+  void processInputKo(GroupObject &ko);
   const char* name() override;
 };
