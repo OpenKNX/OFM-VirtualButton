@@ -39,7 +39,7 @@ void VirtualButtonModule::writeFlash()
 {
     for (size_t i = 0; i < flashSize(); i++)
     {
-        openknx.flash.writeByte(0xd0 + i);
+        //openknx.flash.writeByte(0xd0 + i);
     }
 }
 
