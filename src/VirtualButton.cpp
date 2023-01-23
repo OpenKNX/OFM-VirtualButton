@@ -1,12 +1,8 @@
 #include "VirtualButton.h"
 
-VirtualButton::VirtualButton(uint8_t iIndex)
+VirtualButton::VirtualButton(uint8_t index)
 {
-    _channelIndex = iIndex;
-    _channelParamBlockSize = BTN_ParamBlockSize;
-    _channelParamKoBlockSize = BTN_KoBlockSize;
-    _channelParamKoOffset = BTN_KoOffset;
-    _channelParamOffset = BTN_ParamBlockOffset;
+    _channelIndex = index;
 }
 
 const char *VirtualButton::name()
@@ -161,7 +157,7 @@ void VirtualButton::processInputKo(GroupObject &iKo)
         return;
 
     uint16_t lKoNumber = iKo.asap();
-    uint8_t lKoIndex = calcKoIndex(lKoNumber);
+    uint8_t lKoIndex = BTN_KoCalcIndex(lKoNumber);
 
     // Internal
     if (_buttonParams[0].inputKo > 0 && _buttonParams[0].inputKo == lKoNumber)
@@ -376,7 +372,7 @@ void VirtualButton::processMultiClick()
 void VirtualButton::eventMultiClick(uint8_t clicks)
 {
     if (ParamBTN_ChannelMultiClickCount)
-        getKo(BTN_KoChannelOutput1)->value(clicks, DPT_DecimalFactor);
+        KoBTN_ChannelOutput1.value(clicks, DPT_DecimalFactor);
 
     if (clicks > BTN_MaxMuliClicks)
         return;
