@@ -7,7 +7,7 @@ VirtualButton::VirtualButton(uint8_t index)
 
 const char *VirtualButton::name()
 {
-    char *buffer = new char[18];
+    char *buffer = new char[19];
     sprintf(buffer, "VirtualButton<%i>", _channelIndex + 1);
     return buffer;
 }
