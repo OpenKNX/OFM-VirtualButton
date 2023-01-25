@@ -88,7 +88,7 @@ void VirtualButton::setup()
         mParams.reactionTimeExtraLong = ParamBTN_ReactionTimeExtraLong * 100;
 
     // Debug
-    //log("ParamBTN_ChannelStatusFallbackTimeMS: %i", ParamBTN_ChannelStatusFallbackTimeMS);
+    // log("ParamBTN_ChannelStatusFallbackTimeMS: %i", ParamBTN_ChannelStatusFallbackTimeMS);
 }
 
 void VirtualButton::loop()
@@ -195,6 +195,7 @@ void VirtualButton::processInputKo(GroupObject &iKo)
 void VirtualButton::processInputKoStatus(GroupObject &iKo, uint8_t iStatusNumber, uint8_t dpt, bool &status)
 {
     log("processInputKoStatus %i/%i/%i", iStatusNumber, dpt, status);
+
     if (dpt == 7 || dpt == 8)
     {
         uint8_t value = iKo.value(DPT_Scaling);
@@ -437,7 +438,7 @@ void VirtualButton::eventShortRelease(bool button)
 
     // Output 2
     if (_buttonParams[button].output2Short)
-        writeOutput(1, BTN_KoChannelOutput4, _buttonParams[button].output2Short, _statusShort);
+        KoBTN_ChannelOutput4.value(_buttonParams[button].output2Short, DPT_Switch);
 }
 
 void VirtualButton::eventLongRelease(bool button)
@@ -453,7 +454,7 @@ void VirtualButton::eventLongRelease(bool button)
 
     // Output 2
     if (_buttonParams[button].output2Long)
-        writeOutput(1, BTN_KoChannelOutput5, _buttonParams[button].output2Long, _statusLong);
+        KoBTN_ChannelOutput5.value(_buttonParams[button].output2Long, DPT_Switch);
 }
 
 void VirtualButton::eventExtraLongRelease(bool button)
@@ -469,14 +470,12 @@ void VirtualButton::eventExtraLongRelease(bool button)
 
     // Output 2
     if (_buttonParams[button].output2ExtraLong)
-        writeOutput(1, BTN_KoChannelOutput6, _buttonParams[button].output2ExtraLong, _statusExtraLong);
+        KoBTN_ChannelOutput6.value(_buttonParams[button].output2ExtraLong, DPT_Switch);
 }
 
 void VirtualButton::writeOutput(uint8_t outputDpt, uint16_t outputKo, uint16_t outputValue, bool &status)
 {
-    log("  writeOutput %i/%i/%i/%i // %i", outputDpt, outputKo, outputValue, status, BTN_KoCalcNumber(outputDpt));
-
-
+    log("  writeOutput %i/%i/%i/%i // %i", outputDpt, outputKo, outputValue, status, BTN_KoCalcNumber(outputKo));
 
     switch (outputDpt)
     {
@@ -493,6 +492,7 @@ void VirtualButton::writeOutput(uint8_t outputDpt, uint16_t outputKo, uint16_t o
             if (outputValue == 3)
             {
                 status = !status;
+                log("Toogle: %i", status);
             }
 
             knx.getGroupObject(BTN_KoCalcNumber(outputKo)).value((bool)status, DPT_Switch);
@@ -563,4 +563,11 @@ void VirtualButton::writeOutput(uint8_t outputDpt, uint16_t outputKo, uint16_t o
             knx.getGroupObject(BTN_KoCalcNumber(outputKo)).value((uint16_t)outputValue, DPT_Value_2_Ucount);
             break;
     }
+}
+
+void VirtualButton::readStatus()
+{
+    // KoBTN_ChannelOutput1Status.requestObjectRead();
+    // KoBTN_ChannelOutput2Status.requestObjectRead();
+    // KoBTN_ChannelOutput3Status.requestObjectRead();
 }

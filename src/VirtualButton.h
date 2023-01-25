@@ -115,6 +115,7 @@ public:
 
   void setup();
   void loop();
+  void readStatus();
   void processInputKo(GroupObject &ko);
   const char* name() override;
 };

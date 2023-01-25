@@ -10,7 +10,7 @@ class VirtualButtonModule : public OpenKNX::Module
 
     void loop();
     void setup();
-    // void firstLoop();
+    void firstLoop();
     void processInputKo(GroupObject& iKo);
 
     const char* name() override;

@@ -31,9 +31,11 @@ void VirtualButtonModule::processInputKo(GroupObject& iKo)
         mVirtualButtons[i]->processInputKo(iKo);
 }
 
-// void VirtualButtonModule::firstLoop()
-// {
-// }
+void VirtualButtonModule::firstLoop()
+{
+    for (uint8_t i = 0; i < BTN_ChannelCount; i++)
+        mVirtualButtons[i]->readStatus();
+}
 
 // void VirtualButtonModule::writeFlash()
 // {
