@@ -88,7 +88,7 @@ void VirtualButton::setup()
         mParams.reactionTimeExtraLong = ParamBTN_ReactionTimeExtraLong * 100;
 
     // Debug
-    //debug("ParamBTN_ChannelStatusFallbackTimeMS: %i", ParamBTN_ChannelStatusFallbackTimeMS);
+    //log("ParamBTN_ChannelStatusFallbackTimeMS: %i", ParamBTN_ChannelStatusFallbackTimeMS);
 }
 
 void VirtualButton::loop()
@@ -126,28 +126,28 @@ void VirtualButton::evaluateDynamicStatus()
     if (ParamBTN_ChannelStatusFallbackTimeMS == 0)
         return;
 
-    debug("evaluateDynamicStatus");
+    log("evaluateDynamicStatus");
 
     // Short
     if (ParamBTN_ChannelOutputShort_DPT == 7 || ParamBTN_ChannelOutputShort_DPT == 8)
     {
         uint8_t value = KoBTN_ChannelOutput1Status.value(DPT_Scaling);
         _statusShort = (value < ParamBTN_ChannelStatusThreshold) ? false : true;
-        debug("  short: %i/%i/%i", value, ParamBTN_ChannelStatusThreshold, _statusShort);
+        log("  short: %i/%i/%i", value, ParamBTN_ChannelStatusThreshold, _statusShort);
     }
     // Long
     if (ParamBTN_ChannelOutputLong_DPT == 7 || ParamBTN_ChannelOutputLong_DPT == 8)
     {
         uint8_t value = KoBTN_ChannelOutput2Status.value(DPT_Scaling);
         _statusLong = (value < ParamBTN_ChannelStatusThreshold) ? false : true;
-        debug("  long: %i/%i/%i", value, ParamBTN_ChannelStatusThreshold, _statusLong);
+        log("  long: %i/%i/%i", value, ParamBTN_ChannelStatusThreshold, _statusLong);
     }
     // ExtraLong
     if (ParamBTN_ChannelOutputExtraLong_DPT == 7 || ParamBTN_ChannelOutputExtraLong_DPT == 8)
     {
         uint8_t value = KoBTN_ChannelOutput3Status.value(DPT_Scaling);
         _statusExtraLong = (value < ParamBTN_ChannelStatusThreshold) ? false : true;
-        debug("  extralong: %i/%i/%i", value, ParamBTN_ChannelStatusThreshold, _statusExtraLong);
+        log("  extralong: %i/%i/%i", value, ParamBTN_ChannelStatusThreshold, _statusExtraLong);
     }
 }
 
@@ -194,7 +194,7 @@ void VirtualButton::processInputKo(GroupObject &iKo)
 
 void VirtualButton::processInputKoStatus(GroupObject &iKo, uint8_t iStatusNumber, uint8_t dpt, bool &status)
 {
-    debug("processInputKoStatus %i/%i/%i", iStatusNumber, dpt, status);
+    log("processInputKoStatus %i/%i/%i", iStatusNumber, dpt, status);
     if (dpt == 7 || dpt == 8)
     {
         uint8_t value = iKo.value(DPT_Scaling);
@@ -239,14 +239,14 @@ void VirtualButton::processInputKoLock(GroupObject &iKo)
     _buttonState[1].pressExtraLong = false;
     _buttonState[1].pressStart = 0;
 
-    debug("processInputKoLock %i", _lock);
+    log("processInputKoLock %i", _lock);
 }
 
 void VirtualButton::processInputKoInput(GroupObject &iKo, bool button)
 {
     bool newPress = iKo.value(DPT_Switch);
     bool lastPress = _buttonState[button].press;
-    debug("processInputKoInput %i", newPress);
+    log("processInputKoInput %i", newPress);
 
     // werte "Loslassen" nur aus, wenn der letze Zustand auch "gedrückt" war
     if (!lastPress && !newPress)
@@ -388,7 +388,7 @@ void VirtualButton::eventMultiClick(uint8_t clicks)
     if (ParamBTN_ChannelOutputMulti_DPT == 1)
         lOutputKo = BTN_KoChannelOutput4 + lIndex;
 
-    debug("  Button %i: MultiClick %i clicks - type %i ko %i value %i", 0, clicks, ParamBTN_ChannelOutputMulti_DPT, lOutputKo, lParams.output);
+    log("  Button %i: MultiClick %i clicks - type %i ko %i value %i", 0, clicks, ParamBTN_ChannelOutputMulti_DPT, lOutputKo, lParams.output);
     writeOutput(ParamBTN_ChannelOutputMulti_DPT, lOutputKo, lParams.output, _statusShort);
 }
 void VirtualButton::eventShortPress(bool button)
@@ -396,7 +396,7 @@ void VirtualButton::eventShortPress(bool button)
     if (!_buttonParams[button].outputShortPressActive)
         return;
 
-    debug("  Button %i: short press", button);
+    log("  Button %i: short press", button);
 
     // Output
     writeOutput(ParamBTN_ChannelOutputShort_DPT, BTN_KoChannelOutput1, _buttonParams[button].outputShortPress, _statusShort);
@@ -407,7 +407,7 @@ void VirtualButton::eventLongPress(bool button)
     if (!_buttonParams[button].outputLongPressActive)
         return;
 
-    debug("  Button %i: long press", button);
+    log("  Button %i: long press", button);
 
     // Output
     writeOutput(ParamBTN_ChannelOutputLong_DPT, BTN_KoChannelOutput2, _buttonParams[button].outputLongPress, _statusLong);
@@ -418,7 +418,7 @@ void VirtualButton::eventExtraLongPress(bool button)
     if (!_buttonParams[button].outputExtraLongPressActive)
         return;
 
-    debug("  Button %i: extra long press", button);
+    log("  Button %i: extra long press", button);
 
     // Output
     writeOutput(ParamBTN_ChannelOutputExtraLong_DPT, BTN_KoChannelOutput3, _buttonParams[button].outputExtraLongPress, _statusExtraLong);
@@ -429,7 +429,7 @@ void VirtualButton::eventShortRelease(bool button)
     if (!_buttonParams[button].outputShortReleaseActive && !_buttonParams[button].output2Short)
         return;
 
-    debug("  Button %i: short release", button);
+    log("  Button %i: short release", button);
 
     // Output 1
     if (_buttonParams[button].outputShortReleaseActive)
@@ -445,7 +445,7 @@ void VirtualButton::eventLongRelease(bool button)
     if (!_buttonParams[button].outputLongReleaseActive && !_buttonParams[button].output2Long)
         return;
 
-    debug("  Button %i: long release", button);
+    log("  Button %i: long release", button);
 
     // Output 1
     if (_buttonParams[button].outputLongReleaseActive)
@@ -461,7 +461,7 @@ void VirtualButton::eventExtraLongRelease(bool button)
     if (!_buttonParams[button].outputExtraLongReleaseActive && !_buttonParams[button].output2ExtraLong)
         return;
 
-    debug("  Button %i: extra long release", button);
+    log("  Button %i: extra long release", button);
 
     // Output 1
     if (_buttonParams[button].outputExtraLongReleaseActive)
@@ -474,7 +474,7 @@ void VirtualButton::eventExtraLongRelease(bool button)
 
 void VirtualButton::writeOutput(uint8_t outputDpt, uint16_t outputKo, uint16_t outputValue, bool &status)
 {
-    debug("  writeOutput %i/%i/%i/%i // %i", outputDpt, outputKo, outputValue, status, BTN_KoCalcNumber(outputDpt));
+    log("  writeOutput %i/%i/%i/%i // %i", outputDpt, outputKo, outputValue, status, BTN_KoCalcNumber(outputDpt));
 
 
 
