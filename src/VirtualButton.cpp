@@ -492,7 +492,6 @@ void VirtualButton::writeOutput(uint8_t outputDpt, uint16_t outputKo, uint16_t o
             if (outputValue == 3)
             {
                 status = !status;
-                log("Toogle: %i", status);
             }
 
             knx.getGroupObject(BTN_KoCalcNumber(outputKo)).value((bool)status, DPT_Switch);
