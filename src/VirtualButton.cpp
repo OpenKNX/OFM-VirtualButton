@@ -73,7 +73,7 @@ void VirtualButton::setup()
     if (mParams.reactionTimeMultiClick > 0)
         mParams.reactionTimeMultiClick *= 100;
     else
-        mParams.reactionTimeMultiClick = ParamBTN_ChannelReactionTimeMultiClick * 100;
+        mParams.reactionTimeMultiClick = ParamBTN_ReactionTimeMultiClick * 100;
 
     mParams.reactionTimeLong = ParamBTN_ChannelReactionTimeLong;
     if (mParams.reactionTimeLong > 0)
@@ -88,7 +88,7 @@ void VirtualButton::setup()
         mParams.reactionTimeExtraLong = ParamBTN_ReactionTimeExtraLong * 100;
 
     // Debug
-    // log("ParamBTN_ChannelStatusFallbackTimeMS: %i", ParamBTN_ChannelStatusFallbackTimeMS);
+    // log("reactionTimeMultiClick: %i", mParams.reactionTimeMultiClick);
 }
 
 void VirtualButton::loop()
@@ -157,9 +157,10 @@ void VirtualButton::processInputKo(GroupObject &iKo)
         return;
 
     uint16_t lKoNumber = iKo.asap();
-    uint8_t lKoIndex = BTN_KoCalcIndex(lKoNumber);
+    int8_t lKoIndex = BTN_KoCalcIndex(lKoNumber);
+    // log("lKoNumber %i -> lKoIndex %i", lKoNumber, lKoIndex);
 
-    // Internal
+    // External KO -> to Channel Mapping
     if (_buttonParams[0].inputKo > 0 && _buttonParams[0].inputKo == lKoNumber)
     {
         lKoIndex = BTN_KoChannelInput1;
