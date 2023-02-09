@@ -1,40 +1,40 @@
 #include "VirtualButtonModule.h"
 
-VirtualButtonModule::VirtualButtonModule()
-{}
-VirtualButtonModule::~VirtualButtonModule()
-{}
-
 const char* VirtualButtonModule::name()
 {
-    return "VirtualButtonModule";
+    return "VirtualButton";
+}
+
+const char* VirtualButtonModule::version()
+{
+    return "0.0dev";
 }
 
 void VirtualButtonModule::setup()
 {
     for (uint8_t i = 0; i < BTN_ChannelCount; i++)
     {
-        mVirtualButtons[i] = new VirtualButton(i);
-        mVirtualButtons[i]->setup();
+        _channels[i] = new VirtualButtonChannel(i);
+        _channels[i]->setup();
     }
 }
 
 void VirtualButtonModule::loop()
 {
     for (uint8_t i = 0; i < BTN_ChannelCount; i++)
-        mVirtualButtons[i]->loop();
+        _channels[i]->loop();
 }
 
 void VirtualButtonModule::processInputKo(GroupObject& iKo)
 {
     for (uint8_t i = 0; i < BTN_ChannelCount; i++)
-        mVirtualButtons[i]->processInputKo(iKo);
+        _channels[i]->processInputKo(iKo);
 }
 
-void VirtualButtonModule::firstLoop()
+void VirtualButtonModule::processAfterStartupDelay()
 {
     for (uint8_t i = 0; i < BTN_ChannelCount; i++)
-        mVirtualButtons[i]->readStatus();
+        _channels[i]->readStatus();
 }
 
 // void VirtualButtonModule::writeFlash()

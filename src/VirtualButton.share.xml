@@ -138,7 +138,7 @@
                 <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="0" maxInclusive="100" />
               </ParameterType>
 
-              <ParameterType Id="%AID%_PT-BTNOutputDpt7" Name="BTNOutputDpt9">
+              <ParameterType Id="%AID%_PT-BTNOutputDpt7" Name="BTNOutputDpt7">
                 <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="0" maxInclusive="65535" />
               </ParameterType>
 

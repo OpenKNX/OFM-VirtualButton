@@ -1,18 +1,19 @@
-#include "VirtualButton.h"
+#include "VirtualButtonChannel.h"
+#include <set>
 
-VirtualButton::VirtualButton(uint8_t index)
+VirtualButtonChannel::VirtualButtonChannel(uint8_t index)
 {
     _channelIndex = index;
 }
 
-const char *VirtualButton::name()
+const char *VirtualButtonChannel::name()
 {
-    char *buffer = new char[19];
+    char *buffer = new char[20];
     sprintf(buffer, "VirtualButton<%i>", _channelIndex + 1);
     return buffer;
 }
 
-void VirtualButton::setup()
+void VirtualButtonChannel::setup()
 {
     // Input
     _buttonParams[0].inputKo = ParamBTN_ChannelInputA;
@@ -69,36 +70,36 @@ void VirtualButton::setup()
     _multiClickParams[2].output = ParamBTN_ChannelOutputMulti_Click3_Dpt1;
 
     // ReactionTimes
-    mParams.reactionTimeMultiClick = ParamBTN_ChannelReactionTimeMultiClick;
-    if (mParams.reactionTimeMultiClick > 0)
-        mParams.reactionTimeMultiClick *= 100;
+    _params.reactionTimeMultiClick = ParamBTN_ChannelReactionTimeMultiClick;
+    if (_params.reactionTimeMultiClick > 0)
+        _params.reactionTimeMultiClick *= 100;
     else
-        mParams.reactionTimeMultiClick = ParamBTN_ReactionTimeMultiClick * 100;
+        _params.reactionTimeMultiClick = ParamBTN_ReactionTimeMultiClick * 100;
 
-    mParams.reactionTimeLong = ParamBTN_ChannelReactionTimeLong;
-    if (mParams.reactionTimeLong > 0)
-        mParams.reactionTimeLong *= 100;
+    _params.reactionTimeLong = ParamBTN_ChannelReactionTimeLong;
+    if (_params.reactionTimeLong > 0)
+        _params.reactionTimeLong *= 100;
     else
-        mParams.reactionTimeLong = ParamBTN_ReactionTimeLong * 100;
+        _params.reactionTimeLong = ParamBTN_ReactionTimeLong * 100;
 
-    mParams.reactionTimeExtraLong = ParamBTN_ChannelReactionTimeExtraLong;
-    if (mParams.reactionTimeExtraLong > 0)
-        mParams.reactionTimeExtraLong *= 100;
+    _params.reactionTimeExtraLong = ParamBTN_ChannelReactionTimeExtraLong;
+    if (_params.reactionTimeExtraLong > 0)
+        _params.reactionTimeExtraLong *= 100;
     else
-        mParams.reactionTimeExtraLong = ParamBTN_ReactionTimeExtraLong * 100;
+        _params.reactionTimeExtraLong = ParamBTN_ReactionTimeExtraLong * 100;
 
     // Debug
-    // log("reactionTimeMultiClick: %i", mParams.reactionTimeMultiClick);
+    // log("reactionTimeMultiClick: %i", _params.reactionTimeMultiClick);
 }
 
-void VirtualButton::loop()
+void VirtualButtonChannel::loop()
 {
     processPressAndHold(0);
     processPressAndHold(1);
     processMultiClick();
     processDynamicStatusTimer();
 }
-void VirtualButton::processDynamicStatusTimer()
+void VirtualButtonChannel::processDynamicStatusTimer()
 {
     // Es ist überhaupt kein dynamischer Status aktiv
     if (ParamBTN_ChannelStatusFallbackTimeMS == 0)
@@ -116,7 +117,7 @@ void VirtualButton::processDynamicStatusTimer()
   Läuft dieser ab (processDynamicStatusTimer) wird der interne Status neu evaluiert.
   Ist keine Timer gestartet, so wird immer neu evaluiert (processInputKoStatus)
 */
-void VirtualButton::evaluateDynamicStatus()
+void VirtualButtonChannel::evaluateDynamicStatus()
 {
     // Läuft gerade ein Timer, so ist keine Änderung erlaubt.
     if (_dynamicStatusTimer > 0)
@@ -151,55 +152,55 @@ void VirtualButton::evaluateDynamicStatus()
     }
 }
 
-void VirtualButton::processInputKo(GroupObject &iKo)
+void VirtualButtonChannel::processInputKo(GroupObject &ko)
 {
     if (ParamBTN_ChannelMode == 0)
         return;
 
-    uint16_t lKoNumber = iKo.asap();
-    int8_t lKoIndex = BTN_KoCalcIndex(lKoNumber);
-    // log("lKoNumber %i -> lKoIndex %i", lKoNumber, lKoIndex);
+    uint16_t koNumber = ko.asap();
+    int8_t koIndex = BTN_KoCalcIndex(koNumber);
+    // log("koNumber %i -> koIndex %i", koNumber, koIndex);
 
     // External KO -> to Channel Mapping
-    if (_buttonParams[0].inputKo > 0 && _buttonParams[0].inputKo == lKoNumber)
+    if (_buttonParams[0].inputKo > 0 && _buttonParams[0].inputKo == koNumber)
     {
-        lKoIndex = BTN_KoChannelInput1;
+        koIndex = BTN_KoChannelInput1;
     }
-    else if (_buttonParams[1].inputKo > 0 && _buttonParams[1].inputKo == lKoNumber)
+    else if (_buttonParams[1].inputKo > 0 && _buttonParams[1].inputKo == koNumber)
     {
-        lKoIndex = BTN_KoChannelInput2;
+        koIndex = BTN_KoChannelInput2;
     }
 
-    switch (lKoIndex)
+    switch (koIndex)
     {
         case BTN_KoChannelInput1:
-            processInputKoInput(iKo, 0);
+            processInputKoInput(ko, 0);
             break;
         case BTN_KoChannelInput2:
-            processInputKoInput(iKo, 1);
+            processInputKoInput(ko, 1);
             break;
         case BTN_KoChannelLock:
-            processInputKoLock(iKo);
+            processInputKoLock(ko);
             break;
         case BTN_KoChannelOutput1Status:
-            processInputKoStatus(iKo, 1, ParamBTN_ChannelOutputShort_DPT, _statusShort);
+            processInputKoStatus(ko, 1, ParamBTN_ChannelOutputShort_DPT, _statusShort);
             break;
         case BTN_KoChannelOutput2Status:
-            processInputKoStatus(iKo, 2, ParamBTN_ChannelOutputLong_DPT, _statusLong);
+            processInputKoStatus(ko, 2, ParamBTN_ChannelOutputLong_DPT, _statusLong);
             break;
         case BTN_KoChannelOutput3Status:
-            processInputKoStatus(iKo, 3, ParamBTN_ChannelOutputExtraLong_DPT, _statusExtraLong);
+            processInputKoStatus(ko, 3, ParamBTN_ChannelOutputExtraLong_DPT, _statusExtraLong);
             break;
     }
 }
 
-void VirtualButton::processInputKoStatus(GroupObject &iKo, uint8_t iStatusNumber, uint8_t dpt, bool &status)
+void VirtualButtonChannel::processInputKoStatus(GroupObject &ko, uint8_t statusNumber, uint8_t dpt, bool &status)
 {
-    log("processInputKoStatus %i/%i/%i", iStatusNumber, dpt, status);
+    log("processInputKoStatus %i/%i/%i", statusNumber, dpt, status);
 
     if (dpt == 7 || dpt == 8)
     {
-        uint8_t value = iKo.value(DPT_Scaling);
+        uint8_t value = ko.value(DPT_Scaling);
         if (value == 0 && status)
             status = false;
         if (value == 100 && !status)
@@ -209,17 +210,17 @@ void VirtualButton::processInputKoStatus(GroupObject &iKo, uint8_t iStatusNumber
     }
     else
     {
-        bool value = iKo.value(DPT_Switch);
+        bool value = ko.value(DPT_Switch);
         status = value;
     }
 }
 
-void VirtualButton::processInputKoLock(GroupObject &iKo)
+void VirtualButtonChannel::processInputKoLock(GroupObject &ko)
 {
     if (ParamBTN_ChannelLock == 0)
         return;
 
-    bool value = iKo.value(DPT_Switch);
+    bool value = ko.value(DPT_Switch);
 
     if (ParamBTN_ChannelLock == 1)
         _lock = value;
@@ -244,9 +245,9 @@ void VirtualButton::processInputKoLock(GroupObject &iKo)
     log("processInputKoLock %i", _lock);
 }
 
-void VirtualButton::processInputKoInput(GroupObject &iKo, bool button)
+void VirtualButtonChannel::processInputKoInput(GroupObject &ko, bool button)
 {
-    bool newPress = iKo.value(DPT_Switch);
+    bool newPress = ko.value(DPT_Switch);
     bool lastPress = _buttonState[button].press;
     log("processInputKoInput %i", newPress);
 
@@ -268,7 +269,7 @@ void VirtualButton::processInputKoInput(GroupObject &iKo, bool button)
     }
 }
 
-void VirtualButton::processPressAndHold(bool button)
+void VirtualButtonChannel::processPressAndHold(bool button)
 {
     // not pressed
     if (!_buttonState[button].press)
@@ -278,7 +279,7 @@ void VirtualButton::processPressAndHold(bool button)
     if (ParamBTN_ChannelOutputLong_DPT == 0 && ParamBTN_ChannelOutputExtraLong_DPT == 0)
         return;
 
-    if (!_buttonState[button].pressLong && delayCheck(_buttonState[button].pressStart, mParams.reactionTimeLong))
+    if (!_buttonState[button].pressLong && delayCheck(_buttonState[button].pressStart, _params.reactionTimeLong))
     {
         eventLongPress(button);
         _buttonState[button].pressLong = true;
@@ -288,14 +289,14 @@ void VirtualButton::processPressAndHold(bool button)
     if (ParamBTN_ChannelOutputExtraLong_DPT == 0)
         return;
 
-    if (!_buttonState[button].pressExtraLong && delayCheck(_buttonState[button].pressStart, mParams.reactionTimeExtraLong))
+    if (!_buttonState[button].pressExtraLong && delayCheck(_buttonState[button].pressStart, _params.reactionTimeExtraLong))
     {
         eventExtraLongPress(button);
         _buttonState[button].pressExtraLong = true;
     }
 }
 
-void VirtualButton::processPress(bool button)
+void VirtualButtonChannel::processPress(bool button)
 {
     if (_lock)
         return;
@@ -316,7 +317,7 @@ void VirtualButton::processPress(bool button)
     _buttonState[button].pressStart = millis();
 }
 
-void VirtualButton::processRelease(bool button)
+void VirtualButtonChannel::processRelease(bool button)
 {
     if (_buttonState[button].pressExtraLong)
     {
@@ -349,7 +350,7 @@ void VirtualButton::processRelease(bool button)
     _buttonState[button].pressStart = 0;
 }
 
-void VirtualButton::processMultiClick()
+void VirtualButtonChannel::processMultiClick()
 {
     // no multiclick mode
     if (ParamBTN_ChannelMode != 3)
@@ -363,7 +364,7 @@ void VirtualButton::processMultiClick()
     if (_buttonState[0].multiClickTimer == 0)
         return;
 
-    if (delayCheck(_buttonState[0].multiClickTimer, mParams.reactionTimeMultiClick))
+    if (delayCheck(_buttonState[0].multiClickTimer, _params.reactionTimeMultiClick))
     {
         eventMultiClick(_buttonState[0].multiClicks);
         _buttonState[0].multiClickTimer = 0;
@@ -371,7 +372,7 @@ void VirtualButton::processMultiClick()
     }
 }
 
-void VirtualButton::eventMultiClick(uint8_t clicks)
+void VirtualButtonChannel::eventMultiClick(uint8_t clicks)
 {
     if (ParamBTN_ChannelMultiClickCount)
         KoBTN_ChannelOutput1.value(clicks, DPT_DecimalFactor);
@@ -379,21 +380,21 @@ void VirtualButton::eventMultiClick(uint8_t clicks)
     if (clicks > BTN_MaxMuliClicks)
         return;
 
-    uint8_t lIndex = clicks - 1;
-    uint16_t lOutputKo = BTN_KoChannelOutput1;
-    sMultiClickParams lParams = _multiClickParams[lIndex];
+    uint8_t index = clicks - 1;
+    uint16_t outputKo = BTN_KoChannelOutput1;
+    MultiClickParams params = _multiClickParams[index];
 
-    if (!lParams.active)
+    if (!params.active)
         return;
 
     // Sonderlocke für DTPT1
     if (ParamBTN_ChannelOutputMulti_DPT == 1)
-        lOutputKo = BTN_KoChannelOutput4 + lIndex;
+        outputKo = BTN_KoChannelOutput4 + index;
 
-    log("  Button %i: MultiClick %i clicks - type %i ko %i value %i", 0, clicks, ParamBTN_ChannelOutputMulti_DPT, lOutputKo, lParams.output);
-    writeOutput(ParamBTN_ChannelOutputMulti_DPT, lOutputKo, lParams.output, _statusShort);
+    log("  Button %i: MultiClick %i clicks - type %i ko %i value %i", 0, clicks, ParamBTN_ChannelOutputMulti_DPT, outputKo, params.output);
+    writeOutput(ParamBTN_ChannelOutputMulti_DPT, outputKo, params.output, _statusShort);
 }
-void VirtualButton::eventShortPress(bool button)
+void VirtualButtonChannel::eventShortPress(bool button)
 {
     if (!_buttonParams[button].outputShortPressActive)
         return;
@@ -404,7 +405,7 @@ void VirtualButton::eventShortPress(bool button)
     writeOutput(ParamBTN_ChannelOutputShort_DPT, BTN_KoChannelOutput1, _buttonParams[button].outputShortPress, _statusShort);
 }
 
-void VirtualButton::eventLongPress(bool button)
+void VirtualButtonChannel::eventLongPress(bool button)
 {
     if (!_buttonParams[button].outputLongPressActive)
         return;
@@ -415,7 +416,7 @@ void VirtualButton::eventLongPress(bool button)
     writeOutput(ParamBTN_ChannelOutputLong_DPT, BTN_KoChannelOutput2, _buttonParams[button].outputLongPress, _statusLong);
 }
 
-void VirtualButton::eventExtraLongPress(bool button)
+void VirtualButtonChannel::eventExtraLongPress(bool button)
 {
     if (!_buttonParams[button].outputExtraLongPressActive)
         return;
@@ -426,7 +427,7 @@ void VirtualButton::eventExtraLongPress(bool button)
     writeOutput(ParamBTN_ChannelOutputExtraLong_DPT, BTN_KoChannelOutput3, _buttonParams[button].outputExtraLongPress, _statusExtraLong);
 }
 
-void VirtualButton::eventShortRelease(bool button)
+void VirtualButtonChannel::eventShortRelease(bool button)
 {
     if (!_buttonParams[button].outputShortReleaseActive && !_buttonParams[button].output2Short)
         return;
@@ -442,7 +443,7 @@ void VirtualButton::eventShortRelease(bool button)
         KoBTN_ChannelOutput4.value(_buttonParams[button].output2Short, DPT_Switch);
 }
 
-void VirtualButton::eventLongRelease(bool button)
+void VirtualButtonChannel::eventLongRelease(bool button)
 {
     if (!_buttonParams[button].outputLongReleaseActive && !_buttonParams[button].output2Long)
         return;
@@ -458,7 +459,7 @@ void VirtualButton::eventLongRelease(bool button)
         KoBTN_ChannelOutput5.value(_buttonParams[button].output2Long, DPT_Switch);
 }
 
-void VirtualButton::eventExtraLongRelease(bool button)
+void VirtualButtonChannel::eventExtraLongRelease(bool button)
 {
     if (!_buttonParams[button].outputExtraLongReleaseActive && !_buttonParams[button].output2ExtraLong)
         return;
@@ -474,7 +475,7 @@ void VirtualButton::eventExtraLongRelease(bool button)
         KoBTN_ChannelOutput6.value(_buttonParams[button].output2ExtraLong, DPT_Switch);
 }
 
-void VirtualButton::writeOutput(uint8_t outputDpt, uint16_t outputKo, uint16_t outputValue, bool &status)
+void VirtualButtonChannel::writeOutput(uint8_t outputDpt, uint16_t outputKo, uint16_t outputValue, bool &status)
 {
     log("  writeOutput %i/%i/%i/%i // %i", outputDpt, outputKo, outputValue, status, BTN_KoCalcNumber(outputKo));
 
@@ -565,9 +566,19 @@ void VirtualButton::writeOutput(uint8_t outputDpt, uint16_t outputKo, uint16_t o
     }
 }
 
-void VirtualButton::readStatus()
+void VirtualButtonChannel::readStatus()
 {
-    // KoBTN_ChannelOutput1Status.requestObjectRead();
-    // KoBTN_ChannelOutput2Status.requestObjectRead();
-    // KoBTN_ChannelOutput3Status.requestObjectRead();
+    std::set<int> valids{1, 2, 7, 8};
+
+    if (valids.count(ParamBTN_ChannelOutputShort_DPT) > 0)
+        if (KoBTN_ChannelOutput1Status.commFlag() == ComFlag::Uninitialized)
+            KoBTN_ChannelOutput1Status.requestObjectRead();
+
+    if (valids.count(ParamBTN_ChannelOutputLong_DPT) > 0)
+        if (KoBTN_ChannelOutput2Status.commFlag() == ComFlag::Uninitialized)
+            KoBTN_ChannelOutput2Status.requestObjectRead();
+
+    if (valids.count(ParamBTN_ChannelOutputExtraLong_DPT) > 0)
+        if (KoBTN_ChannelOutput3Status.commFlag() == ComFlag::Uninitialized)
+            KoBTN_ChannelOutput3Status.requestObjectRead();
 }

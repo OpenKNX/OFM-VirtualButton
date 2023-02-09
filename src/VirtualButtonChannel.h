@@ -16,13 +16,13 @@
 #define BTN_DPT3008 8
 #define BTN_DPT7 3
 
-struct sMultiClickParams
+struct MultiClickParams
 {
   bool active = false;
   uint16_t output;
 };
 
-struct sVirtualButtonParams
+struct VirtualButtonParams
 {
   bool outputShortPressActive = false;
   bool outputShortReleaseActive = false;
@@ -45,7 +45,7 @@ struct sVirtualButtonParams
   uint16_t output2ExtraLong = 0;
 };
 
-struct sVirtualButtonGlobalParams
+struct VirtualButtonGlobalParams
 {
   uint8_t mode = 0;
   uint8_t lock = 0;
@@ -63,7 +63,7 @@ struct sVirtualButtonGlobalParams
   uint32_t dynamicStatusFallback = 0;
 };
 
-struct sVirtualButtonState
+struct VirtualButtonState
 {
   bool press = false;
   bool pressLong = false;
@@ -73,7 +73,7 @@ struct sVirtualButtonState
   int8_t multiClicks = 0;
 };
 
-class VirtualButton : public OpenKNX::Channel
+class VirtualButtonChannel : public OpenKNX::Channel
 {
 
 private:
@@ -96,26 +96,27 @@ private:
   void evaluateDynamicStatus();
 
   uint8_t _lock = 0;
+  bool _statusReaded = false;
   bool _statusShort = false;
   bool _statusLong = false;
   bool _statusExtraLong = false;
   u_int32_t _dynamicStatusTimer = 0;
 
-  sVirtualButtonState _buttonState[2] = {
-      sVirtualButtonState(),
-      sVirtualButtonState()};
-  sVirtualButtonParams _buttonParams[2] = {
-      sVirtualButtonParams(),
-      sVirtualButtonParams()};
-  sVirtualButtonGlobalParams mParams;
-  sMultiClickParams _multiClickParams[3];
+  VirtualButtonState _buttonState[2] = {
+      VirtualButtonState(),
+      VirtualButtonState()};
+  VirtualButtonParams _buttonParams[2] = {
+      VirtualButtonParams(),
+      VirtualButtonParams()};
+  VirtualButtonGlobalParams _params;
+  MultiClickParams _multiClickParams[3];
 
 public:
-  VirtualButton(uint8_t index);
+  VirtualButtonChannel(uint8_t index);
 
-  void setup();
-  void loop();
-  void readStatus();
-  void processInputKo(GroupObject &ko);
+  void setup() override;
+  void loop() override;
+  void processInputKo(GroupObject &ko) override;
   const char* name() override;
+  void readStatus();
 };
