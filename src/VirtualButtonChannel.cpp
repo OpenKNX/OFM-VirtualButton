@@ -8,9 +8,7 @@ VirtualButtonChannel::VirtualButtonChannel(uint8_t index)
 
 const char *VirtualButtonChannel::name()
 {
-    char *buffer = new char[20];
-    sprintf(buffer, "VirtualButton<%i>", _channelIndex + 1);
-    return buffer;
+    return "VirtualButton";
 }
 
 void VirtualButtonChannel::setup()
