@@ -117,6 +117,6 @@ public:
   void setup() override;
   void loop() override;
   void processInputKo(GroupObject &ko) override;
-  const char* name() override;
+  const std::string name() override;
   void readStatus();
 };

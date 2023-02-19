@@ -1,11 +1,11 @@
 #include "VirtualButtonModule.h"
 
-const char* VirtualButtonModule::name()
+const std::string VirtualButtonModule::name()
 {
     return "VirtualButton";
 }
 
-const char* VirtualButtonModule::version()
+const std::string VirtualButtonModule::version()
 {
     return "0.0dev";
 }

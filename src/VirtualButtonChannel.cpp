@@ -6,7 +6,7 @@ VirtualButtonChannel::VirtualButtonChannel(uint8_t index)
     _channelIndex = index;
 }
 
-const char *VirtualButtonChannel::name()
+const std::string VirtualButtonChannel::name()
 {
     return "VirtualButton";
 }
