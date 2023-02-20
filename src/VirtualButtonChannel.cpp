@@ -87,7 +87,7 @@ void VirtualButtonChannel::setup()
         _params.reactionTimeExtraLong = ParamBTN_ReactionTimeExtraLong * 100;
 
     // Debug
-    // log("reactionTimeMultiClick: %i", _params.reactionTimeMultiClick);
+    // logInfoP("reactionTimeMultiClick: %i", _params.reactionTimeMultiClick);
 }
 
 void VirtualButtonChannel::loop()
@@ -125,28 +125,28 @@ void VirtualButtonChannel::evaluateDynamicStatus()
     if (ParamBTN_ChannelStatusFallbackTimeMS == 0)
         return;
 
-    log("evaluateDynamicStatus");
+    logTraceP("evaluateDynamicStatus");
 
     // Short
     if (ParamBTN_ChannelOutputShort_DPT == 7 || ParamBTN_ChannelOutputShort_DPT == 8)
     {
         uint8_t value = KoBTN_ChannelOutput1Status.value(DPT_Scaling);
         _statusShort = (value < ParamBTN_ChannelStatusThreshold) ? false : true;
-        log("  short: %i/%i/%i", value, ParamBTN_ChannelStatusThreshold, _statusShort);
+        logTraceP("  short: %i/%i/%i", value, ParamBTN_ChannelStatusThreshold, _statusShort);
     }
     // Long
     if (ParamBTN_ChannelOutputLong_DPT == 7 || ParamBTN_ChannelOutputLong_DPT == 8)
     {
         uint8_t value = KoBTN_ChannelOutput2Status.value(DPT_Scaling);
         _statusLong = (value < ParamBTN_ChannelStatusThreshold) ? false : true;
-        log("  long: %i/%i/%i", value, ParamBTN_ChannelStatusThreshold, _statusLong);
+        logTraceP("  long: %i/%i/%i", value, ParamBTN_ChannelStatusThreshold, _statusLong);
     }
     // ExtraLong
     if (ParamBTN_ChannelOutputExtraLong_DPT == 7 || ParamBTN_ChannelOutputExtraLong_DPT == 8)
     {
         uint8_t value = KoBTN_ChannelOutput3Status.value(DPT_Scaling);
         _statusExtraLong = (value < ParamBTN_ChannelStatusThreshold) ? false : true;
-        log("  extralong: %i/%i/%i", value, ParamBTN_ChannelStatusThreshold, _statusExtraLong);
+        logTraceP("  extralong: %i/%i/%i", value, ParamBTN_ChannelStatusThreshold, _statusExtraLong);
     }
 }
 
@@ -157,7 +157,7 @@ void VirtualButtonChannel::processInputKo(GroupObject &ko)
 
     uint16_t koNumber = ko.asap();
     int8_t koIndex = BTN_KoCalcIndex(koNumber);
-    // log("koNumber %i -> koIndex %i", koNumber, koIndex);
+    // logInfoP("koNumber %i -> koIndex %i", koNumber, koIndex);
 
     // External KO -> to Channel Mapping
     if (_buttonParams[0].inputKo > 0 && _buttonParams[0].inputKo == koNumber)
@@ -194,7 +194,7 @@ void VirtualButtonChannel::processInputKo(GroupObject &ko)
 
 void VirtualButtonChannel::processInputKoStatus(GroupObject &ko, uint8_t statusNumber, uint8_t dpt, bool &status)
 {
-    log("processInputKoStatus %i/%i/%i", statusNumber, dpt, status);
+    logTraceP("processInputKoStatus %i/%i/%i", statusNumber, dpt, status);
 
     if (dpt == 7 || dpt == 8)
     {
@@ -240,14 +240,14 @@ void VirtualButtonChannel::processInputKoLock(GroupObject &ko)
     _buttonState[1].pressExtraLong = false;
     _buttonState[1].pressStart = 0;
 
-    log("processInputKoLock %i", _lock);
+    logTraceP("processInputKoLock %i", _lock);
 }
 
 void VirtualButtonChannel::processInputKoInput(GroupObject &ko, bool button)
 {
     bool newPress = ko.value(DPT_Switch);
     bool lastPress = _buttonState[button].press;
-    log("processInputKoInput %i", newPress);
+    logTraceP("processInputKoInput %i", newPress);
 
     // werte "Loslassen" nur aus, wenn der letze Zustand auch "gedrückt" war
     if (!lastPress && !newPress)
@@ -389,7 +389,7 @@ void VirtualButtonChannel::eventMultiClick(uint8_t clicks)
     if (ParamBTN_ChannelOutputMulti_DPT == 1)
         outputKo = BTN_KoChannelOutput4 + index;
 
-    log("  Button %i: MultiClick %i clicks - type %i ko %i value %i", 0, clicks, ParamBTN_ChannelOutputMulti_DPT, outputKo, params.output);
+    logDebugP("  Button %i: MultiClick %i clicks - type %i ko %i value %i", 0, clicks, ParamBTN_ChannelOutputMulti_DPT, outputKo, params.output);
     writeOutput(ParamBTN_ChannelOutputMulti_DPT, outputKo, params.output, _statusShort);
 }
 void VirtualButtonChannel::eventShortPress(bool button)
@@ -397,7 +397,7 @@ void VirtualButtonChannel::eventShortPress(bool button)
     if (!_buttonParams[button].outputShortPressActive)
         return;
 
-    log("  Button %i: short press", button);
+    logDebugP("  Button %i: short press", button);
 
     // Output
     writeOutput(ParamBTN_ChannelOutputShort_DPT, BTN_KoChannelOutput1, _buttonParams[button].outputShortPress, _statusShort);
@@ -408,7 +408,7 @@ void VirtualButtonChannel::eventLongPress(bool button)
     if (!_buttonParams[button].outputLongPressActive)
         return;
 
-    log("  Button %i: long press", button);
+    logDebugP("  Button %i: long press", button);
 
     // Output
     writeOutput(ParamBTN_ChannelOutputLong_DPT, BTN_KoChannelOutput2, _buttonParams[button].outputLongPress, _statusLong);
@@ -419,7 +419,7 @@ void VirtualButtonChannel::eventExtraLongPress(bool button)
     if (!_buttonParams[button].outputExtraLongPressActive)
         return;
 
-    log("  Button %i: extra long press", button);
+    logDebugP("  Button %i: extra long press", button);
 
     // Output
     writeOutput(ParamBTN_ChannelOutputExtraLong_DPT, BTN_KoChannelOutput3, _buttonParams[button].outputExtraLongPress, _statusExtraLong);
@@ -430,7 +430,7 @@ void VirtualButtonChannel::eventShortRelease(bool button)
     if (!_buttonParams[button].outputShortReleaseActive && !_buttonParams[button].output2Short)
         return;
 
-    log("  Button %i: short release", button);
+    logDebugP("  Button %i: short release", button);
 
     // Output 1
     if (_buttonParams[button].outputShortReleaseActive)
@@ -446,7 +446,7 @@ void VirtualButtonChannel::eventLongRelease(bool button)
     if (!_buttonParams[button].outputLongReleaseActive && !_buttonParams[button].output2Long)
         return;
 
-    log("  Button %i: long release", button);
+    logDebugP("  Button %i: long release", button);
 
     // Output 1
     if (_buttonParams[button].outputLongReleaseActive)
@@ -462,7 +462,7 @@ void VirtualButtonChannel::eventExtraLongRelease(bool button)
     if (!_buttonParams[button].outputExtraLongReleaseActive && !_buttonParams[button].output2ExtraLong)
         return;
 
-    log("  Button %i: extra long release", button);
+    logDebugP("  Button %i: extra long release", button);
 
     // Output 1
     if (_buttonParams[button].outputExtraLongReleaseActive)
@@ -475,7 +475,7 @@ void VirtualButtonChannel::eventExtraLongRelease(bool button)
 
 void VirtualButtonChannel::writeOutput(uint8_t outputDpt, uint16_t outputKo, uint16_t outputValue, bool &status)
 {
-    log("  writeOutput %i/%i/%i/%i // %i", outputDpt, outputKo, outputValue, status, BTN_KoCalcNumber(outputKo));
+    logTraceP("  writeOutput %i/%i/%i/%i // %i", outputDpt, outputKo, outputValue, status, BTN_KoCalcNumber(outputKo));
 
     switch (outputDpt)
     {
