@@ -63,7 +63,7 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%304" Name="Channel%C%OutputExtraLong_Taster2_Active_Release" Offset="2" BitOffset="3" ParameterType="%AID%_PT-BTNSendingEvent" Text="  Wert beim Loslassen" Value="1" />
               </Union>
 
-              <Union SizeInBit="240">
+              <Union SizeInBit="248">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="16" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%105" Name="Channel%C%OutputShort_Taster1_Dpt1_Press"       Offset="0"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt1" Text="" Value="2" />
                 <Parameter Id="%AID%_UP-%T%%CCC%106" Name="Channel%C%OutputShort_Taster1_Dpt1_Release"     Offset="2"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt1" Text="" Value="2" />
@@ -83,7 +83,7 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%406" Name="Channel%C%OutputMulti_Click3_Dpt1"              Offset="30" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt1" Text="" Value="1" />
               </Union>
 
-              <Union SizeInBit="240">
+              <Union SizeInBit="248">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="16" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%109" Name="Channel%C%OutputShort_Taster1_Dpt2_Press"       Offset="0"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt2" Text="" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%110" Name="Channel%C%OutputShort_Taster1_Dpt2_Release"     Offset="2"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt2" Text="" Value="1" />
@@ -103,7 +103,7 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%409" Name="Channel%C%OutputMulti_Click3_Dpt2"              Offset="30" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt2" Text="" Value="0" />
               </Union>
 
-              <Union SizeInBit="240">
+              <Union SizeInBit="248">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="16" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%113" Name="Channel%C%OutputShort_Taster1_Dpt5_Press"       Offset="0" BitOffset="0"  ParameterType="%AID%_PT-BTNOutputDpt5" Text="" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%114" Name="Channel%C%OutputShort_Taster1_Dpt5_Release"     Offset="2" BitOffset="0"  ParameterType="%AID%_PT-BTNOutputDpt5" Text="" Value="0" />
@@ -123,7 +123,7 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%412" Name="Channel%C%OutputMulti_Click3_Dpt5"              Offset="30" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt5" Text="" Value="0" />
               </Union>
 
-              <Union SizeInBit="240">
+              <Union SizeInBit="248">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="16" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%117" Name="Channel%C%OutputShort_Taster1_Dpt5001_Press"       Offset="0"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt5001" Text="" Value="0" SuffixText="%" />
                 <Parameter Id="%AID%_UP-%T%%CCC%118" Name="Channel%C%OutputShort_Taster1_Dpt5001_Release"     Offset="2"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt5001" Text="" Value="0" SuffixText="%" />
@@ -143,7 +143,7 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%415" Name="Channel%C%OutputMulti_Click3_Dpt5001"              Offset="30" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt5001" Text="" Value="0" SuffixText="%" />
               </Union>
 
-              <Union SizeInBit="240">
+              <Union SizeInBit="248">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="16" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%121" Name="Channel%C%OutputShort_Taster1_Dpt7_Press"       Offset="0"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt7" Text="" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%122" Name="Channel%C%OutputShort_Taster1_Dpt7_Release"     Offset="2"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt7" Text="" Value="0" />
@@ -163,7 +163,7 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%418" Name="Channel%C%OutputMulti_Click3_Dpt7"              Offset="30" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt7" Text="" Value="0" />
               </Union>
 
-              <Union SizeInBit="240">
+              <Union SizeInBit="248">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="16" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%125" Name="Channel%C%OutputShort_Taster1_Dpt18_Press"       Offset="0"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt18" Text="" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%126" Name="Channel%C%OutputShort_Taster1_Dpt18_Release"     Offset="2"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt18" Text="" Value="1" />
@@ -183,7 +183,7 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%421" Name="Channel%C%OutputMulti_Click3_Dpt18"              Offset="30" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt18" Text="" Value="1" />
               </Union>
 
-              <Union SizeInBit="240">
+              <Union SizeInBit="248">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="16" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%129" Name="Channel%C%OutputShort_Taster1_Dpt3007_Press"       Offset="0"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3007" Text="" Value="9" />
                 <Parameter Id="%AID%_UP-%T%%CCC%130" Name="Channel%C%OutputShort_Taster1_Dpt3007_Release"     Offset="2"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3007" Text="" Value="8" />
@@ -199,7 +199,7 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%332" Name="Channel%C%OutputExtraLong_Taster2_Dpt3007_Release" Offset="24" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3007" Text="" Value="0" />
               </Union>
 
-              <Union SizeInBit="240">
+              <Union SizeInBit="248">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="16" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%133" Name="Channel%C%OutputShort_Taster1_Dpt3008_Press"       Offset="0"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3008" Text="" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CCC%134" Name="Channel%C%OutputShort_Taster1_Dpt3008_Release"     Offset="2"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3008" Text="" Value="0" />
@@ -789,7 +789,7 @@
                                         <ParameterRefRef RefId="%AID%_UP-%T%%CCC%104_R-%T%%CCC%10401" />
                                         <choose ParamRefId="%AID%_UP-%T%%CCC%104_R-%T%%CCC%10401">
                                           <when test="1">
-                                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%111_R-%T%%CCC%11101" />
+                                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%112_R-%T%%CCC%11201" />
                                           </when>
                                         </choose>
                                       </when>
