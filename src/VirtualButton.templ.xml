@@ -535,6 +535,7 @@
                                 <Assign TargetParamRefRef="%AID%_UP-%T%%CCC%092_R-%T%%CCC%09209" SourceParamRefRef="%AID%_UP-%T%%CCC%092_R-%T%%CCC%09201" />
                               </when>
                             </choose>
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="Beachte, dass interne Tastereingänge in der Regel konfigurationsabhängig sind. Es ist daher meistens nötig, im jeweiligen Modul (je nach Hardware) den Tastereingang erst zu aktivieren bzw. zu konfigurieren." UIHint="Information" />
                           </when>
                           <when test="1">
                             <!-- Init Params mit Access=None, damit KOs angezeigt werden. -->
