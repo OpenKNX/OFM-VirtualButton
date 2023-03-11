@@ -494,8 +494,8 @@
           <Dynamic>
             <ChannelIndependentBlock>
               <!-- START INCLUDE HERE -->
-              <ParameterBlock Id="%AID%_PB-%C%1" Name="Channel%C%Page" Text="Taster %C%: {{0:-}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" Icon="button-pointer" HelpContext="Empty">
-                <Channel Id="%AID%_CH-BTN%CC%" Name="Channel%C%" Number="BTN%C%" Text="Taster %CC%: {{0:-}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001">
+              <ParameterBlock Id="%AID%_PB-%C%1" Name="Channel%C%Page" Text="Taster %C%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001" Icon="button-pointer" HelpContext="Empty">
+                <Channel Id="%AID%_CH-BTN%CC%" Name="Channel%C%" Number="BTN%C%" Text="Taster %CC%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CCC%000_R-%T%%CCC%00001">
                   <ParameterBlock Id="%AID%_PB-%T%%CCC%01" Name="Channel%C%Wrapper" Inline="true">
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Tasterkonfiguration" UIHint="Headline" />
                     <!-- Hidden -->
