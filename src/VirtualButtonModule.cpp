@@ -7,7 +7,7 @@ const std::string VirtualButtonModule::name()
 
 const std::string VirtualButtonModule::version()
 {
-    return "0.0dev";
+    return MODULE_VirtualButton_Version;
 }
 
 void VirtualButtonModule::setup()

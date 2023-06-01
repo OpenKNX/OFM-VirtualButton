@@ -1,6 +1,10 @@
 #include "VirtualButtonChannel.h"
 #include "hardware.h"
 
+#ifndef MODULE_VirtualButton_Version
+#define MODULE_VirtualButton_Version "dev"
+#endif
+
 class VirtualButtonModule : public OpenKNX::Module
 {
 
