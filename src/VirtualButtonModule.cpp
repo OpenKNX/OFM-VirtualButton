@@ -21,8 +21,10 @@ void VirtualButtonModule::setup()
 
 void VirtualButtonModule::loop()
 {
-    for (uint8_t i = 0; i < BTN_ChannelCount; i++)
-        _channels[i]->loop();
+    uint8_t processed = 0;
+    do
+        _channels[_currentChannel]->loop();
+    while (openknx.freeLoopIterate(BTN_ChannelCount, _currentChannel, processed));
 }
 
 void VirtualButtonModule::processInputKo(GroupObject& iKo)

@@ -21,5 +21,6 @@ class VirtualButtonModule : public OpenKNX::Module
     // uint16_t flashSize() override;
 
   private:
+    uint8_t _currentChannel = 0;
     VirtualButtonChannel* _channels[BTN_ChannelCount];
 };
