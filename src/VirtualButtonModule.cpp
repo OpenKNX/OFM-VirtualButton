@@ -1,4 +1,5 @@
 #include "VirtualButtonModule.h"
+#include "ModuleVersion.h"
 
 const std::string VirtualButtonModule::name()
 {
