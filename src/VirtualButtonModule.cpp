@@ -40,20 +40,4 @@ void VirtualButtonModule::processAfterStartupDelay()
         _channels[i]->readStatus();
 }
 
-// void VirtualButtonModule::writeFlash()
-// {
-//     for (size_t i = 0; i < flashSize(); i++)
-//     {
-//         //openknx.flash.writeByte(0xd0 + i);
-//     }
-// }
-
-// void VirtualButtonModule::readFlash(const uint8_t* data, const uint16_t size)
-// {
-//     // printHEX("RESTORE:", data,  len);
-// }
-
-// uint16_t VirtualButtonModule::flashSize()
-// {
-//     return 10;
-// }
+VirtualButtonModule openknxVirtualButtonModule;
