@@ -504,7 +504,7 @@
             </ComObjectRefs>
           </Static>
           <Dynamic>
-            <Channel Id="%AID%_CH-Basic" Name="BasicChannel" Number="1" Text="Taster Grundeinstellung">
+            <Channel Name="MainChannel" Text="Virtuelle Taster" Number="%TT%" Id="%AID%_CH-%TT%" Icon="button-pointer">
               <ParameterBlock Id="%AID%_PB-5" Name="Basic" Text="Grundeinstellung" Icon="cog-outline" HelpContext="Empty">
                 <!-- Hidden -->
                 <ParameterRefRef RefId="%AID%_P-%T%000001_R-%T%00000101" />
@@ -517,6 +517,7 @@
                 <!-- ExtraLong -->
                 <ParameterRefRef RefId="%AID%_UP-%T%000013_R-%T%00001301" Icon="timer-outline" HelpContext="BTN-ReactionTimeExtraLong" />
               </ParameterBlock>
+              <op:include href="VirtualButton.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="BTN" IsInner="true" />
             </Channel>
           </Dynamic>
         </ApplicationProgram>
