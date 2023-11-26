@@ -484,19 +484,19 @@
               </ParameterType>
             </ParameterTypes>
             <Parameters>
-              <Parameter Id="%AID%_P-%T%000001" Name="HideInputs" ParameterType="%AID%_PT-CheckBox" Text="Hide Inputs" Value="0" Access="None" />
+              <Parameter Id="%AID%_P-%TT%00001" Name="HideInputs" ParameterType="%AID%_PT-CheckBox" Text="Hide Inputs" Value="0" Access="None" />
               <Union SizeInBit="32">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%000011" Name="ReactionTimeMultiClick" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Mehrfach-Klick" Value="4" />
-                <Parameter Id="%AID%_UP-%T%000012" Name="ReactionTimeLong"       Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Langer Tasterdruck" Value="4" />
-                <Parameter Id="%AID%_UP-%T%000013" Name="ReactionTimeExtraLong"  Offset="2" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Extra langer Tastedruck" Value="16" />
+                <Parameter Id="%AID%_UP-%TT%00011" Name="ReactionTimeMultiClick" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Mehrfach-Klick" Value="4" />
+                <Parameter Id="%AID%_UP-%TT%00012" Name="ReactionTimeLong"       Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Langer Tasterdruck" Value="4" />
+                <Parameter Id="%AID%_UP-%TT%00013" Name="ReactionTimeExtraLong"  Offset="2" BitOffset="0" ParameterType="%AID%_PT-BTNReactionTime" Text="  Extra langer Tastedruck" Value="16" />
               </Union>
             </Parameters>
             <ParameterRefs>
-              <ParameterRef Id="%AID%_P-%T%000001_R-%T%00000101" RefId="%AID%_P-%T%000001" />
-              <ParameterRef Id="%AID%_UP-%T%000011_R-%T%00001101" RefId="%AID%_UP-%T%000011" />
-              <ParameterRef Id="%AID%_UP-%T%000012_R-%T%00001201" RefId="%AID%_UP-%T%000012" />
-              <ParameterRef Id="%AID%_UP-%T%000013_R-%T%00001301" RefId="%AID%_UP-%T%000013" />
+              <ParameterRef Id="%AID%_P-%TT%00001_R-%TT%0000101" RefId="%AID%_P-%TT%00001" />
+              <ParameterRef Id="%AID%_UP-%TT%00011_R-%TT%0001101" RefId="%AID%_UP-%TT%00011" />
+              <ParameterRef Id="%AID%_UP-%TT%00012_R-%TT%0001201" RefId="%AID%_UP-%TT%00012" />
+              <ParameterRef Id="%AID%_UP-%TT%00013_R-%TT%0001301" RefId="%AID%_UP-%TT%00013" />
             </ParameterRefs>
             <ComObjectTable>
             </ComObjectTable>
@@ -507,15 +507,15 @@
             <Channel Name="MainChannel" Text="Virtuelle Taster" Number="%TT%" Id="%AID%_CH-%TT%" Icon="button-pointer">
               <ParameterBlock Id="%AID%_PB-5" Name="Basic" Text="Grundeinstellung" Icon="cog-outline" HelpContext="Empty">
                 <!-- Hidden -->
-                <ParameterRefRef RefId="%AID%_P-%T%000001_R-%T%00000101" />
+                <ParameterRefRef RefId="%AID%_P-%TT%00001_R-%TT%0000101" />
 
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Reaktionszeiten" UIHint="Headline" />
                 <!-- MC -->
-                <ParameterRefRef RefId="%AID%_UP-%T%000011_R-%T%00001101" Icon="timer-outline" HelpContext="BTN-ReactionTimeMultiClick"/>
+                <ParameterRefRef RefId="%AID%_UP-%TT%00011_R-%TT%0001101" Icon="timer-outline" HelpContext="BTN-ReactionTimeMultiClick"/>
                 <!-- Long -->
-                <ParameterRefRef RefId="%AID%_UP-%T%000012_R-%T%00001201" Icon="timer-outline" HelpContext="BTN-ReactionTimeLong" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00012_R-%TT%0001201" Icon="timer-outline" HelpContext="BTN-ReactionTimeLong" />
                 <!-- ExtraLong -->
-                <ParameterRefRef RefId="%AID%_UP-%T%000013_R-%T%00001301" Icon="timer-outline" HelpContext="BTN-ReactionTimeExtraLong" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00013_R-%TT%0001301" Icon="timer-outline" HelpContext="BTN-ReactionTimeExtraLong" />
               </ParameterBlock>
               <op:include href="VirtualButton.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="BTN" IsInner="true" />
             </Channel>
