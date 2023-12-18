@@ -380,7 +380,7 @@
               </ParameterType>
               <ParameterType Id="%AID%_PT-BTNReactionTimeDefault" Name="BTNReactionTimeDefault">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="Grundeinstellung" Value="0" Id="%ENID%" />
+                  <Enumeration Text="Basiseinstellung" Value="0" Id="%ENID%" />
                   <Enumeration Text="0,1s" Value="1" Id="%ENID%" />
                   <Enumeration Text="0,2s" Value="2" Id="%ENID%" />
                   <Enumeration Text="0,3s" Value="3" Id="%ENID%" />
