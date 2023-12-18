@@ -505,7 +505,7 @@
           </Static>
           <Dynamic>
             <Channel Name="MainChannel" Text="Virtuelle Taster" Number="%TT%" Id="%AID%_CH-%TT%" Icon="button-pointer">
-              <ParameterBlock Id="%AID%_PB-5" Name="Basic" Text="Grundeinstellung" Icon="cog-outline" HelpContext="Empty">
+              <ParameterBlock Id="%AID%_PB-5" Name="Basic" Text="Basiseinstellung" Icon="cog-outline" HelpContext="Empty">
                 <!-- Hidden -->
                 <ParameterRefRef RefId="%AID%_P-%TT%00001_R-%TT%0000101" />
 
