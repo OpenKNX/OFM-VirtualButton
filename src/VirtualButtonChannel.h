@@ -1,5 +1,4 @@
 #pragma once
-#include "KnxHelper.h"
 #include "OpenKNX.h"
 
 #define BTN_MaxMuliClicks 3
