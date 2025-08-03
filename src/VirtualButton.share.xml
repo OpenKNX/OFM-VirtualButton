@@ -13,6 +13,12 @@
                 <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="1" maxInclusive="%N%" />
               </ParameterType>
 
+              <ParameterType Id="%AID%_PT-BTNInputs" Name="BTNInputs">
+                <TypeRestriction Base="Value" SizeInBit="16">
+                  <Enumeration Text="Externes KO" Value="0" Id="%ENID%" DisplayOrder="0" />
+                </TypeRestriction>
+              </ParameterType>
+
               <ParameterType Id="%AID%_PT-BTNMode" Name="BTNMode">
                 <TypeRestriction Base="Value" SizeInBit="7">
                   <Enumeration Text="Deaktviert" Value="0" Id="%ENID%" />
