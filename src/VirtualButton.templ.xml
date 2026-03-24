@@ -13,7 +13,7 @@
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%TT%%CC%001" Name="b%C%Mode" Offset="0" BitOffset="0" ParameterType="%AID%_PT-BTNMode" Text="Modus" Value="0" />
                 <Parameter Id="%AID%_UP-%TT%%CC%002" Name="b%C%Lock" Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNLock" Text="Sperre" Value="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%499" Name="b%C%MultiClickCount" Offset="1" BitOffset="0" ParameterType="%AID%_PT-BTNSendingEvent" Text="Ausgabe der Klickanzahl" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%%CC%499" Name="b%C%MultiClickCount" Offset="1" BitOffset="2" ParameterType="%AID%_PT-BTNSendingEvent" Text="Ausgabe der Klickanzahl" Value="0" />
 
                 <!-- Special Flags -->
                 <Parameter Id="%AID%_UP-%TT%%CC%492" Name="b%C%DynamicStatus"   Offset="1" BitOffset="5" ParameterType="%AID%_PT-BTNSendingEvent" Text="Dynamische Richtung" Value="0" />
@@ -187,8 +187,8 @@
 
               <Union SizeInBit="240" op:nowarn="true" >
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="17" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%229" Name="b%C%OutLong_T1_Dpt3007_Press"        Offset="8"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3007"       Text="Wert beim Drücken" Value="9" />
-                <Parameter Id="%AID%_UP-%TT%%CC%238" Name="b%C%OutLong_T1_Dpt3007_PressSingle"  Offset="8"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3007Single" Text="Wert beim Drücken" Value="17" />
+                <Parameter Id="%AID%_UP-%TT%%CC%229" Name="b%C%OutLong_T1_Dpt3007_Press"        Offset="8"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3007"       Text="Wert beim Drücken" Value="9" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%238" Name="b%C%OutLong_T1_Dpt3007_PressSingle"  Offset="8"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3007Single" Text="Wert beim Drücken" Value="17" op:nowarn="true" />
                 <Parameter Id="%AID%_UP-%TT%%CC%230" Name="b%C%OutLong_T1_Dpt3007_Release"      Offset="10" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3Stop"      Text="" Value="16" Access="None" />
                 <Parameter Id="%AID%_UP-%TT%%CC%231" Name="b%C%OutLong_T2_Dpt3007_Press"        Offset="12" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3007"       Text="Wert beim Drücken" Value="1" />
                 <Parameter Id="%AID%_UP-%TT%%CC%232" Name="b%C%OutLong_T2_Dpt3007_Release"      Offset="14" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3Stop"      Text="" Value="16" Access="None" />
@@ -196,8 +196,8 @@
 
               <Union SizeInBit="240" op:nowarn="true" >
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="17" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%TT%%CC%233" Name="b%C%OutLong_T1_Dpt3008_Press"        Offset="8"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3008"       Text="Wert beim Drücken" Value="1" />
-                <Parameter Id="%AID%_UP-%TT%%CC%239" Name="b%C%OutLong_T1_Dpt3008_PressSingle"  Offset="8"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3008Single" Text="Wert beim Drücken" Value="17" />
+                <Parameter Id="%AID%_UP-%TT%%CC%233" Name="b%C%OutLong_T1_Dpt3008_Press"        Offset="8"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3008"       Text="Wert beim Drücken" Value="1" op:nowarn="true" />
+                <Parameter Id="%AID%_UP-%TT%%CC%239" Name="b%C%OutLong_T1_Dpt3008_PressSingle"  Offset="8"  BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3008Single" Text="Wert beim Drücken" Value="17" op:nowarn="true" />
                 <Parameter Id="%AID%_UP-%TT%%CC%234" Name="b%C%OutLong_T1_Dpt3008_Release"      Offset="10" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3Stop"      Text="" Value="16" Access="None" />
                 <Parameter Id="%AID%_UP-%TT%%CC%235" Name="b%C%OutLong_T2_Dpt3008_Press"        Offset="12" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3008"       Text="Wert beim Drücken" Value="9" />
                 <Parameter Id="%AID%_UP-%TT%%CC%236" Name="b%C%OutLong_T2_Dpt3008_Release"      Offset="14" BitOffset="0" ParameterType="%AID%_PT-BTNOutputDpt3Stop"      Text="" Value="16" Access="None" />
