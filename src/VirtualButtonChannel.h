@@ -108,6 +108,7 @@ class VirtualButtonChannel : public OpenKNX::Channel
   public:
     VirtualButtonChannel(uint8_t index);
 
+    bool isActive();
     void setup() override;
     void loop() override;
     void processInputKo(GroupObject &ko) override;

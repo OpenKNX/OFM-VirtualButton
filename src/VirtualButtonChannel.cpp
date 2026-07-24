@@ -11,6 +11,11 @@ const std::string VirtualButtonChannel::name()
     return "VirtualButton";
 }
 
+bool VirtualButtonChannel::isActive()
+{
+    return ParamBTN_bMode > 0;
+}
+
 void VirtualButtonChannel::setup()
 {
     // Input

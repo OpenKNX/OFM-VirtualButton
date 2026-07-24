@@ -18,7 +18,7 @@ class VirtualButtonModule : public OpenKNX::Module
 
   private:
     uint8_t _currentChannel = 0;
-    VirtualButtonChannel* _channels[BTN_ChannelCount];
+    VirtualButtonChannel* _channels[BTN_ChannelCount] = {};
 };
 
 extern VirtualButtonModule openknxVirtualButtonModule;
