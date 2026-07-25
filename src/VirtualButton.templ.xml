@@ -17,6 +17,7 @@
 
                 <!-- Special Flags -->
                 <Parameter Id="%AID%_UP-%TT%%CC%492" Name="b%C%DynamicStatus"   Offset="1" BitOffset="5" ParameterType="%AID%_PT-BTNSendingEvent" Text="Dynamische Richtung" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%%CC%003" Name="b%C%Suspended"       Offset="1" BitOffset="3" ParameterType="%AID%_PT-Suspended" Text="Suspendiert" Value="0" />
               </Union>
 
               <!-- Inputs -->
@@ -220,6 +221,7 @@
                 <Parameter Id="%AID%_UP-%TT%%CC%063" Name="b%C%StatusThresholdHigh" Offset="2" BitOffset="0" ParameterType="%AID%_PT-ValueDpt5001" Text="Oberer Schwellwert" Value="50" SuffixText="%" />
                 <Parameter Id="%AID%_UP-%TT%%CC%064" Name="b%C%StatusThresholdLow"  Offset="3" BitOffset="0" ParameterType="%AID%_PT-ValueDpt5001" Text="Unterer Schwellwert" Value="50" SuffixText="%" />
               </Union>
+
             </Parameters>
             <ParameterRefs>
               <ParameterRef Id="%AID%_P-%TT%%CC%000_R-%TT%%CC%00001" RefId="%AID%_P-%TT%%CC%000" />
@@ -395,7 +397,8 @@
               <ParameterRef Id="%AID%_UP-%TT%%CC%061_R-%TT%%CC%06101" RefId="%AID%_UP-%TT%%CC%061" />
               <ParameterRef Id="%AID%_UP-%TT%%CC%063_R-%TT%%CC%06301" RefId="%AID%_UP-%TT%%CC%063" />
               <ParameterRef Id="%AID%_UP-%TT%%CC%064_R-%TT%%CC%06401" RefId="%AID%_UP-%TT%%CC%064" />
-              
+              <ParameterRef Id="%AID%_UP-%TT%%CC%003_R-%TT%%CC%00301" RefId="%AID%_UP-%TT%%CC%003" />
+
               <!-- Eingänge -->
               <ParameterRef Id="%AID%_UP-%TT%%CC%091_R-%TT%%CC%09101" RefId="%AID%_UP-%TT%%CC%091" />
               <ParameterRef Id="%AID%_UP-%TT%%CC%092_R-%TT%%CC%09201" RefId="%AID%_UP-%TT%%CC%092" />
@@ -499,6 +502,8 @@
                           <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00002" />
                         </when>
                       </choose>
+                      <!-- Suspendiert -->
+                      <ParameterRefRef RefId="%AID%_UP-%TT%%CC%003_R-%TT%%CC%00301" IndentLevel="1" HelpContext="BASE-ChannelSuspended" />
                     <choose ParamRefId="%AID%_UP-%TT%%CC%001_R-%TT%%CC%00101">
                       <when test=">0">
 
@@ -506,6 +511,7 @@
                         <!-- Verstecke Eingänge wenn es keine Binäreingänge gibt -->
                         <choose ParamRefId="%AID%_P-%TT%00002_R-%TT%0000201"><!-- Static 0 -->
                           <when test="!=%BTN_ShowInputSelector%"> <!-- default -->
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                             <ParameterSeparator Id="%AID%_PS-nnn" Text="Tastereingänge" UIHint="Headline" />
                             <choose ParamRefId="%AID%_UP-%TT%%CC%001_R-%TT%%CC%00101">                         
                               <when test="1 3 4">
@@ -557,6 +563,7 @@
                         <choose ParamRefId="%AID%_UP-%TT%%CC%001_R-%TT%%CC%00101">
                           <!-- 1/2-Taster -->
                           <when test="1 2">
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                             <ParameterSeparator Id="%AID%_PS-nnn" Text="Einfacher Tastendruck" UIHint="Headline" />
 
                             <!-- DPT Select -->
@@ -841,6 +848,7 @@
                           </when>
                           <when test="3">
                             <!-- MCBLOCK -->
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                             <ParameterSeparator Id="%AID%_PS-nnn" Text="Mehrfach-Tastendruck" UIHint="Headline" />
 
                             <!-- DPT Select -->
@@ -979,6 +987,7 @@
 
                         <choose ParamRefId="%AID%_UP-%TT%%CC%001_R-%TT%%CC%00101">
                           <when test="!=4">
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                             <ParameterSeparator Id="%AID%_PS-nnn" Text="Langer Tastendruck" UIHint="Headline" />
 
                             <!-- DPT Select -->
@@ -1329,6 +1338,7 @@
 
                             <choose ParamRefId="%AID%_UP-%TT%%CC%200_R-%TT%%CC%20001">
                               <when test="0 1 2 3 4 5 6">
+                                <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Extralanger Tastendruck" UIHint="Headline" />
 
                                 <!-- DPT Select -->
@@ -1757,6 +1767,7 @@
                         <!--  1-Taster Dynamische Richtung -->
                         <choose ParamRefId="%AID%_UP-%TT%%CC%492_R-%TT%%CC%49201">
                           <when test="1">
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                             <ParameterSeparator Id="%AID%_PS-nnn" Text="Dynamische Richtung" UIHint="Headline" />
                             <ParameterRefRef RefId="%AID%_UP-%TT%%CC%061_R-%TT%%CC%06101" IndentLevel="1" HelpContext="%PREFIX%-DimVerzoegerung" />
                             <ParameterRefRef RefId="%AID%_UP-%TT%%CC%063_R-%TT%%CC%06301" IndentLevel="1" HelpContext="%PREFIX%-DimSchwellwerte" />
@@ -1765,6 +1776,7 @@
                         </choose>
 
                         <!-- ReacionTime -->
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Reaktionszeiten" UIHint="Headline" />
                         <!-- MC -->
                         <choose ParamRefId="%AID%_UP-%TT%%CC%001_R-%TT%%CC%00101">

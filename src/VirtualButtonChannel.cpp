@@ -13,7 +13,7 @@ const std::string VirtualButtonChannel::name()
 
 bool VirtualButtonChannel::isActive()
 {
-    return ParamBTN_bMode > 0;
+    return ParamBTN_bMode > 0 && !ParamBTN_bSuspended;
 }
 
 void VirtualButtonChannel::setup()
