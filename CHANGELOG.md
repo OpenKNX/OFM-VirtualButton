@@ -1,6 +1,6 @@
 # Changes
 
-## 0.7.0
+## 0.7.0: 2026-08-14
 
 - Kanäle lassen sich jetzt einzeln suspendieren.
 - Kanalauswahl in der ETS überarbeitet.

@@ -16,7 +16,15 @@
 
               <ParameterType Id="%AID%_PT-BTNMode" Name="BTNMode">
                 <TypeRestriction Base="Value" SizeInBit="7">
-                  <Enumeration Text="Deaktviert" Value="0" Id="%ENID%" />
+                  <Enumeration Text="Deaktiviert" Value="0" Id="%ENID%" />
+                  <Enumeration Text="1fach-Taster" Value="1" Id="%ENID%" />
+                  <Enumeration Text="2fach-Taster" Value="2" Id="%ENID%" />
+                  <Enumeration Text="Mehrfach-Klick" Value="3" Id="%ENID%" />
+                </TypeRestriction>
+              </ParameterType>
+
+              <ParameterType Id="%AID%_PT-BTNModeSelect" Name="BTNModeSelect">
+                <TypeRestriction Base="Value" SizeInBit="7">
                   <Enumeration Text="1fach-Taster" Value="1" Id="%ENID%" />
                   <Enumeration Text="2fach-Taster" Value="2" Id="%ENID%" />
                   <Enumeration Text="Mehrfach-Klick" Value="3" Id="%ENID%" />

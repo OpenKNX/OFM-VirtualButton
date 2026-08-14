@@ -20,6 +20,11 @@
                 <Parameter Id="%AID%_UP-%TT%%CC%003" Name="b%C%Suspended"       Offset="1" BitOffset="3" ParameterType="%AID%_PT-Suspended" Text="Suspendiert" Value="0" />
               </Union>
 
+              <!-- Kein Union, keine <Memory>-Referenz → nur in ETS gespeichert, nicht auf dem Gerät.
+                   Modus-Auswahl auf dem Kanal-Tab ohne "Deaktiviert" — deaktiviert wird ausschließlich
+                   über den Haupttyp UP-%TT%%CC%001 in der Kanalauswahl-Tabelle. -->
+              <Parameter Id="%AID%_P-%TT%%CC%004" Name="b%C%ModeSelect" ParameterType="%AID%_PT-BTNModeSelect" Text="Modus" Value="1" />
+
               <!-- Inputs -->
               <Union SizeInBit="32">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="2" BitOffset="0" />
@@ -227,6 +232,7 @@
               <ParameterRef Id="%AID%_P-%TT%%CC%000_R-%TT%%CC%00001" RefId="%AID%_P-%TT%%CC%000" />
               
               <ParameterRef Id="%AID%_UP-%TT%%CC%001_R-%TT%%CC%00101" RefId="%AID%_UP-%TT%%CC%001" />
+              <ParameterRef Id="%AID%_P-%TT%%CC%004_R-%TT%%CC%00401" RefId="%AID%_P-%TT%%CC%004" />
               <ParameterRef Id="%AID%_UP-%TT%%CC%002_R-%TT%%CC%00201" RefId="%AID%_UP-%TT%%CC%002" />
               <ParameterRef Id="%AID%_UP-%TT%%CC%499_R-%TT%%CC%49901" RefId="%AID%_UP-%TT%%CC%499" />
 
@@ -410,6 +416,16 @@
               <ParameterRef Id="%AID%_UP-%TT%%CC%052_R-%TT%%CC%05201" RefId="%AID%_UP-%TT%%CC%052" />
               <ParameterRef Id="%AID%_UP-%TT%%CC%053_R-%TT%%CC%05301" RefId="%AID%_UP-%TT%%CC%053" />
             </ParameterRefs>
+            <ParameterCalculations>
+              <ParameterCalculation Id="%AID%_PC-%TT%%CC%001" Language="JavaScript" Name="SyncButtonMode%CC%" RLTransformationFunc="BASE_SyncChannelType" LRTransformationFunc="BASE_SyncChannelType">
+                <LParameters>
+                  <ParameterRefRef RefId="%AID%_P-%TT%%CC%004_R-%TT%%CC%00401" AliasName="TypeValue" />
+                </LParameters>
+                <RParameters>
+                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%001_R-%TT%%CC%00101" AliasName="TypeValue" />
+                </RParameters>
+              </ParameterCalculation>
+            </ParameterCalculations>
             <ComObjectTable>
               <ComObject Id="%AID%_O-%TT%%CC%000" Name="%C%Lock"       Number="%K0%"  ObjectSize="1 Bit"   Text="" FunctionText="" ReadFlag="Enabled"  WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-1" />
               <ComObject Id="%AID%_O-%TT%%CC%011" Name="%C%In1"        Number="%K1%"  ObjectSize="1 Bit"   Text="" FunctionText="" ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-16" />
@@ -490,8 +506,8 @@
                     <ParameterBlock Id="%AID%_PB-nnn" Name="b%C%Page" Text="Taster %C%: {{0: ...}}" TextParameterRefId="%AID%_P-%TT%%CC%000_R-%TT%%CC%00001" Icon="button-pointer" HelpContext="Empty" ShowInComObjectTree="true">
                       <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanaldefinition" UIHint="Headline" />
                       <ParameterRefRef RefId="%AID%_P-%TT%%CC%000_R-%TT%%CC%00001" IndentLevel="1" HelpContext="BASE-ChannelName" />
-                      <!-- Modus -->
-                      <ParameterRefRef RefId="%AID%_UP-%TT%%CC%001_R-%TT%%CC%00101" IndentLevel="1" HelpContext="%DOC%" />
+                      <!-- Modus: TypeSelect ohne "Deaktiviert" (per BASE_SyncChannelType mit UP-%TT%%CC%001 synchron) -->
+                      <ParameterRefRef RefId="%AID%_P-%TT%%CC%004_R-%TT%%CC%00401" IndentLevel="1" HelpContext="%DOC%" />
                       <!-- Sperre -->
                       <ParameterRefRef RefId="%AID%_UP-%TT%%CC%002_R-%TT%%CC%00201" IndentLevel="1" HelpContext="%DOC%" />
                       <choose ParamRefId="%AID%_UP-%TT%%CC%002_R-%TT%%CC%00201">
